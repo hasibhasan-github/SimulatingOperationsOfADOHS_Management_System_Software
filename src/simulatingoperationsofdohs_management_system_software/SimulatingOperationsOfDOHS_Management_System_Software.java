@@ -4,6 +4,7 @@
  */
 package simulatingoperationsofdohs_management_system_software;
 
+import MdHasibHasan.iconTitleclass;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,11 +19,15 @@ public class SimulatingOperationsOfDOHS_Management_System_Software extends Appli
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         
         Scene scene = new Scene(root);
         
+        // Code For setting Scene Icon and Title
         stage.setScene(scene);
+        iconTitleclass sp = new iconTitleclass();
+        sp.setIconAndTitle(stage);
+        //stage.setTitle("DOHS Management System Software");
         stage.show();
     }
 

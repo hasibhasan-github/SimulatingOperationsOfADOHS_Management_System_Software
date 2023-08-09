@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="543.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MdHasibHasan.SignUpSceneController">
+   <children>
+      <Accordion style="-fx-background-color: CORNSILK;">
+        <panes>
+          <TitledPane animated="false" text="Personal Information">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: CORNSILK;">
+                     <children>
+                        <ComboBox fx:id="userTypeComboBox" layoutX="21.0" layoutY="49.0" onAction="#userTypeSelectionOnAction" prefHeight="25.0" prefWidth="187.0" promptText="Select User Type" />
+                        <ListView fx:id="userList" layoutX="21.0" layoutY="91.0" prefHeight="212.0" prefWidth="186.0" />
+                        <TextField fx:id="emailTextField" layoutX="354.0" layoutY="49.0" />
+                        <TextField fx:id="nameTextField" layoutX="354.0" layoutY="91.0" prefHeight="27.0" prefWidth="153.0" />
+                        <Label layoutX="207.0" layoutY="14.0" text="MIRPUR DOHS">
+                           <font>
+                              <Font name="Arial Black" size="16.0" />
+                           </font>
+                        </Label>
+                        <RadioButton fx:id="maleRadioBtn" layoutX="354.0" layoutY="144.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="72.0" text="Male">
+                           <font>
+                              <Font name="Arial Narrow Bold" size="15.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="femaleRadioBtn" layoutX="429.0" layoutY="146.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="76.0" text="Female">
+                           <font>
+                              <Font name="Arial Narrow Bold" size="14.0" />
+                           </font>
+                        </RadioButton>
+                        <DatePicker fx:id="dateOfBirth" layoutX="358.0" layoutY="193.0" prefHeight="27.0" prefWidth="154.0" />
+                        <TextField fx:id="contactNoTextField" layoutX="359.0" layoutY="239.0" prefHeight="27.0" prefWidth="153.0" />
+                        <Label layoutX="304.0" layoutY="54.0" text="Email:">
+                           <font>
+                              <Font name="Arial Black" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="304.0" layoutY="96.0" text="Name:">
+                           <font>
+                              <Font name="Arial Black" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="293.0" layoutY="146.0" text="Gender:">
+                           <font>
+                              <Font name="Arial Black" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="259.0" layoutY="198.0" text="Date Of Birth:">
+                           <font>
+                              <Font name="Arial Black" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="271.0" layoutY="244.0" text="Contact No:">
+                           <font>
+                              <Font name="Arial Black" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+            </content>
+               <font>
+                  <Font name="Arial Narrow" size="15.0" />
+               </font>
+          </TitledPane>
+          <TitledPane animated="false" text="Professional Information">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: CORNSILK;">
+                     <children>
+                        <ComboBox fx:id="userDesignationComboBox" layoutX="159.0" layoutY="222.0" prefWidth="150.0" />
+                        <ComboBox fx:id="userDepartmentComboBox" layoutX="159.0" layoutY="175.0" prefWidth="150.0" />
+                        <TextField fx:id="salaryTextField" layoutX="157.0" layoutY="47.0" />
+                        <DatePicker fx:id="dateOfJoin" layoutX="157.0" layoutY="87.0" prefHeight="27.0" prefWidth="154.0" />
+                        <Label layoutX="100.0" layoutY="51.0" text="Salary:">
+                           <font>
+                              <Font name="Arial Black" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="54.0" layoutY="90.0" text="Date of Join:">
+                           <font>
+                              <Font name="Arial Black" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="178.0" text="Select Department:">
+                           <font>
+                              <Font name="Arial Black" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="225.0" text="Select Designation:">
+                           <font>
+                              <Font name="Arial Black" size="13.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="132.0" fitWidth="145.0" layoutX="366.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@mirpurdohslogo.png" />
+                           </image>
+                        </ImageView>
+                        <PasswordField fx:id="signUpPasswordField" layoutX="159.0" layoutY="133.0" prefHeight="27.0" prefWidth="149.0" />
+                        <Label layoutX="81.0" layoutY="136.0" text="Password:">
+                           <font>
+                              <Font name="Arial Black" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="90.0" layoutY="261.0" text="Plot No:">
+                           <font>
+                              <Font name="Arial Black" size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="plotNoTextField" layoutX="160.0" layoutY="259.0" />
+                        <ComboBox fx:id="militaryRankComboBox" layoutX="159.0" layoutY="14.0" prefWidth="150.0" />
+                        <Label layoutX="54.0" layoutY="18.0" text="Military Rank:">
+                           <font>
+                              <Font name="Arial Black" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+            </content>
+               <font>
+                  <Font name="Arial Narrow" size="15.0" />
+               </font>
+          </TitledPane>
+          <TitledPane animated="false" text="Finish SignUp">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: CORNSILK;">
+                     <children>
+                        <CheckBox fx:id="termsAndPoliciesCheckBox" layoutX="161.0" layoutY="194.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="220.0" text="Accept Our Terms and Policies">
+                           <font>
+                              <Font name="Arial Narrow Bold" size="15.0" />
+                           </font>
+                        </CheckBox>
+                        <Button layoutX="227.0" layoutY="222.0" mnemonicParsing="false" onAction="#submitOnClickButton" prefHeight="27.0" prefWidth="87.0" style="-fx-border-style: solid inside; -fx-border-color: black; -fx-border-radius: 100; -fx-background-color: transparent; -fx-border-insets: 5;" text="Submit " textFill="#7c0a0a">
+                           <font>
+                              <Font name="Arial Black" size="12.0" />
+                           </font>
+                        </Button>
+                        <TextArea fx:id="termsAndPoliciesTextArea" editable="false" layoutX="25.0" layoutY="58.0" prefHeight="124.0" prefWidth="492.0" />
+                        <Label layoutX="25.0" layoutY="23.0" text="Holding or Flat No:">
+                           <font>
+                              <Font name="Arial Black" size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="holdingOrFlatNoTextField" layoutX="165.0" layoutY="21.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+               <font>
+                  <Font name="Arial Narrow" size="16.0" />
+               </font>
+          </TitledPane>
+        </panes>
+      </Accordion>
+      <StackPane prefHeight="120.0" prefWidth="543.0" StackPane.alignment="BOTTOM_CENTER">
+         <StackPane.margin>
+            <Insets left="400.0" top="350.0" />
+         </StackPane.margin>
+         <children>
+            <Button mnemonicParsing="false" onAction="#goBackOnClickButton" prefHeight="27.0" prefWidth="87.0" style="-fx-border-style: solid inside; -fx-border-color: black; -fx-border-radius: 100; -fx-background-color: transparent; -fx-border-insets: 5;" text="Go Back" textFill="#7c0a0a">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </StackPane>
+   </children>
+</StackPane>

@@ -4,13 +4,18 @@
  */
 package simulatingoperationsofdohs_management_system_software;
 
+import MdHasibHasan.loginValidationAndVerification;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -23,6 +28,12 @@ public class LoginController implements Initializable {
     private TextField emailOrIdTextField;
     @FXML
     private ComboBox<?> selectUserComboBox;
+    @FXML
+    private PasswordField passwordField;
+    @FXML
+    private Label emailErrorLabel;
+    @FXML
+    private Label passwordErrorLabel;
 
     /**
      * Initializes the controller class.
@@ -57,6 +68,27 @@ public class LoginController implements Initializable {
     @FXML
     private void signUpButtonOnClick(ActionEvent event) {
         System.out.println("SignOut");
+    }
+
+    @FXML
+    private void signInValidation(MouseEvent event) {
+        String emailOrId, pass;
+        emailOrId = emailOrIdTextField.getText().trim();
+        pass = passwordField.getText();
+        loginValidationAndVerification.validationProcessOfData(emailOrId, pass, emailErrorLabel, emailOrIdTextField, passwordErrorLabel, passwordField);
+        
+    }
+
+    @FXML
+    private void emailOrIdLabelOnKeyDataEntry(KeyEvent event) {
+        emailErrorLabel.setVisible(false);
+        emailOrIdTextField.setStyle("-fx-border-color: transparent;");
+    }
+
+    @FXML
+    private void passwordFieldOnKeyDataEntry(KeyEvent event) {
+        passwordErrorLabel.setVisible(false);
+        passwordField.setStyle("-fx-border-color: transparent;");
     }
     
 }

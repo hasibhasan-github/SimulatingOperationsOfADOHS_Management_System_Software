@@ -29,7 +29,7 @@
                      <children>
                         <ComboBox fx:id="userTypeComboBox" layoutX="21.0" layoutY="49.0" onAction="#userTypeSelectionOnAction" prefHeight="25.0" prefWidth="187.0" promptText="Select User Type" />
                         <ListView fx:id="userList" layoutX="21.0" layoutY="91.0" prefHeight="212.0" prefWidth="186.0" />
-                        <TextField fx:id="emailTextField" layoutX="354.0" layoutY="49.0" />
+                        <TextField fx:id="emailTextField" layoutX="354.0" layoutY="49.0" onKeyPressed="#emailTextFieldOnKeyPressed" />
                         <TextField fx:id="nameTextField" layoutX="354.0" layoutY="91.0" prefHeight="27.0" prefWidth="153.0" />
                         <Label layoutX="207.0" layoutY="14.0" text="MIRPUR DOHS">
                            <font>
@@ -73,6 +73,7 @@
                               <Font name="Arial Black" size="12.0" />
                            </font>
                         </Label>
+                        <Label fx:id="emailErrorLabel" layoutX="358.0" layoutY="76.0" textFill="#dd4040" />
                      </children>
                   </AnchorPane>
             </content>
@@ -84,8 +85,8 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: CORNSILK;">
                      <children>
-                        <ComboBox fx:id="userDesignationComboBox" layoutX="159.0" layoutY="222.0" prefWidth="150.0" />
-                        <ComboBox fx:id="userDepartmentComboBox" layoutX="159.0" layoutY="175.0" prefWidth="150.0" />
+                        <ComboBox fx:id="userDesignationComboBox" layoutX="159.0" layoutY="222.0" prefWidth="150.0" promptText="Select Designation" />
+                        <ComboBox fx:id="userDepartmentComboBox" layoutX="159.0" layoutY="175.0" prefWidth="150.0" promptText="Select Department" />
                         <TextField fx:id="salaryTextField" layoutX="157.0" layoutY="47.0" />
                         <DatePicker fx:id="dateOfJoin" layoutX="157.0" layoutY="87.0" prefHeight="27.0" prefWidth="154.0" />
                         <Label layoutX="100.0" layoutY="51.0" text="Salary:">
@@ -113,7 +114,7 @@
                               <Image url="@mirpurdohslogo.png" />
                            </image>
                         </ImageView>
-                        <PasswordField fx:id="signUpPasswordField" layoutX="159.0" layoutY="133.0" prefHeight="27.0" prefWidth="149.0" />
+                        <PasswordField fx:id="signUpPasswordField" layoutX="159.0" layoutY="133.0" onKeyPressed="#passwordFieldOnKeyPressed" prefHeight="27.0" prefWidth="149.0" />
                         <Label layoutX="81.0" layoutY="136.0" text="Password:">
                            <font>
                               <Font name="Arial Black" size="13.0" />
@@ -125,12 +126,13 @@
                            </font>
                         </Label>
                         <TextField fx:id="plotNoTextField" layoutX="160.0" layoutY="259.0" />
-                        <ComboBox fx:id="militaryRankComboBox" layoutX="159.0" layoutY="14.0" prefWidth="150.0" />
+                        <ComboBox fx:id="militaryRankComboBox" layoutX="159.0" layoutY="14.0" prefWidth="150.0" promptText="Select your Rank!" />
                         <Label layoutX="54.0" layoutY="18.0" text="Military Rank:">
                            <font>
                               <Font name="Arial Black" size="13.0" />
                            </font>
                         </Label>
+                        <Label fx:id="passwordErrorLabel" layoutX="322.0" layoutY="217.0" textFill="#e82121" />
                      </children>
                   </AnchorPane>
             </content>
@@ -142,12 +144,12 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: CORNSILK;">
                      <children>
-                        <CheckBox fx:id="termsAndPoliciesCheckBox" layoutX="161.0" layoutY="194.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="220.0" text="Accept Our Terms and Policies">
+                        <CheckBox fx:id="termsAndPoliciesCheckBox" layoutX="161.0" layoutY="194.0" mnemonicParsing="false" onAction="#checkBoxButtonOnSelect" prefHeight="22.0" prefWidth="220.0" text="Accept Our Terms and Policies">
                            <font>
                               <Font name="Arial Narrow Bold" size="15.0" />
                            </font>
                         </CheckBox>
-                        <Button layoutX="227.0" layoutY="222.0" mnemonicParsing="false" onAction="#submitOnClickButton" prefHeight="27.0" prefWidth="87.0" style="-fx-border-style: solid inside; -fx-border-color: black; -fx-border-radius: 100; -fx-background-color: transparent; -fx-border-insets: 5;" text="Submit " textFill="#7c0a0a">
+                        <Button fx:id="submitButton" layoutX="227.0" layoutY="222.0" mnemonicParsing="false" onAction="#submitOnClickButton" prefHeight="27.0" prefWidth="87.0" style="-fx-border-style: solid inside; -fx-border-color: black; -fx-border-radius: 100; -fx-background-color: transparent; -fx-border-insets: 5;" text="Submit " textFill="#7c0a0a">
                            <font>
                               <Font name="Arial Black" size="12.0" />
                            </font>

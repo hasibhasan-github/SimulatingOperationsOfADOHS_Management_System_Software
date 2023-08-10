@@ -4,6 +4,8 @@
  */
 package MdHasibHasan;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.scene.control.Label;
@@ -34,6 +36,14 @@ public final class loginValidationAndVerification {
         Pattern pattern = Pattern.compile(id);
         Matcher matcher = pattern.matcher(userId);
         return matcher.matches();
+    }
+    
+    public static boolean isValidBirthDate(LocalDate dob){
+        LocalDate today =   LocalDate.now();
+        int period =  Period.between(dob, today).getYears();
+
+        if ( period >= 18 ) return true;
+        return false;
     }
     
     public static final void validationProcessOfData( String emailOrId, String pass, Label emailErrorLabel,

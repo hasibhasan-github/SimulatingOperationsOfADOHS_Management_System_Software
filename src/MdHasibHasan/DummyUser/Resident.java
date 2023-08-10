@@ -20,6 +20,48 @@ public class Resident extends User {
         this.holdingOrFlatNo = holdingOrFlatNo;
     }
 
+    public String getPlotNo() {
+        return plotNo;
+    }
+
+    public String getHoldingOrFlatNo() {
+        return holdingOrFlatNo;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public String getSocietyName() {
+        return societyName;
+    }
+
+    public LocalDate getDeathOfBirth() {
+        return deathOfBirth;
+    }
+
+    public long getContactNo() {
+        return contactNo;
+    }
+    
+    
+
     public String toStringM() {
         return " Resident{" + "plotNo=" + plotNo + ", holdingOrFlatNo=" + holdingOrFlatNo + '}'+"\n";
     }

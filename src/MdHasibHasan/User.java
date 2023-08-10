@@ -27,7 +27,10 @@ public abstract class User implements Serializable {
         this.deathOfBirth = deathOfBirth;
         this.contactNo = contactNo;
     }
-    
+
+    public void setContactNo(long contactNo) {
+        this.contactNo = contactNo;
+    }
     
     
     public void loginToTheDashboard(){

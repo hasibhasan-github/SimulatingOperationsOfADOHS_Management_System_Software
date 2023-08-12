@@ -46,7 +46,7 @@ public final class loginValidationAndVerification {
         return false;
     }
     
-    public static final void validationProcessOfData( String emailOrId, String pass, Label emailErrorLabel,
+    public static final boolean validationProcessOfData( String emailOrId, String pass, Label emailErrorLabel,
                                                        TextField emailOrIdTextField, Label passwordErrorLabel,
                                                        PasswordField passwordField){
         if ( emailOrId.length() > 6 ){
@@ -58,6 +58,7 @@ public final class loginValidationAndVerification {
                 emailErrorLabel.setText("Invalid Email");
                 emailErrorLabel.setVisible(true);
                 emailOrIdTextField.setStyle("-fx-border-color: red;");
+                return false;
             }
         }
         else {
@@ -66,9 +67,10 @@ public final class loginValidationAndVerification {
                 emailOrIdTextField.setStyle("-fx-border-color: transparent;");
             }
             else{
-                emailErrorLabel.setText("Invalid Email");
+                emailErrorLabel.setText("Invalid ID");
                 emailErrorLabel.setVisible(true);
                 emailOrIdTextField.setStyle("-fx-border-color: red;");
+                return false;
             }
         }
         if ( loginValidationAndVerification.isValidPassword(pass) ){
@@ -81,7 +83,9 @@ public final class loginValidationAndVerification {
                                     "*One special character");
                 passwordErrorLabel.setVisible(true);
                 passwordField.setStyle("-fx-border-color: red;");
+                return false;
         }
+        return true;
         
     }
 

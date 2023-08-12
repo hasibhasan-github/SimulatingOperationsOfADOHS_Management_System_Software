@@ -5,13 +5,14 @@
 package MdHasibHasan.DummyUser;
 
 import MdHasibHasan.User;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  *
  * @author Hasib
  */
-public class Resident extends User {
+public class Resident extends User implements Serializable {
     private String plotNo, holdingOrFlatNo;
 
     public Resident(String plotNo, String holdingOrFlatNo, int id, String name, String gender, String email, String userType, LocalDate deathOfBirth, long contactNo) {

@@ -5,6 +5,7 @@
 package MdHasibHasan;
 
 import MdHasibHasan.DummyUser.Resident;
+import MdHasibHasan.MaintenanceOfficer.MaintainenceOfficer;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -83,15 +84,21 @@ public class SignUpSceneController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         userTypeComboBox.getItems().addAll("Cantonment Board Member","Resident", "Employee");
-        userList.getItems().addAll("Maintenance Officer", "Human Resource Manager",
-                                    " Accounts & Finance Officer", "Utility Service Manager",
-                                    "Security Chief", "Real Estate Agent");
+        userList.getItems().addAll("Maintenance Officer", "Human Resource Management Officer",
+                                    " Accounts & Finance Officer", "Utility Service Officer",
+                                    "Security Officer", "Real Estate Agent");
         userList.setDisable(true);
         
         militaryRankComboBox.getItems().addAll("Major", "Lt. Colonel", "Colonel", "Brigadier",
                                     "Brigadier General","Major General", "Lt. General", "Army Chief");
         militaryRankComboBox.setDisable(true);
         userList.setDisable(true);
+        
+        userDepartmentComboBox.getItems().addAll("Maintenance", "Human Resource Management", "Accounts & Finance",
+                                            "Security", "Utility");
+        
+        userDesignationComboBox.getItems().addAll("Department Head", "Associate Department Head", 
+                            "Senior Executive", "Executive", "Junior Executive");
         
         submitButton.setDisable(true);
         termsAndPoliciesCheckBox.setDisable(true);
@@ -150,9 +157,20 @@ public class SignUpSceneController implements Initializable {
                                                     id, nameTextField.getText(), gender, emailTextField.getText(), 
                                                     userTypeComboBox.getValue(), dateOfBirth.getValue(), 
                                                 Long.parseLong(contactNoTextField.getText()) );
-                    System.out.println(people.toString() + " " + people.toStringM());
+                    ///  System.out.println(people.toString() + " " + people.toStringM());
+                    /* MaintainenceOfficer ms = new MaintainenceOfficer(dateOfJoin.getValue(), Float.parseFloat(salaryTextField.getText()),
+                                userDepartmentComboBox.getValue(), userDesignationComboBox.getValue(), id, nameTextField.getText(),
+                                gender, emailTextField.getText(), userList.getSelectionModel().getSelectedItem(), dateOfBirth.getValue(),
+                                Long.parseLong(contactNoTextField.getText())); */
+                    signUpData loginData = new signUpData(id, emailTextField.getText(), 
+                                    signUpPasswordField.getText(), userTypeComboBox.getValue());
                     GenerateAlerts.successfulAlert("Registration Successful.\n" + 
                                                     "You DOHS user id is: " + id);
+                    // boolean hasib = DataReadWrite.writeObjectToFile("Resident.bin", people);
+                    DataReadWrite.writeObjectToFile("Resident.bin", people);
+                    // DataReadWrite.readObjectToFile("Resident.bin", people);
+                    DataReadWrite.writeObjectToFile("LoginData.bin", loginData);
+                    // DataReadWrite.readObjectToFile("LoginData.bin", loginData);
                 }
             }
             catch (Exception e){
@@ -164,6 +182,7 @@ public class SignUpSceneController implements Initializable {
 
     @FXML
     private void goBackOnClickButton(ActionEvent event) throws IOException {
+        /// System.out.println(userList.getSelectionModel().getSelectedItem());
         sceneChanging newwscene = new sceneChanging();
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         newwscene.sceneSwitchingWithoutDataPassing(stage,"/simulatingoperationsofdohs_management_system_software/login.fxml" );

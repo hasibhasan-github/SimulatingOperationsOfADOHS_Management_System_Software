@@ -4,12 +4,17 @@
  */
 package simulatingoperationsofdohs_management_system_software;
 
+import MdHasibHasan.DataReadWrite;
+import MdHasibHasan.GenerateAlerts;
 import MdHasibHasan.loginValidationAndVerification;
 import MdHasibHasan.sceneChanging;
+import MdHasibHasan.signUpData;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,7 +40,7 @@ public class LoginController implements Initializable {
     @FXML
     private TextField emailOrIdTextField;
     @FXML
-    private ComboBox<?> selectUserComboBox;
+    private ComboBox<String> selectUserComboBox;
     @FXML
     private PasswordField passwordField;
     @FXML
@@ -49,6 +54,10 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        selectUserComboBox.getItems().addAll("Cantonment Board Member","Resident",
+                                        "Maintenance Officer", "Human Resource Management Officer",
+                                    " Accounts & Finance Officer", "Utility Service Officer",
+                                    "Security Officer", "Real Estate Agent");
     }    
 
     @FXML
@@ -65,7 +74,35 @@ public class LoginController implements Initializable {
 
     @FXML
     private void signInButtonOnClick(ActionEvent event) {
-        System.out.println("SignIn");
+        /// System.out.println("SignIn");
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        sceneChanging newwscene = new sceneChanging();
+        
+        String emailOrId, pass;
+        emailOrId = emailOrIdTextField.getText().trim();
+        pass = passwordField.getText();
+        boolean validationCheck = loginValidationAndVerification.validationProcessOfData(emailOrId, pass, emailErrorLabel, emailOrIdTextField, passwordErrorLabel, passwordField);
+        if (validationCheck){
+            boolean flag = false;
+            ObservableList<signUpData> loginInfo = FXCollections.observableArrayList();
+            signUpData sud = new signUpData(0,"e", "p", "u");
+            loginInfo = (ObservableList<signUpData>) DataReadWrite.readObjectToFile("LoginData.bin", sud);
+            try{
+                for ( signUpData tmp : loginInfo ){
+                if ( tmp.getUserType().equals("Maintenance Officer") && ( tmp.getPassword().equals(pass) && tmp.getEmail().equals(emailOrId) )){
+                    newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdHasibHasan/MaintenanceOfficerDashboard.fxml");
+                    flag = true;
+                }
+            }
+            }
+            catch (IOException e){
+                GenerateAlerts.unsuccessfulAlert("System Error!" + "\n" + "Please contact with Maintenance Department.");
+            }
+            if ( !flag ){
+                GenerateAlerts.unsuccessfulAlert("No user Found with the Domain.");
+            }
+        }
+        
     }
 
     @FXML
@@ -78,7 +115,8 @@ public class LoginController implements Initializable {
         System.out.println("SignOut");
         sceneChanging newwscene = new sceneChanging();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdHasibHasan/signUpScene.fxml");
+        // newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdHasibHasan/signUpScene.fxml");
+        // newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdHasibHasan/MaintenanceOfficerDashboard.fxml");
     }
 
     @FXML
@@ -86,9 +124,8 @@ public class LoginController implements Initializable {
         String emailOrId, pass;
         emailOrId = emailOrIdTextField.getText().trim();
         pass = passwordField.getText();
-        loginValidationAndVerification.validationProcessOfData(emailOrId, pass, emailErrorLabel, emailOrIdTextField, passwordErrorLabel, passwordField);
-        
-    }
+        boolean validationCheck = loginValidationAndVerification.validationProcessOfData(emailOrId, pass, emailErrorLabel, emailOrIdTextField, passwordErrorLabel, passwordField);
+        }
 
     @FXML
     private void emailOrIdLabelOnKeyDataEntry(KeyEvent event) {

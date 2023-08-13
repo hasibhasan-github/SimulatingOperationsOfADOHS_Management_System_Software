@@ -5,6 +5,7 @@
 package MdHasibHasan;
 
 import MdHasibHasan.DummyUser.Resident;
+import MdMasumBilla.accountsAndFinanceOfficer;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -74,6 +75,9 @@ public class DataReadWrite {
         //ArrayList<RegisteredCourse> recourse = new ArrayList<RegisteredCourse>();
         ObservableList<Resident> people = FXCollections.observableArrayList();
         ObservableList<signUpData> loginData  = FXCollections.observableArrayList();
+        ObservableList<accountsAndFinanceOfficer> pieChartData  = FXCollections.observableArrayList();
+        
+        
         try{
             if ( instance instanceof Resident ){
                     f = new File(str);
@@ -103,6 +107,20 @@ public class DataReadWrite {
                 }
                //  System.out.println("Hasib");               
             }
+            else if ( instance instanceof accountsAndFinanceOfficer ){
+                    f = new File(str);
+                    fw = new FileInputStream(f);
+                    ois = new ObjectInputStream(fw);
+                try{
+                    while (true) {
+                        pieChartData.add((accountsAndFinanceOfficer)ois.readObject());
+                    }
+                }
+                catch(Exception e){
+                    System.out.println("Hasib read exe Signup Data");
+                }
+               //  System.out.println("Hasib");               
+            }
         }
         catch(Exception e){
             System.out.println("Hasib False");
@@ -123,6 +141,7 @@ public class DataReadWrite {
                     
         }
         if ( instance instanceof Resident ) return people;
+        else if ( instance instanceof accountsAndFinanceOfficer ) return pieChartData;
         
         
         return loginData;

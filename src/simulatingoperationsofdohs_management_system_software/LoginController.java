@@ -87,10 +87,14 @@ public class LoginController implements Initializable {
             ObservableList<signUpData> loginInfo = FXCollections.observableArrayList();
             signUpData sud = new signUpData(0,"e", "p", "u");
             loginInfo = (ObservableList<signUpData>) DataReadWrite.readObjectToFile("LoginData.bin", sud);
-            try{
+            try{  // AccountOfficerDashBoard
                 for ( signUpData tmp : loginInfo ){
                 if ( tmp.getUserType().equals("Maintenance Officer") && ( tmp.getPassword().equals(pass) && tmp.getEmail().equals(emailOrId) )){
                     newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdHasibHasan/MaintenanceOfficerDashboard.fxml");
+                    flag = true;
+                }
+                else if ( tmp.getUserType().equals(" Accounts & Finance Officer") && ( tmp.getPassword().equals(pass) && tmp.getEmail().equals(emailOrId) )){
+                    newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdMasumBilla/AccountOfficerDashBoard.fxml");
                     flag = true;
                 }
             }

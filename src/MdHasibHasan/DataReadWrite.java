@@ -5,6 +5,7 @@
 package MdHasibHasan;
 
 import MdHasibHasan.DummyUser.Resident;
+import MdMasumBilla.BudgetingAndForecasting;
 import MdMasumBilla.accountsAndFinanceOfficer;
 import java.io.File;
 import java.io.FileInputStream;
@@ -75,7 +76,7 @@ public class DataReadWrite {
         //ArrayList<RegisteredCourse> recourse = new ArrayList<RegisteredCourse>();
         ObservableList<Resident> people = FXCollections.observableArrayList();
         ObservableList<signUpData> loginData  = FXCollections.observableArrayList();
-        ObservableList<accountsAndFinanceOfficer> pieChartData  = FXCollections.observableArrayList();
+        ObservableList<BudgetingAndForecasting> pieChartData  = FXCollections.observableArrayList();
         
         
         try{
@@ -107,17 +108,17 @@ public class DataReadWrite {
                 }
                //  System.out.println("Hasib");               
             }
-            else if ( instance instanceof accountsAndFinanceOfficer ){
+            else if ( instance instanceof BudgetingAndForecasting ){
                     f = new File(str);
                     fw = new FileInputStream(f);
                     ois = new ObjectInputStream(fw);
                 try{
                     while (true) {
-                        pieChartData.add((accountsAndFinanceOfficer)ois.readObject());
+                        pieChartData.add((BudgetingAndForecasting)ois.readObject());
                     }
                 }
                 catch(Exception e){
-                    System.out.println("Hasib read exe Signup Data");
+                    System.out.println("Masum read exe Signup Data");
                 }
                //  System.out.println("Hasib");               
             }
@@ -136,12 +137,13 @@ public class DataReadWrite {
             }
         }
                             
-        for( Resident tmp: people){
+        /*for( Resident tmp: people){
                         System.out.println(tmp.toString());
                     
         }
+*/
         if ( instance instanceof Resident ) return people;
-        else if ( instance instanceof accountsAndFinanceOfficer ) return pieChartData;
+        else if ( instance instanceof BudgetingAndForecasting ) return pieChartData;
         
         
         return loginData;

@@ -8,6 +8,7 @@ import MdHasibHasan.Employee;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+
 /**
  *
  * @author MD Masum Billah
@@ -22,5 +23,7 @@ public class accountsAndFinanceOfficer extends Employee implements Serializable 
     protected void applyForLeave() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+    
     
 }

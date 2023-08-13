@@ -182,7 +182,6 @@ public class SignUpSceneController implements Initializable {
 
     @FXML
     private void goBackOnClickButton(ActionEvent event) throws IOException {
-        /// System.out.println(userList.getSelectionModel().getSelectedItem());
         sceneChanging newwscene = new sceneChanging();
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         newwscene.sceneSwitchingWithoutDataPassing(stage,"/simulatingoperationsofdohs_management_system_software/login.fxml" );

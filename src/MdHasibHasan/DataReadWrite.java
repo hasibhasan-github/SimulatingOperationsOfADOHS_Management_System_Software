@@ -22,12 +22,12 @@ import javafx.collections.ObservableList;
  */
 public class DataReadWrite {
     
-    public static <T> Boolean writeObjectToFile(String str, T instance){
+    public static <T> Boolean writeObjectToFile(String fileName, T instance){
         ObjectOutputStream oos = null;
         FileOutputStream fos = null;
         File f = null;
         try{
-            f = new File(str);
+            f = new File(fileName);
             if (f.exists() ){
                 fos = new FileOutputStream(f, true);
                 oos = new AppendableObjectOutputStream(fos);
@@ -65,7 +65,7 @@ public class DataReadWrite {
         
     }
 //ObservableList<?>
-    public static <T> ObservableList<?> readObjectToFile(String str, T instance){
+    public static <T> ObservableList<?> readObjectToFile(String fileName, T instance){
         System.out.println("Hasib11");
         File f = null;
         FileInputStream fw = null;
@@ -81,7 +81,7 @@ public class DataReadWrite {
         
         try{
             if ( instance instanceof Resident ){
-                    f = new File(str);
+                    f = new File(fileName);
                     fw = new FileInputStream(f);
                     ois = new ObjectInputStream(fw);
                 try{
@@ -95,7 +95,7 @@ public class DataReadWrite {
                //  System.out.println("Hasib");               
             }
             else if ( instance instanceof signUpData ){
-                    f = new File(str);
+                    f = new File(fileName);
                     fw = new FileInputStream(f);
                     ois = new ObjectInputStream(fw);
                 try{
@@ -109,7 +109,7 @@ public class DataReadWrite {
                //  System.out.println("Hasib");               
             }
             else if ( instance instanceof BudgetingAndForecasting ){
-                    f = new File(str);
+                    f = new File(fileName);
                     fw = new FileInputStream(f);
                     ois = new ObjectInputStream(fw);
                 try{
@@ -135,7 +135,7 @@ public class DataReadWrite {
             catch(IOException ex){
                 
             }
-        }
+        } 
                             
         /*for( Resident tmp: people){
                         System.out.println(tmp.toString());
@@ -148,6 +148,45 @@ public class DataReadWrite {
         
         return loginData;
         
+        
+    }
+    
+    public static <T> Boolean overWriteObjectToFile(String fileName, T instance){
+        ObjectOutputStream oos = null;
+        FileOutputStream fos = null;
+        File f = null;
+        try{
+            f = new File(fileName);
+            if (f.exists() ){
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);
+            }
+            try {
+                oos.writeObject(instance);
+                oos.close();
+                return true;
+            }
+            catch(IOException ex){
+                GenerateAlerts.unsuccessfulAlert("Error while writing the File." + "\n" +
+                                                "Please Check your Storage Efficiency, File type and name.");
+            }
+        }
+        catch (Exception e){
+            GenerateAlerts.unsuccessfulAlert("Data is Vulnerable." + "\n" + "Please try again rechecking your data" + 
+                                                "If you can't solve the issue. Contact Software maintainer.");
+        }
+        finally {
+            try{
+                if ( oos != null){
+                    oos.close();
+                }
+            }
+            catch (IOException ex){
+                GenerateAlerts.unsuccessfulAlert("Error while closing the Binary File.");
+                return false;
+            }
+        } 
+        return false;
         
     }
     

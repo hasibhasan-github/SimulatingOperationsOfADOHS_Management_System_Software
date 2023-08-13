@@ -28,7 +28,7 @@
                <children>
                   <TextField fx:id="emailOrIdTextField" layoutX="99.0" layoutY="-12.0" onKeyPressed="#emailOrIdLabelOnKeyDataEntry" prefHeight="31.0" prefWidth="156.0" promptText="Enter your Emaiil/ID" />
                   <PasswordField fx:id="passwordField" layoutX="103.0" layoutY="34.0" onKeyPressed="#passwordFieldOnKeyDataEntry" promptText="Password" />
-                  <ComboBox fx:id="selectUserComboBox" layoutX="106.0" layoutY="70.0" opacity="0.0" prefHeight="25.0" prefWidth="136.0" style="-fx-background-color: transparent;" />
+                  <ComboBox fx:id="selectUserComboBox" layoutX="106.0" layoutY="70.0" onAction="#selectUserComboBoxOnClick" prefHeight="25.0" prefWidth="136.0" style="-fx-background-color: transparent;" />
                   <Button layoutX="142.0" layoutY="103.0" mnemonicParsing="false" onAction="#signInButtonOnClick" onMouseEntered="#signInValidation" prefHeight="9.0" prefWidth="54.0" style="-fx-background-color: transparent;">
                      <font>
                         <Font size="8.0" />

@@ -4,6 +4,7 @@
  */
 package MdHasibHasan;
 
+import MdHasibHasan.DummyUser.ResidentDashboardController;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,8 +17,8 @@ import javafx.stage.Stage;
  */
 public class sceneChanging {
     
-    public void sceneSwitchingWithoutDataPassing(Stage stage, String str) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(str)); 
+    public void sceneSwitchingWithoutDataPassing(Stage stage, String sceneName) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(sceneName)); 
     
         Parent root = loader.load();
         
@@ -27,7 +28,21 @@ public class sceneChanging {
         
         stage.setScene(scene);
         stage.show();
+    }
+    
+    public <T> void sceneSwitchingWithDataPassing(Stage stage, String sceneName, String userClassName, T instance) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(sceneName)); 
+    
+        Parent root = loader.load();
         
+        Scene scene = new Scene(root);
         
+        if ( userClassName.equals("Resident") ) {
+            ResidentDashboardController loadController = loader.getController();
+            loadController.helperOfDataPassing((signUpData) instance);
+        }
+        
+        stage.setScene(scene);
+        stage.show();
     }
 }

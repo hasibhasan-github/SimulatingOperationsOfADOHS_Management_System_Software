@@ -102,6 +102,15 @@ public class AccountOfficerDashBoardController implements Initializable {
         BudgetingAndForecasting x = new BudgetingAndForecasting();
         x.clearPieChartData(budget);
         */
+        BudgetingAndForecasting budget = new BudgetingAndForecasting("", (float) 0.0);
+        DataReadWrite.overWriteObjectToFile("BudgetFileData.bin", budget);
+        
+        BudgetingAndForecasting budddy = new BudgetingAndForecasting("", (float) 1.0);
+        ObservableList<BudgetingAndForecasting> LoadChartDataFromFile = (ObservableList<BudgetingAndForecasting>) DataReadWrite.readObjectToFile("BudgetFileData.bin", budddy);
+        
+        for (BudgetingAndForecasting x : LoadChartDataFromFile){
+            System.out.println(x.getItem());
+        }
     }
 
 }

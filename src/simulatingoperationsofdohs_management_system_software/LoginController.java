@@ -5,6 +5,7 @@
 package simulatingoperationsofdohs_management_system_software;
 
 import MdHasibHasan.DataReadWrite;
+import MdHasibHasan.DummyUser.ResidentDashboardController;
 import MdHasibHasan.GenerateAlerts;
 import MdHasibHasan.loginValidationAndVerification;
 import MdHasibHasan.sceneChanging;
@@ -90,15 +91,19 @@ public class LoginController implements Initializable {
             try{  // AccountOfficerDashBoard
                 for ( signUpData tmp : loginInfo ){
                 if ( tmp.getUserType().equals("Maintenance Officer") && ( tmp.getPassword().equals(pass) && tmp.getEmail().equals(emailOrId) )){
-                    newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdHasibHasan/MaintenanceOfficerDashboard.fxml");
+                    newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdHasibHasan/MaintenanceOfficer/MaintenanceOfficerDashboard.fxml");
                     flag = true;
                 }
                 else if ( tmp.getUserType().equals(" Accounts & Finance Officer") && ( tmp.getPassword().equals(pass) && tmp.getEmail().equals(emailOrId) )){
                     newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdMasumBilla/AccountOfficerDashBoard.fxml");
                     flag = true;
                 }
+                else if ( tmp.getUserType().equals("Resident") && ( tmp.getPassword().equals(pass) && tmp.getEmail().equals(emailOrId) )){
+                    newwscene.sceneSwitchingWithDataPassing(stage, "/MdHasibHasan/DummyUser/ResidentDashboard.fxml", "Resident", tmp);
+                    flag = true;
+                }
             }
-            }
+          }
             catch (IOException e){
                 GenerateAlerts.unsuccessfulAlert("System Error!" + "\n" + "Please contact with Maintenance Department.");
             }
@@ -140,6 +145,11 @@ public class LoginController implements Initializable {
     private void passwordFieldOnKeyDataEntry(KeyEvent event) {
         passwordErrorLabel.setVisible(false);
         passwordField.setStyle("-fx-border-color: transparent;");
+    }
+
+    @FXML
+    private void selectUserComboBoxOnClick(ActionEvent event) {
+        if (selectUserComboBox.getValue() != null ) selectUserComboBox.setStyle("-fx-background-color: white;");
     }
     
 }

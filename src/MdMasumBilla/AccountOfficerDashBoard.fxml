@@ -41,8 +41,8 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="425.0" prefWidth="600.0">
                <children>
-                  <TextArea fx:id="OutputTextArea" layoutX="59.0" layoutY="84.0" prefHeight="280.0" prefWidth="497.0" />
-                  <Button layoutX="422.0" layoutY="391.0" mnemonicParsing="false" onAction="#ShowFinancialReportOnClick" text="Show Financial Report" />
+                  <TextArea fx:id="riskTextArea" layoutX="59.0" layoutY="102.0" prefHeight="280.0" prefWidth="497.0" />
+                  <Button layoutX="422.0" layoutY="391.0" mnemonicParsing="false" onAction="#analyzeRiskOnClick" text="Show Financial Report" />
                   <Button layoutX="67.0" layoutY="391.0" mnemonicParsing="false" onAction="#GeneratePdfOnClick" text="Generate Pdf" />
                   <ImageView fitHeight="61.0" fitWidth="70.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -54,6 +54,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
+                  <Label fx:id="riskStatusLabel" layoutX="201.0" layoutY="395.0" prefHeight="17.0" prefWidth="86.0" />
                </children></AnchorPane>
       </content>
     </Tab>

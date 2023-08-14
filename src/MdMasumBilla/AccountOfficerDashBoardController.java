@@ -36,10 +36,14 @@ public class AccountOfficerDashBoardController implements Initializable {
     private TextField ItemValue;
     
     @FXML
-    private TextArea OutputTextArea;
+    private TextArea riskTextArea;
+    
+    @FXML
+    private Label riskStatusLabel;
     
     @FXML
     private Label StatusLabel;
+    
     @FXML
     private Label PercentLabel;
     
@@ -58,6 +62,9 @@ public class AccountOfficerDashBoardController implements Initializable {
                 "Emergencies",
                 "Legal and Regulatory Compliance");
         ItemNameComboBox.setValue("Choose an option");
+        
+        //riskComboBox.getItems().addAll("Market Fluctuations","Membership Fee Default","Maintenance Cost Increase");
+        //riskComboBox.setValue("Choose an option");
     }    
     
     @FXML
@@ -127,21 +134,30 @@ public class AccountOfficerDashBoardController implements Initializable {
     }
 
     @FXML
-    void ShowFinancialReportOnClick(ActionEvent event) {
+    void analyzeRiskOnClick(ActionEvent event) {
         
-        /* FinancialRiskManagement risk = new FinancialRiskManagement( (int) 1);
-        ObservableList<FinancialRiskManagement> readRisk = (ObservableList<FinancialRiskManagement>) DataReadWrite.readObjectToFile("BudgetFileData.bin", risk);
-        
-        if (readRisk != null) {
-        String reportText = "Financial Risk Report:\n\n";
-        reportText += "Description: " + readRisk.get(0).getDescription() + "\n"; // Adjust the method according to your FinancialRiskManagement class
-        reportText += "Risk Level: " + readRisk.get(0).getRisklevel() + "\n"; // Adjust the method according to your FinancialRiskManagement class
-        // Add more properties as needed
+        FinancialRisk risk1 = new FinancialRisk("Market Fluctuations", "Risks due to market price volatility", 0.7, 0.8);
+        FinancialRisk risk2 = new FinancialRisk("Membership Fee Default", "Risks of members defaulting on fees", 0.5, 0.6);
+        FinancialRisk risk3 = new FinancialRisk("Maintenance Cost Increase", "Risks of unexpected maintenance cost hikes", 0.4, 0.7);
 
-        OutputTextArea.setText(reportText);
+        String riskAnalysis = RiskAnalyzer.analyzeRisk(risk1) + "\n" +
+                              RiskAnalyzer.analyzeRisk(risk2) + "\n" +
+                              RiskAnalyzer.analyzeRisk(risk3);
+
+        riskTextArea.setText(riskAnalysis);
+/*
+        String selectedRisk = riskComboBox.getValue();
+        if (selectedRisk != null && !selectedRisk.isEmpty()) {
+            FinancialRisk risk = getFinancialRisk(selectedRisk); // Implement this method to create the FinancialRisk object
+            String riskAnalysis = RiskAnalyzer.analyzeRisk(risk);
+            riskTextArea.setText(riskAnalysis);
         } else {
-        OutputTextArea.setText("Error reading financial data.");
-        } */
+            riskTextArea.setText("Please select a risk.");
+        }
     }
-
+    
+    public FinancialRisk getFinancialRisk(String riskName){
+        return null;
+*/
+    }
 }

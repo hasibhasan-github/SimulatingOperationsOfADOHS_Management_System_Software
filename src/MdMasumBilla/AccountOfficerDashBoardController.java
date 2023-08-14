@@ -57,6 +57,7 @@ public class AccountOfficerDashBoardController implements Initializable {
     
     @FXML
     private void ShowPieChartOnClick(ActionEvent event) {
+        PieChart.getData().clear();
         BudgetingAndForecasting budget = new BudgetingAndForecasting("", (float) 1.0);
         ObservableList<BudgetingAndForecasting> LoadChartDataFromFile = (ObservableList<BudgetingAndForecasting>) DataReadWrite.readObjectToFile("BudgetFileData.bin", budget);
         ObservableList<PieChart.Data>PieChar = FXCollections.observableArrayList();

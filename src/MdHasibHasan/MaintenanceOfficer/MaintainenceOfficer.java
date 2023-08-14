@@ -4,9 +4,11 @@
  */
 package MdHasibHasan.MaintenanceOfficer;
 
+import MdHasibHasan.DataReadWrite;
 import MdHasibHasan.Employee;
 import java.io.Serializable;
 import java.time.LocalDate;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -21,6 +23,17 @@ public class MaintainenceOfficer extends Employee implements Serializable {
     @Override
     protected void applyForLeave() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    public static ObservableList<carStickerRequest> approveCarStickerRequest(ObservableList<carStickerRequest> stickerRequestData, carStickerRequest instanceOfCarStickerRequest ){
+        for ( int i = 0; i <  stickerRequestData.size(); ++i ){
+            // Updating the Application Status
+            if ( stickerRequestData.get(i).getEmail().equals(instanceOfCarStickerRequest.getEmail())) stickerRequestData.get(i).setApplicationStatus("Accepted");
+            // Writing updated data on the File.
+            if ( i == 0 ) DataReadWrite.overWriteObjectToFile("CarStickerRequestData.bin", stickerRequestData.get(i));
+            else DataReadWrite.writeObjectToFile("CarStickerRequestData.bin", stickerRequestData.get(i));
+        }
+        return stickerRequestData;  
     }
     
 }

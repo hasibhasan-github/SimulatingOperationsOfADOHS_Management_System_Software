@@ -52,7 +52,7 @@ public class ResidentDashboardController implements Initializable {
     @FXML
     private void applyForCarStickerOnClick(ActionEvent event) {
         // System.out.println(currentlyLoggedInUserInfo.getEmail());
-        carStickerRequest application = new carStickerRequest(currentlyLoggedInUserInfo.getId(), "NO",
+        carStickerRequest application = new carStickerRequest(currentlyLoggedInUserInfo.getId(), "Pending",
                                             currentlyLoggedInUserInfo.getEmail(), "Done");
         System.out.println(application.getEmail());
         DataReadWrite.writeObjectToFile("CarStickerRequestData.bin", application);

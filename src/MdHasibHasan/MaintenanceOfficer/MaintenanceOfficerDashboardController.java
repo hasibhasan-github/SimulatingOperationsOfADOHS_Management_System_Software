@@ -5,10 +5,12 @@
 package MdHasibHasan.MaintenanceOfficer;
 
 import MdHasibHasan.DataReadWrite;
+import MdHasibHasan.DummyUser.Resident;
 import MdHasibHasan.GenerateAlerts;
 import MdHasibHasan.sceneChanging;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -52,23 +54,17 @@ public class MaintenanceOfficerDashboardController implements Initializable {
         paymentStatusColoumn.setCellValueFactory(new PropertyValueFactory<carStickerRequest, String>("paymentStatus"));
         applicationStatusColoumn.setCellValueFactory(new PropertyValueFactory<carStickerRequest, String>("applicationStatus"));
         
-    }    
-
-    @FXML
-    private void loadCarStickerRequestDetailsOnClick(ActionEvent event) {
         carStickerRequest requestSticker = new carStickerRequest(0,"","","");
-        
         tableDataOfCarStickerRequest = (ObservableList<carStickerRequest>) DataReadWrite.readObjectToFile("CarStickerRequestData.bin", requestSticker);
-        
         tableViewMaintainenceOfficer.getItems().addAll(tableDataOfCarStickerRequest);
-    }
-
-    @FXML
-    private void updateCarStickerRequestDetailsOnClick(ActionEvent event) {
-        carStickerRequest giveApproval =tableViewMaintainenceOfficer.getSelectionModel().getSelectedItem();
         
-        tableViewMaintainenceOfficer.getSelectionModel().isSelected(0);
-    }
+        ObservableList<Resident> people = (ObservableList<Resident>) DataReadWrite.readObjectToFile("Resident.bin", new Resident("", "", 1, "", "",
+        "", "", LocalDate.of(2023, 7, 29), 9));
+        
+        for ( Resident xxx : people ){
+            System.out.println(xxx.toString() + xxx.toStringM());
+        }
+    }    
 
     @FXML
     private void logOutButtonOnClick(ActionEvent event) throws IOException {
@@ -81,9 +77,12 @@ public class MaintenanceOfficerDashboardController implements Initializable {
 
     @FXML
     private void approveButtonOnClick(ActionEvent event) {
-        System.out.println(tableViewMaintainenceOfficer.getSelectionModel().isSelected(0));
         carStickerRequest giveApproval =tableViewMaintainenceOfficer.getSelectionModel().getSelectedItem();
-        giveApproval.setApplicationStatus("Accepted");
+        if ( tableViewMaintainenceOfficer.getSelectionModel().isSelected(0)) GenerateAlerts.successfulAlert("Please Select Table Item.");
+        // Clearing table data list
+        tableViewMaintainenceOfficer.getItems().clear();
+        // Approving Car Sticker Request by model class static method.
+        tableViewMaintainenceOfficer.getItems().addAll(MaintainenceOfficer.approveCarStickerRequest(tableDataOfCarStickerRequest, giveApproval));
     }
     
 }

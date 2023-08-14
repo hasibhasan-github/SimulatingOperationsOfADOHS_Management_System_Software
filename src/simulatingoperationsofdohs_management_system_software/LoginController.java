@@ -80,6 +80,13 @@ public class LoginController implements Initializable {
         sceneChanging newwscene = new sceneChanging();
         
         String emailOrId, pass;
+        int loginUsingId = 0;
+        try{
+            loginUsingId = Integer.parseInt(emailOrIdTextField.getText());
+        }
+        catch (Exception e){
+            // catch occurs if the field contain email.
+        }
         emailOrId = emailOrIdTextField.getText().trim();
         pass = passwordField.getText();
         boolean validationCheck = loginValidationAndVerification.validationProcessOfData(emailOrId, pass, emailErrorLabel, emailOrIdTextField, passwordErrorLabel, passwordField);
@@ -90,15 +97,15 @@ public class LoginController implements Initializable {
             loginInfo = (ObservableList<signUpData>) DataReadWrite.readObjectToFile("LoginData.bin", sud);
             try{  // AccountOfficerDashBoard
                 for ( signUpData tmp : loginInfo ){
-                if ( tmp.getUserType().equals("Maintenance Officer") && ( tmp.getPassword().equals(pass) && tmp.getEmail().equals(emailOrId) )){
+                if ( tmp.getUserType().equals("Maintenance Officer") && ( tmp.getPassword().equals(pass) && (tmp.getEmail().equals(emailOrId) || tmp.getId() == (loginUsingId) ) )){
                     newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdHasibHasan/MaintenanceOfficer/MaintenanceOfficerDashboard.fxml");
                     flag = true;
                 }
-                else if ( tmp.getUserType().equals(" Accounts & Finance Officer") && ( tmp.getPassword().equals(pass) && tmp.getEmail().equals(emailOrId) )){
+                else if ( tmp.getUserType().equals(" Accounts & Finance Officer") && ( tmp.getPassword().equals(pass) && (tmp.getEmail().equals(emailOrId) || tmp.getId() == (loginUsingId) ) )){
                     newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdMasumBilla/AccountOfficerDashBoard.fxml");
                     flag = true;
                 }
-                else if ( tmp.getUserType().equals("Resident") && ( tmp.getPassword().equals(pass) && tmp.getEmail().equals(emailOrId) )){
+                else if ( tmp.getUserType().equals("Resident") && ( tmp.getPassword().equals(pass) && (tmp.getEmail().equals(emailOrId) || tmp.getId() == (loginUsingId) ) )){
                     newwscene.sceneSwitchingWithDataPassing(stage, "/MdHasibHasan/DummyUser/ResidentDashboard.fxml", "Resident", tmp);
                     flag = true;
                 }

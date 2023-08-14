@@ -125,7 +125,8 @@ public class AccountOfficerDashBoardController implements Initializable {
 
     @FXML
     void ShowFinancialReportOnClick(ActionEvent event) {
-        FinancialRiskManagement risk = new FinancialRiskManagement( (int) 1);
+        
+        /* FinancialRiskManagement risk = new FinancialRiskManagement( (int) 1);
         ObservableList<FinancialRiskManagement> readRisk = (ObservableList<FinancialRiskManagement>) DataReadWrite.readObjectToFile("BudgetFileData.bin", risk);
         
         if (readRisk != null) {
@@ -137,7 +138,7 @@ public class AccountOfficerDashBoardController implements Initializable {
         OutputTextArea.setText(reportText);
         } else {
         OutputTextArea.setText("Error reading financial data.");
-        }
+        } */
     }
 
 }

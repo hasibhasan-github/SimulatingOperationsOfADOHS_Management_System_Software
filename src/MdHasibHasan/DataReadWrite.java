@@ -7,6 +7,7 @@ package MdHasibHasan;
 import MdHasibHasan.DummyUser.Resident;
 import MdMasumBilla.BudgetingAndForecasting;
 import MdMasumBilla.accountsAndFinanceOfficer;
+import MdHasibHasan.MaintenanceOfficer.carStickerRequest;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -77,6 +78,7 @@ public class DataReadWrite {
         ObservableList<Resident> people = FXCollections.observableArrayList();
         ObservableList<signUpData> loginData  = FXCollections.observableArrayList();
         ObservableList<BudgetingAndForecasting> pieChartData  = FXCollections.observableArrayList();
+        ObservableList<carStickerRequest> carStickerRequestData  = FXCollections.observableArrayList();
         
         
         try{
@@ -122,6 +124,20 @@ public class DataReadWrite {
                 }
                //  System.out.println("Hasib");               
             }
+            else if ( instance instanceof carStickerRequest ){
+                    f = new File(fileName);
+                    fw = new FileInputStream(f);
+                    ois = new ObjectInputStream(fw);
+                try{
+                    while (true) {
+                        carStickerRequestData.add((carStickerRequest)ois.readObject());
+                    }
+                }
+                catch(Exception e){
+                    System.out.println("Hasib carStickerRequest read exe Signup Data");
+                }
+               //  System.out.println("Hasib");               
+            }
         }
         catch(Exception e){
             System.out.println("Hasib False");
@@ -144,12 +160,16 @@ public class DataReadWrite {
 */
         if ( instance instanceof Resident ) return people;
         else if ( instance instanceof BudgetingAndForecasting ) return pieChartData;
+        else if ( instance instanceof carStickerRequest ) return carStickerRequestData;
         
         
         return loginData;
         
         
     }
+    
+    
+    // Method For Overwritting On a Binary Data File.
     
     public static <T> Boolean overWriteObjectToFile(String fileName, T instance){
         ObjectOutputStream oos = null;

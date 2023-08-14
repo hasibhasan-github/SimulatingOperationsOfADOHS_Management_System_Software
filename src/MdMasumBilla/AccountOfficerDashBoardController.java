@@ -72,6 +72,7 @@ public class AccountOfficerDashBoardController implements Initializable {
             //System.out.println(x.getItem());
             //PieChart.getData().add(x);
         }
+        PieChart.getData().clear();
         PieChart.getData().addAll(PieChar);
         
         for(PieChart.Data data1: PieChart.getData()){
@@ -95,6 +96,7 @@ public class AccountOfficerDashBoardController implements Initializable {
 
     @FXML
     private void AddNewItemToFileOnButtonClick(ActionEvent event) {
+        
         BudgetingAndForecasting budget = new BudgetingAndForecasting(ItemNameComboBox.getValue(),Float.parseFloat(ItemValue.getText()));
         DataReadWrite.writeObjectToFile("BudgetFileData.bin",budget);
         
@@ -107,6 +109,7 @@ public class AccountOfficerDashBoardController implements Initializable {
         BudgetingAndForecasting x = new BudgetingAndForecasting();
         x.clearPieChartData(budget);
         */
+        //PieChart.getData().clear();
         BudgetingAndForecasting budget = new BudgetingAndForecasting("", (float) 0.0);
         DataReadWrite.overWriteObjectToFile("BudgetFileData.bin", budget);
         

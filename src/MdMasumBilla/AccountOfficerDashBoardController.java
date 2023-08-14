@@ -17,12 +17,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 /**
  * FXML Controller class
  *
- * @author MD Masum Billah
+ * @author MD Masum Billa
  */
 public class AccountOfficerDashBoardController implements Initializable {
 
@@ -33,6 +34,10 @@ public class AccountOfficerDashBoardController implements Initializable {
     private ComboBox<String> ItemNameComboBox;
     @FXML
     private TextField ItemValue;
+    
+    @FXML
+    private TextArea OutputTextArea;
+    
     @FXML
     private Label StatusLabel;
     @FXML
@@ -57,7 +62,6 @@ public class AccountOfficerDashBoardController implements Initializable {
     
     @FXML
     private void ShowPieChartOnClick(ActionEvent event) {
-        PieChart.getData().clear();
         BudgetingAndForecasting budget = new BudgetingAndForecasting("", (float) 1.0);
         ObservableList<BudgetingAndForecasting> LoadChartDataFromFile = (ObservableList<BudgetingAndForecasting>) DataReadWrite.readObjectToFile("BudgetFileData.bin", budget);
         ObservableList<PieChart.Data>PieChar = FXCollections.observableArrayList();
@@ -111,6 +115,28 @@ public class AccountOfficerDashBoardController implements Initializable {
         
         for (BudgetingAndForecasting x : LoadChartDataFromFile){
             System.out.println(x.getItem());
+        }
+    }
+    
+    @FXML
+    void GeneratePdfOnClick(ActionEvent event) {
+
+    }
+
+    @FXML
+    void ShowFinancialReportOnClick(ActionEvent event) {
+        FinancialRiskManagement risk = new FinancialRiskManagement( (int) 1);
+        ObservableList<FinancialRiskManagement> readRisk = (ObservableList<FinancialRiskManagement>) DataReadWrite.readObjectToFile("BudgetFileData.bin", risk);
+        
+        if (readRisk != null) {
+        String reportText = "Financial Risk Report:\n\n";
+        reportText += "Description: " + readRisk.get(0).getDescription() + "\n"; // Adjust the method according to your FinancialRiskManagement class
+        reportText += "Risk Level: " + readRisk.get(0).getRisklevel() + "\n"; // Adjust the method according to your FinancialRiskManagement class
+        // Add more properties as needed
+
+        OutputTextArea.setText(reportText);
+        } else {
+        OutputTextArea.setText("Error reading financial data.");
         }
     }
 

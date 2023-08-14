@@ -6,10 +6,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="439.0" prefWidth="600.0" style="-fx-background-color: #FFF8DC;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MdMasumBilla.AccountOfficerDashBoardController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="600.0" style="-fx-background-color: #FFF8DC;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MdMasumBilla.AccountOfficerDashBoardController">
   <tabs>
       <Tab text="Budgeting &amp; Forecasting">
         <content>
@@ -28,17 +32,32 @@
             </AnchorPane>
         </content>
       </Tab>
-    <Tab text="Financial Reporting">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-      </content>
-    </Tab>
     <Tab text="Billing &amp; Invoice">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
       </content>
     </Tab>
-      <Tab text="Financial Risk Management">
+    <Tab text="Financial Risk Management">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="425.0" prefWidth="600.0">
+               <children>
+                  <TextArea fx:id="OutputTextArea" layoutX="59.0" layoutY="84.0" prefHeight="280.0" prefWidth="497.0" />
+                  <Button layoutX="422.0" layoutY="391.0" mnemonicParsing="false" onAction="#ShowFinancialReportOnClick" text="Show Financial Report" />
+                  <Button layoutX="67.0" layoutY="391.0" mnemonicParsing="false" onAction="#GeneratePdfOnClick" text="Generate Pdf" />
+                  <ImageView fitHeight="61.0" fitWidth="70.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../MdHasibHasan/mirpurdohslogo.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="229.0" layoutY="25.0" text="MIRPUR DOHS">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+      <Tab text="Financial Reporting">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
         </content>

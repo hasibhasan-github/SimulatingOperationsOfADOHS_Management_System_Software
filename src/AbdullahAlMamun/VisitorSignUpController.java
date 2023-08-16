@@ -4,15 +4,19 @@
  */
 package AbdullahAlMamun;
 
+import MdHasibHasan.sceneChanging;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -59,6 +63,13 @@ public class VisitorSignUpController implements Initializable {
 
     @FXML
     private void sendAccessRequestBtnOnClick(ActionEvent event) {
+    }
+
+    @FXML
+    private void goBackButtonOnClick(ActionEvent event) throws IOException {
+        sceneChanging newwscene = new sceneChanging();
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        newwscene.sceneSwitchingWithoutDataPassing(stage,"/simulatingoperationsofdohs_management_system_software/login.fxml" );
     }
     
 }

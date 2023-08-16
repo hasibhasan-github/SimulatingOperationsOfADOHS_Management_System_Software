@@ -43,5 +43,10 @@
          </font></Button>
       <DatePicker layoutX="364.0" layoutY="115.0" prefHeight="27.0" prefWidth="173.0" promptText="Select Date" />
       <ComboBox fx:id="selectPurposeOfVisitComboBox1" layoutX="364.0" layoutY="173.0" prefHeight="27.0" prefWidth="173.0" promptText="Choose Your Time Slot" />
+      <Button layoutX="277.0" layoutY="372.0" mnemonicParsing="false" onAction="#goBackButtonOnClick" text="Go Back" textFill="#2b007c">
+         <font>
+            <Font name="Arial Narrow" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

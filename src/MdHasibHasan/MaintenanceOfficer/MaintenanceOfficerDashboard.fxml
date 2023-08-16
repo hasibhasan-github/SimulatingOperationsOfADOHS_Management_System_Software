@@ -10,6 +10,8 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
@@ -25,6 +27,75 @@
                <content>
                   <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
+                        <Tab text="My Information">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: CORNSILK;">
+                                 <children>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="47.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@ayman.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="304.0" layoutY="33.0" text="Ayman Sadiq">
+                                       <font>
+                                          <Font name="Arial Narrow Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="250.0" layoutY="33.0" text="Name:">
+                                       <font>
+                                          <Font name="Arial Narrow Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="260.0" layoutY="81.0" text="Age:">
+                                       <font>
+                                          <Font name="Arial Narrow Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="304.0" layoutY="81.0" text="33 years">
+                                       <font>
+                                          <Font name="Arial Narrow Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="206.0" layoutY="117.0" text="Department:">
+                                       <font>
+                                          <Font name="Arial Narrow Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="304.0" layoutY="117.0" text="Maintenance">
+                                       <font>
+                                          <Font name="Arial Narrow Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="206.0" layoutY="148.0" text="Designation:">
+                                       <font>
+                                          <Font name="Arial Narrow Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="306.0" layoutY="148.0" text="Department Head">
+                                       <font>
+                                          <Font name="Arial Narrow Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="47.0" layoutY="209.0" text="Experience:">
+                                       <font>
+                                          <Font name="Arial Narrow Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <TextArea fx:id="experienceTextArea" editable="false" layoutX="33.0" layoutY="245.0" prefHeight="86.0" prefWidth="645.0" />
+                                    <Label layoutX="273.0" layoutY="60.0" text="ID:">
+                                       <font>
+                                          <Font name="Arial Narrow Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="304.0" layoutY="60.0" text="369461">
+                                       <font>
+                                          <Font name="Arial Narrow Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
                       <Tab text="See Car Sticiker Request">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: CORNSILK;">
@@ -75,6 +146,22 @@
                   </TabPane>
                </content>
           </TitledPane>
+            <TitledPane animated="false" text="See DOHS Map">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: CORNSILK;">
+                     <children>
+                        <ImageView fitHeight="356.0" fitWidth="575.0" layoutX="124.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Group%2021%20(2).png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <font>
+                  <Font name="Arial Narrow Bold" size="15.0" />
+               </font>
+            </TitledPane>
           <TitledPane animated="false" text="Policies, Notifications and Logout">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: CORNSILK;">

@@ -63,6 +63,8 @@ public class MaintenanceOfficerDashboardController implements Initializable {
     private TableColumn<loadResidentData, String> holdingTable;
     @FXML
     private PieChart PieChart;
+    @FXML
+    private TextArea experienceTextArea;
 
     /**
      * Initializes the controller class.
@@ -115,6 +117,10 @@ public class MaintenanceOfficerDashboardController implements Initializable {
                                     "IT System Maintenance Notification:\n" +
                                     "Subject: Planned IT System Maintenance\n" +
                                     "Date and Time: Monday 21 August");
+        
+        experienceTextArea.setText("Experienced department head with a decade of hands-on leadership in maintenance operations.\n"
+                             + "Proven track record in optimizing equipment performance, fostering team efficiency, and implementing cost-effective maintenance strategies.\n " +
+                               "Adept at ensuring facility functionality and enhancing operational effectiveness");
         
         ObservableList<PieChart.Data>PieChar = FXCollections.observableArrayList();
         PieChar.add(new PieChart.Data("Male", maleCount));

@@ -190,8 +190,9 @@ public class SignUpSceneController implements Initializable {
                     nameTextField.clear();
                     emailTextField.clear();
                     contactNoTextField.clear();
-                    userTypeComboBox.setValue(null);
+                    //userTypeComboBox.setValue(null);
                     dateOfBirth.setValue(null);
+                    signUpPasswordField.clear();
                 }
             }
             catch (Exception e){

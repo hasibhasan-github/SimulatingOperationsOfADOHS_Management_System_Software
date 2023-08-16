@@ -4,7 +4,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
@@ -27,26 +30,32 @@
                               <Font name="Arial Narrow Bold" size="15.0" />
                            </font>
                         </Label>
-                        <Button layoutX="237.0" layoutY="101.0" mnemonicParsing="false" onAction="#applyForCarStickerOnClick" text="Apply For Car Sticker" />
+                        <Button fx:id="applyForCarStickerLabel" layoutX="237.0" layoutY="101.0" mnemonicParsing="false" onAction="#applyForCarStickerOnClick" text="Apply For Car Sticker" />
                         <TextField fx:id="applicationStatusLabel" editable="false" layoutX="326.0" layoutY="60.0" />
+                        <ImageView fitHeight="150.0" fitWidth="186.0" layoutX="373.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../mirpurdohslogo.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="51.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../BangladeshArmy.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
           <Tab text="DOHS Policies and Log Out">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: CORNSILK;">
                      <children>
-                        <Button layoutX="271.0" layoutY="313.0" mnemonicParsing="false" onAction="#logOutButtonOnClick" text="Log Out" />
+                        <Button layoutX="271.0" layoutY="286.0" mnemonicParsing="false" onAction="#logOutButtonOnClick" text="Log Out" />
+                        <TextArea fx:id="loadPolicies" layoutX="48.0" layoutY="34.0" prefHeight="207.0" prefWidth="496.0" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Untitled Tab">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
-            </Tab>
         </tabs>
       </TabPane>
    </children>

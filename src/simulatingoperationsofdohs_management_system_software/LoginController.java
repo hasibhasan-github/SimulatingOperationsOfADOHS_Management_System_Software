@@ -113,6 +113,10 @@ public class LoginController implements Initializable {
                     newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdMasumBilla/realEstateAgentDashboard.fxml");
                     flag = true;
                 }
+                else if ( tmp.getUserType().equals("Cantonment Board Member") && ( tmp.getPassword().equals(pass) && (tmp.getEmail().equals(emailOrId) || tmp.getId() == (loginUsingId) ) )){
+                    newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdHasibHasan/CantonmentBoardMember/CantonmentBoardMemberDashboard.fxml");
+                    flag = true;
+                }
                 else if ( tmp.getUserType().equals("Resident") && ( tmp.getPassword().equals(pass) && (tmp.getEmail().equals(emailOrId) || tmp.getId() == (loginUsingId) ) )){
                     newwscene.sceneSwitchingWithDataPassing(stage, "/MdHasibHasan/DummyUser/ResidentDashboard.fxml", "Resident", tmp);
                     flag = true;

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="429.0" prefWidth="657.0" style="-fx-background-color: CORNSILK;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MdHasibHasan.CantonmentBoardMember.CantonmentBoardMemberDashboardController">
+   <children>
+      <BorderPane fx:id="borderPaneId" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: CORNSILK;">
+         <top>
+            <MenuBar BorderPane.alignment="CENTER">
+              <menus>
+                <Menu mnemonicParsing="false" text="DOHS">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#policyAndGuidelinesOnClick" text="Policy and Guidelines" />
+                        <MenuItem mnemonicParsing="false" text="Feedback &amp; Suggestion" />
+                        <MenuItem mnemonicParsing="false" text="Developement plan and projects" />
+                        <MenuItem mnemonicParsing="false" text="Voting" />
+                        <MenuItem mnemonicParsing="false" text="DOHS Details" />
+                        <MenuItem mnemonicParsing="false" text="My Information" />
+                        <MenuItem mnemonicParsing="false" text="Log Out" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Pending Permission">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Maintenance Department" />
+                        <MenuItem mnemonicParsing="false" text="Accounts and Finance Department" />
+                        <MenuItem mnemonicParsing="false" text="Security Department" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Select Department Head">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Maintenance" />
+                        <MenuItem mnemonicParsing="false" text="Security" />
+                        <MenuItem mnemonicParsing="false" text="Accounts &amp; Finance" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="Work Report">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Maintenance Department" />
+                        <MenuItem mnemonicParsing="false" text="Security Department" />
+                        <MenuItem mnemonicParsing="false" text="Accounts &amp; Finance Department" />
+                    </items>
+                  </Menu>
+              </menus>
+            </MenuBar>
+         </top>
+         <center>
+            <AnchorPane prefHeight="454.0" prefWidth="726.0" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </children>
+</StackPane>

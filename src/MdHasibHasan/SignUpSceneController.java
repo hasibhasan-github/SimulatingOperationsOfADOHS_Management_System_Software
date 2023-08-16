@@ -23,6 +23,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
@@ -76,6 +77,8 @@ public class SignUpSceneController implements Initializable {
     @FXML
     private Label passwordErrorLabel;
     
+    private ToggleGroup tg;
+    
 
     /**
      * Initializes the controller class.
@@ -83,6 +86,10 @@ public class SignUpSceneController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        tg = new ToggleGroup();
+        maleRadioBtn.setToggleGroup(tg);
+        femaleRadioBtn.setToggleGroup(tg);
+        
         userTypeComboBox.getItems().addAll("Cantonment Board Member","Resident", "Employee");
         userList.getItems().addAll("Maintenance Officer", "Human Resource Management Officer",
                                     " Accounts & Finance Officer", "Utility Service Officer",

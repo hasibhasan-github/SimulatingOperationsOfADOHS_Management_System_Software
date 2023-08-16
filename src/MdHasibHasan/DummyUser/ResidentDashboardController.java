@@ -64,7 +64,7 @@ public class ResidentDashboardController implements Initializable {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         
         newwscene.sceneSwitchingWithoutDataPassing(stage, "/simulatingoperationsofdohs_management_system_software/login.fxml");
-        GenerateAlerts.successfulAlert("Have good day!" + "\n" + "Please visit Again");
+        GenerateAlerts.successfulAlert("Have a good day!" + "\n" + "Please visit Again");
     }
     
 }

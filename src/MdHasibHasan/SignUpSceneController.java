@@ -9,6 +9,8 @@ import MdHasibHasan.MaintenanceOfficer.MaintainenceOfficer;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -106,13 +108,18 @@ public class SignUpSceneController implements Initializable {
         
         userDesignationComboBox.getItems().addAll("Department Head", "Associate Department Head", 
                             "Senior Executive", "Executive", "Junior Executive");
-        
+             
         submitButton.setDisable(true);
         termsAndPoliciesCheckBox.setDisable(true);
         dateOfJoin.setDisable(true);
         salaryTextField.setDisable(true);
         userDepartmentComboBox.setDisable(true);
-        userDesignationComboBox.setDisable(true);
+        userDesignationComboBox.setDisable(true);    
+        
+        termsAndPoliciesTextArea.setText("Noise Control Policy: Residents must keep noise levels at a reasonable level between 10:00 PM and 8:00 AM to ensure a peaceful living environment.\n" + 
+                                        "Parking Regulation: Residents must use their designated parking spaces only, and visitor parking is strictly reserved for guests." +"\n"+ "Unauthorized parking in visitor spots may result in penalties.\n" +
+                                        "Waste Management Policy: All residents must follow the society's waste disposal guidelines, including separating recyclables and putting \n out trash only during designated collection times.\n" + 
+                                        "Alteration Approval Process: Any structural changes or renovations to units require prior approval from the society management to \n ensure compliance with safety and aesthetic standards.");
     }    
 
     @FXML
@@ -158,7 +165,7 @@ public class SignUpSceneController implements Initializable {
                 else gender = "Female";
                 //GenerateInteger Id
                 int id = generateInteger(emailTextField.getText());
-                
+                                
                 if(GenerateAlerts.confirmationAlert()){
                     Resident people  = new Resident(plotNoTextField.getText(), holdingOrFlatNoTextField.getText(),
                                                     id, nameTextField.getText(), gender, emailTextField.getText(), 
@@ -178,6 +185,13 @@ public class SignUpSceneController implements Initializable {
                     // DataReadWrite.readObjectToFile("Resident.bin", people);
                     DataReadWrite.writeObjectToFile("LoginData.bin", loginData);
                     // DataReadWrite.readObjectToFile("LoginData.bin", loginData);
+                    holdingOrFlatNoTextField.clear();
+                    plotNoTextField.clear();
+                    nameTextField.clear();
+                    emailTextField.clear();
+                    contactNoTextField.clear();
+                    userTypeComboBox.setValue(null);
+                    dateOfBirth.setValue(null);
                 }
             }
             catch (Exception e){
@@ -212,6 +226,21 @@ public class SignUpSceneController implements Initializable {
                                             "You must be at least 18 years old.");
             termsAndPoliciesCheckBox.setSelected(false);
         }
+        
+        signUpData sud = new signUpData(0,"e", "p", "u");
+        ObservableList<signUpData> loginInfo = (ObservableList<signUpData>) DataReadWrite.readObjectToFile("LoginData.bin", sud);
+        try{         
+            for ( signUpData data : loginInfo ){
+                if ( data.getEmail().equals(emailTextField.getText())){
+                    throw new Exception("Email already exists");
+                }
+            }
+        }
+        catch(Exception e){
+            GenerateAlerts.unsuccessfulAlert("Email already exists");
+            termsAndPoliciesCheckBox.setSelected(false);
+        }
+        
     }
 
     @FXML

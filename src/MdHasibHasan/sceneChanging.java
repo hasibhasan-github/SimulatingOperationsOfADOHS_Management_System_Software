@@ -45,4 +45,14 @@ public class sceneChanging {
         stage.setScene(scene);
         stage.show();
     }
+    
+    public <T> void logOutSceneSwitching(Stage stage) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/simulatingoperationsofdohs_management_system_software/login.fxml")); 
+    
+        Parent root = loader.load();
+        
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

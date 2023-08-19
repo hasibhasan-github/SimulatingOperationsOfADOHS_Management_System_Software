@@ -4,6 +4,7 @@
  */
 package MdHasibHasan.CantonmentBoardMember;
 
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
+
 
 /**
  * FXML Controller class
@@ -29,7 +31,8 @@ public class CantonmentBoardMemberDashboardController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        // TODO 
+        
     }    
 
     @FXML
@@ -37,5 +40,17 @@ public class CantonmentBoardMemberDashboardController implements Initializable {
         Parent parent = FXMLLoader.load(getClass().getResource("dohsPolicies.fxml"));
         borderPaneId.setCenter(parent);
     }
+
+    @FXML
+    private void goToLogOutSceneOnClick(ActionEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(getClass().getResource("logOutScene.fxml"));
+        borderPaneId.setCenter(parent);
+    }
+
+    @FXML
+    private void seeFullMapButtonOnClick(ActionEvent event) {
+    }
+
+
     
 }

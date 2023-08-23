@@ -74,10 +74,6 @@ public class DohsPoliciesController implements Initializable {
         policyListOfDohs = (ObservableList<dohsPolicies>) DataReadWrite.readObjectToFile("DOHSPOLICIES.bin", dummyInstance);
         for ( dohsPolicies policyData : policyListOfDohs ){
             selectPolicyComboBox.getItems().add(policyData.getPolicyName());
-            System.out.println(policyData.getPolicyName());
-            for ( int i = 0; i < policyData.getPolicyDescription().size(); ++i ){
-                System.out.println(policyData.getPolicyDescription().get(i));
-            }
         } 
         // Setting up the Table Data 
         policyNameTableColoumn.setCellValueFactory(new PropertyValueFactory<dohsPolicies, String>("policyName"));

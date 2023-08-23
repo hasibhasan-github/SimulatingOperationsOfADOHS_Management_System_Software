@@ -4,6 +4,7 @@
  */
 package MdHasibHasan.MaintenanceOfficer;
 
+import MdHasibHasan.CantonmentBoardMember.dohsPolicies;
 import MdHasibHasan.CantonmentBoardMember.loadResidentData;
 import MdHasibHasan.DataReadWrite;
 import MdHasibHasan.DummyUser.Resident;
@@ -12,6 +13,7 @@ import MdHasibHasan.sceneChanging;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -51,6 +53,8 @@ public class MaintenanceOfficerDashboardController implements Initializable {
     private TextArea notificationTextArea;
     @FXML
     private TextArea experienceTextArea;
+    
+    private ObservableList<dohsPolicies> policyListOfDohs;
 
     /**
      * Initializes the controller class.
@@ -70,6 +74,15 @@ public class MaintenanceOfficerDashboardController implements Initializable {
         experienceTextArea.setText("Experienced department head with a decade of hands-on leadership in maintenance operations.\n"
                              + "Proven track record in optimizing equipment performance, fostering team efficiency, and implementing cost-effective maintenance strategies.\n " +
                                "Adept at ensuring facility functionality and enhancing operational effectiveness");
+        dohsPolicies dummyInstance = new dohsPolicies("", LocalDate.of(2023, 02, 02),
+                                                LocalDate.of(2023, 02, 02), new ArrayList<String>());
+        policyListOfDohs = (ObservableList<dohsPolicies>) DataReadWrite.readObjectToFile("DOHSPOLICIES.bin", dummyInstance);
+        for ( dohsPolicies policyData : policyListOfDohs ){
+            policyTextArea.appendText(policyData.getPolicyName() + "\n");
+            for ( int i = 0; i < policyData.getPolicyDescription().size(); ++i ){
+                policyTextArea.appendText(policyData.getPolicyDescription().get(i)+"\n");
+            }
+        }
         
     }    
 

@@ -4,10 +4,13 @@
  */
 package MdHasibHasan;
 
+import MdHasibHasan.CantonmentBoardMember.dohsPolicies;
 import MdHasibHasan.DummyUser.Resident;
 import MdHasibHasan.MaintenanceOfficer.MaintainenceOfficer;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -81,6 +84,8 @@ public class SignUpSceneController implements Initializable {
     
     private ToggleGroup tg;
     
+    private ObservableList<dohsPolicies> policyListOfDohs;
+    
 
     /**
      * Initializes the controller class.
@@ -116,10 +121,19 @@ public class SignUpSceneController implements Initializable {
         userDepartmentComboBox.setDisable(true);
         userDesignationComboBox.setDisable(true);    
         
-        termsAndPoliciesTextArea.setText("Noise Control Policy: Residents must keep noise levels at a reasonable level between 10:00 PM and 8:00 AM to ensure a peaceful living environment.\n" + 
+        /*termsAndPoliciesTextArea.setText("Noise Control Policy: Residents must keep noise levels at a reasonable level between 10:00 PM and 8:00 AM to ensure a peaceful living environment.\n" + 
                                         "Parking Regulation: Residents must use their designated parking spaces only, and visitor parking is strictly reserved for guests." +"\n"+ "Unauthorized parking in visitor spots may result in penalties.\n" +
                                         "Waste Management Policy: All residents must follow the society's waste disposal guidelines, including separating recyclables and putting \n out trash only during designated collection times.\n" + 
-                                        "Alteration Approval Process: Any structural changes or renovations to units require prior approval from the society management to \n ensure compliance with safety and aesthetic standards.");
+                                        "Alteration Approval Process: Any structural changes or renovations to units require prior approval from the society management to \n ensure compliance with safety and aesthetic standards.");*/
+        dohsPolicies dummyInstance = new dohsPolicies("", LocalDate.of(2023, 02, 02),
+                                                LocalDate.of(2023, 02, 02), new ArrayList<String>());
+        policyListOfDohs = (ObservableList<dohsPolicies>) DataReadWrite.readObjectToFile("DOHSPOLICIES.bin", dummyInstance);
+        for ( dohsPolicies policyData : policyListOfDohs ){
+            termsAndPoliciesTextArea.appendText(policyData.getPolicyName() + "\n");
+            for ( int i = 0; i < policyData.getPolicyDescription().size(); ++i ){
+                termsAndPoliciesTextArea.appendText(policyData.getPolicyDescription().get(i)+"\n");
+            }
+        }
     }    
 
     @FXML

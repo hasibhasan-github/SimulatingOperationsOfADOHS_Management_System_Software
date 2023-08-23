@@ -45,31 +45,31 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="48.0" layoutY="27.0" text="Policy Name:" textFill="#a11818">
+                  <Label layoutX="14.0" layoutY="27.0" text="Policy Name:" textFill="#a11818">
                      <font>
                         <Font name="Arial Narrow Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="policyNameTextField" layoutX="160.0" layoutY="25.0" />
-                  <Label layoutX="48.0" layoutY="66.0" text="Creation Date:" textFill="#a11818">
+                  <TextField fx:id="policyNameTextField" layoutX="114.0" layoutY="25.0" />
+                  <Label layoutX="273.0" layoutY="27.0" text="Creation Date:" textFill="#a11818">
                      <font>
                         <Font name="Arial Narrow Bold" size="18.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="policyCreationDatePicker" layoutX="160.0" layoutY="64.0" prefHeight="25.0" prefWidth="150.0" />
-                  <Label layoutX="14.0" layoutY="111.0" text="Policy Description:" textFill="#a11818">
+                  <DatePicker fx:id="policyCreationDatePicker" layoutX="380.0" layoutY="25.0" prefHeight="25.0" prefWidth="150.0" />
+                  <Label layoutX="14.0" layoutY="76.0" text="Policy Description:" textFill="#a11818">
                      <font>
                         <Font name="Arial Narrow Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="policyDescriptionTextField" layoutX="161.0" layoutY="99.0" prefHeight="45.0" prefWidth="401.0" />
+                  <TextField fx:id="policyDescriptionTextField" layoutX="156.0" layoutY="64.0" prefHeight="45.0" prefWidth="401.0" />
                   <TextArea fx:id="showAddedPolicyDescriiptionTextArea" editable="false" layoutX="23.0" layoutY="164.0" prefHeight="135.0" prefWidth="554.0" />
-                  <Button layoutX="391.0" layoutY="25.0" mnemonicParsing="false" onAction="#addPolicyDescriptionButtonOnClick" prefHeight="47.0" prefWidth="186.0" style="-fx-border-style: solid inside; -fx-border-radius: 100; -fx-border-insets: 5; -fx-border-color: black; -fx-background-color: transparent;" text="Add policy Description" textFill="#ae2626">
+                  <Button layoutX="207.0" layoutY="109.0" mnemonicParsing="false" onAction="#addPolicyDescriptionButtonOnClick" prefHeight="47.0" prefWidth="186.0" style="-fx-border-style: solid inside; -fx-border-radius: 100; -fx-border-insets: 5; -fx-border-color: black; -fx-background-color: transparent;" text="Add policy Description" textFill="#ae2626">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
                   </Button>
-                  <Button layoutX="207.0" layoutY="310.0" mnemonicParsing="false" onAction="#addANewPolicyButtonOnClick" prefHeight="47.0" prefWidth="186.0" style="-fx-border-style: solid inside; -fx-border-radius: 100; -fx-border-insets: 5; -fx-border-color: black; -fx-background-color: transparent;" text="Add a new policy" textFill="#ae2626">
+                  <Button layoutX="193.0" layoutY="310.0" mnemonicParsing="false" onAction="#addANewPolicyButtonOnClick" prefHeight="47.0" prefWidth="214.0" style="-fx-border-style: solid inside; -fx-border-radius: 100; -fx-border-insets: 5; -fx-border-color: black; -fx-background-color: transparent;" text="Add/Publish a new policy" textFill="#ae2626">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>

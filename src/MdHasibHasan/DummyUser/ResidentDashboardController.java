@@ -101,6 +101,7 @@ public class ResidentDashboardController implements Initializable {
     private void applyForCarStickerOnClick(ActionEvent event) {
         // System.out.println(currentlyLoggedInUserInfo.getEmail());
         applied = true;
+        applyForCarStickerLabel.setDisable(true);
         carStickerRequest application = new carStickerRequest(currentlyLoggedInUserInfo.getId(), "Pending",
                                             currentlyLoggedInUserInfo.getEmail(), "Done");
         System.out.println(application.getEmail());

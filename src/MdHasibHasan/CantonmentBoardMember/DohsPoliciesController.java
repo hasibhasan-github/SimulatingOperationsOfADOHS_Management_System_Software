@@ -89,9 +89,6 @@ public class DohsPoliciesController implements Initializable {
         
     }    
 
-    @FXML
-    private void seePolicyDescriptionButtonOnClick(ActionEvent event) {
-    }
 
     @FXML
     private void deletePolicyButtonOnClick(ActionEvent event) {
@@ -146,17 +143,44 @@ public class DohsPoliciesController implements Initializable {
 
     @FXML
     private void updatePolicyDescriptionButtonOnClick(ActionEvent event) {
+        // Clearing All the data Fields
+        policyCreationDateTextField.clear();
+        policyDescriptionListView.getItems().clear();
+        selectPolicyComboBox.setValue(null);
+        selectPolicyComboBox.getItems().clear();
+        
+        dohsPolicies dummyInstance = new dohsPolicies("", LocalDate.of(2023, 02, 02),
+                                                LocalDate.of(2023, 02, 02), new ArrayList<String>());
+        policyListOfDohs = (ObservableList<dohsPolicies>) DataReadWrite.readObjectToFile("DOHSPOLICIES.bin", dummyInstance);
+        for ( dohsPolicies policyData : policyListOfDohs ){
+            selectPolicyComboBox.getItems().add(policyData.getPolicyName());
+        } 
     }
 
     @FXML
     private void policyNameSelectOnActionEvent(ActionEvent event) {
+        policyCreationDateTextField.clear();
+        policyDescriptionListView.getItems().clear();
         for ( dohsPolicies policyData : policyListOfDohs ){
             if ( policyData.getPolicyName().equals(selectPolicyComboBox.getValue()) ){
+                policyCreationDateTextField.setText(String.valueOf(policyData.getPolicyCreationDate()));
                 for ( String policyDescriptionData : policyData.getPolicyDescription()){
                     policyDescriptionListView.getItems().add(policyDescriptionData);
                 }
             }
         }
+    }
+
+    @FXML
+    private void updatePolicyTableButtonOnClick(ActionEvent event) {
+        // Updating the newly added dohsPoliciies Instance to Table  
+        dohsPolicies dummyInstance = new dohsPolicies("", LocalDate.of(2023, 02, 02),
+                                                LocalDate.of(2023, 02, 02), new ArrayList<String>());
+        ObservableList<dohsPolicies> policyListOfDohs = (ObservableList<dohsPolicies>) DataReadWrite.readObjectToFile("DOHSPOLICIES.bin", dummyInstance);
+        
+        // Updating the table view list
+        policyTableView.getItems().clear();
+        policyTableView.getItems().addAll(policyListOfDohs);
     }
     
 }

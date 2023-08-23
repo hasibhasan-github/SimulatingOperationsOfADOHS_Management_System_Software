@@ -51,5 +51,5 @@ public class CantonmentBoardMember extends User implements Serializable {
         // Returning the updated List
         return updatedPolicyListOfDohs;
     }
-    
+        
 }

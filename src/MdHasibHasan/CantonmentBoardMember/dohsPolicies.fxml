@@ -28,7 +28,7 @@
                         <TableColumn fx:id="policyDescriptionTableColoumn" prefWidth="127.0" text="Policy Description" />
                     </columns>
                   </TableView>
-                  <Button layoutX="95.0" layoutY="306.0" mnemonicParsing="false" onAction="#seePolicyDescriptionButtonOnClick" style="-fx-border-style: solid inside; -fx-border-radius: 100; -fx-border-insets: 5; -fx-border-color: black; -fx-background-color: transparent;" text="See Full Policy Description" textFill="#ae2626">
+                  <Button layoutX="95.0" layoutY="306.0" mnemonicParsing="false" onAction="#updatePolicyTableButtonOnClick" style="-fx-border-style: solid inside; -fx-border-radius: 100; -fx-border-insets: 5; -fx-border-color: black; -fx-background-color: transparent;" text="Update Policy Table" textFill="#ae2626">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
@@ -77,7 +77,7 @@
                </children></AnchorPane>
       </content>
     </Tab>
-      <Tab text="Edit an existing policy">
+      <Tab text="View an existing policy full description">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -97,18 +97,18 @@
                         <Font name="Arial Narrow Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Button layoutX="191.0" layoutY="310.0" mnemonicParsing="false" onAction="#updatePolicyDescriptionButtonOnClick" prefHeight="47.0" prefWidth="208.0" style="-fx-border-style: solid inside; -fx-border-radius: 100; -fx-border-insets: 5; -fx-border-color: black; -fx-background-color: transparent;" text="Update policy Description" textFill="#ae2626">
+                  <Button layoutX="174.0" layoutY="310.0" mnemonicParsing="false" onAction="#updatePolicyDescriptionButtonOnClick" prefHeight="47.0" prefWidth="252.0" style="-fx-border-style: solid inside; -fx-border-radius: 100; -fx-border-insets: 5; -fx-border-color: black; -fx-background-color: transparent;" text="Update policy Description page" textFill="#ae2626">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
                   </Button>
                   <ComboBox fx:id="selectPolicyComboBox" layoutX="126.0" layoutY="23.0" onAction="#policyNameSelectOnActionEvent" prefWidth="150.0" promptText="Select Policy Name" />
-                  <Label layoutX="304.0" layoutY="68.0" text="Edition Date:" textFill="#a11818">
+                  <Label layoutX="304.0" layoutY="68.0" opacity="0.0" text="Edition Date:" textFill="#a11818">
                      <font>
                         <Font name="Arial Narrow Bold" size="18.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="policyEditionDatePicker" layoutX="406.0" layoutY="66.0" prefHeight="25.0" prefWidth="151.0" />
+                  <DatePicker fx:id="policyEditionDatePicker" layoutX="406.0" layoutY="66.0" opacity="0.0" prefHeight="25.0" prefWidth="151.0" />
                   <ListView fx:id="policyDescriptionListView" layoutX="31.0" layoutY="119.0" prefHeight="183.0" prefWidth="538.0" />
                </children>
             </AnchorPane>

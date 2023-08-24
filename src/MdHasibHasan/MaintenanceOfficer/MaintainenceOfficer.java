@@ -9,6 +9,7 @@ import MdHasibHasan.Employee;
 import MdHasibHasan.GenerateAlerts;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Map;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -46,5 +47,16 @@ public class MaintainenceOfficer extends Employee implements Serializable {
                 }
             }            
         return updatedFeeList;
+    }
+    
+    public static void createYearlyMaintenanceBudget(Map<String, Float> budgetProjectAndAmountList, String budgetYear){
+        float totalBudgetAmount = 0;
+        for (Map.Entry<String, Float> mapData : budgetProjectAndAmountList.entrySet()){
+            totalBudgetAmount += mapData.getValue();
+        }
+        yearlyBudget newBudget = new yearlyBudget(budgetYear, totalBudgetAmount, budgetProjectAndAmountList);
+        
+        DataReadWrite.writeObjectToFile("YearlyBudgetOfMaintenanceDept.bin", newBudget);
+        GenerateAlerts.successfulAlert("Yearly Budget Created Successfully.");
     }
 }

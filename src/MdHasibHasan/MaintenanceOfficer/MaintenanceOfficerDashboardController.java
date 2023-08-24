@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,11 +23,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -77,12 +85,30 @@ public class MaintenanceOfficerDashboardController implements Initializable {
     private ComboBox<String> selectMonthComboBox;
     @FXML
     private ComboBox<String> selectYearComboBox;
+    @FXML
+    private ComboBox<String> budgetYearComboBox;
+    @FXML
+    private TextField amountOfBudgetTextField;
+    @FXML
+    private ListView<String> budgetListView;
+    @FXML
+    private TextArea showBudgetItemAmountTextArea;
+    
+    private Map <String, Float> mapOfBudgetList;
+    @FXML
+    private BarChart<String, Number> barChartOfYearlyBudget;
+    @FXML
+    private NumberAxis yearlyBudgetYAxis;
+    @FXML
+    private CategoryAxis yearlyBudgetXAxis;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // Initializing the mapOfBudgetList -----> Map<String, Integer>>();
+        mapOfBudgetList = new HashMap<String, Float>();
         // Initializing The Table for Car Sticker.
         idColoumn.setCellValueFactory(new PropertyValueFactory<carStickerRequest, Integer>("id"));
         emailColoumn.setCellValueFactory(new PropertyValueFactory<carStickerRequest, String>("email"));
@@ -136,13 +162,37 @@ public class MaintenanceOfficerDashboardController implements Initializable {
         selectYearComboBox.getItems().addAll("2023", "2024", "2025", "2026", "2027", "2028");
         // Initializing the Value of selectMonthComboBox and selectYearComboBox
         loadMaintenanceFeeDataList();
-
+        
+        budgetYearComboBox.getItems().addAll( "2019","2020", "2021", "2022");
+        budgetYearComboBox.getItems().addAll(selectYearComboBox.getItems());
+        
+        budgetListView.getItems().addAll("DOHS Mosque", "DOHS  Park", "DOHS Hospital", "DOHS Street", "DOHS Street Lights",
+                "DOHS School", "DOHS Gate Security", "DOHS Office");
+        
+        // Initializing and Loading The Bar Chart
+        loadBarChart();
     }  
     
     private void loadMaintenanceFeeDataList(){
         maintenanceFee dummy = new maintenanceFee(0, "", "", "", false);
         feeList = (ObservableList<maintenanceFee>) DataReadWrite.readObjectToFile("MainteneceFee.bin", dummy);
     }
+    
+    private void loadBarChart(){
+        yearlyBudget newBudget = new yearlyBudget("", 10, new HashMap<String, Float>());
+        ObservableList<yearlyBudget> budgetYearly = (ObservableList<yearlyBudget>) DataReadWrite.readObjectToFile("YearlyBudgetOfMaintenanceDept.bin", newBudget);
+        
+        barChartOfYearlyBudget.getData().clear();
+        
+        XYChart.Series<String,Number> series = new XYChart.Series<String,Number>();
+        for (yearlyBudget tmp : budgetYearly){
+            series.getData().add(new XYChart.Data<String,Number>(tmp.getBudgetYear(),tmp.getTotalBudgetAmount()));
+        }
+        
+        series.setName("All time Maintenance Budget");
+        barChartOfYearlyBudget.getData().add(series);
+    }
+   
 
     @FXML
     private void logOutButtonOnClick(ActionEvent event) throws IOException {
@@ -176,6 +226,37 @@ public class MaintenanceOfficerDashboardController implements Initializable {
         catch(Exception e){
             GenerateAlerts.unsuccessfulAlert("Select the Combo Box Item.");
         }
+    }
+
+    @FXML
+    private void addBudgetForTheSelectedItemFromListButtonOnClick(ActionEvent event) {
+        try{
+            mapOfBudgetList.put(budgetListView.getSelectionModel().getSelectedItem(), Float.parseFloat(amountOfBudgetTextField.getText()));
+            //budgetListForSpeicificYear.add();
+            showBudgetItemAmountTextArea.appendText(budgetListView.getSelectionModel().getSelectedItem() + " : " + amountOfBudgetTextField.getText() + " BDT\n");
+            budgetListView.getSelectionModel().clearSelection();
+            amountOfBudgetTextField.clear();
+        }
+        catch (Exception e){
+            GenerateAlerts.unsuccessfulAlert("Select the Item from List and Add the Amount.");
+        }
+    }
+
+    @FXML
+    private void createYearlyBudgetButtonOnClick(ActionEvent event) {
+        try{
+            if ( GenerateAlerts.confirmationAlert() ){
+                MaintainenceOfficer.createYearlyMaintenanceBudget(mapOfBudgetList, budgetYearComboBox.getValue());
+                showBudgetItemAmountTextArea.clear();
+                mapOfBudgetList.clear();
+            // Refreshing The Bar Chart
+            loadBarChart();
+            }
+        }
+        catch( Exception e ){
+            GenerateAlerts.unsuccessfulAlert("Please Select the Year and other Data.");
+        }
+        
     }
     
 }

@@ -152,7 +152,6 @@ public class DevelopmentPalnsAndProjectsController implements Initializable {
              // Throwing an Exception if Table row is not Selected.
             if ( developementProjectTableView.getSelectionModel().getSelectedItem() == null ) throw new RuntimeException("Exception");
             CantonmentBoardMember.generateDevelopementProjectPDF(developementProjectTableView.getSelectionModel().getSelectedItem());
-            System.out.println(developementProjectTableView.getSelectionModel().getSelectedItem().getProjectName());
         }
         catch (RuntimeException e){
             GenerateAlerts.unsuccessfulAlert("Please Select the File from Table to Load.");

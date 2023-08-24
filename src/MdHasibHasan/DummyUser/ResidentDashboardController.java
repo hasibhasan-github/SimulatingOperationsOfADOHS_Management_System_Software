@@ -7,6 +7,7 @@ package MdHasibHasan.DummyUser;
 import MdHasibHasan.DataReadWrite;
 import MdHasibHasan.GenerateAlerts;
 import MdHasibHasan.MaintenanceOfficer.carStickerRequest;
+import MdHasibHasan.MaintenanceOfficer.maintenanceFee;
 import MdHasibHasan.sceneChanging;
 import MdHasibHasan.signUpData;
 import java.io.IOException;
@@ -18,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -39,12 +41,23 @@ public class ResidentDashboardController implements Initializable {
     private TextArea loadPolicies;
     @FXML
     private Button applyForCarStickerLabel;
+    @FXML
+    private TextField maintenanceFeeStatusLabel;
+    @FXML
+    private ComboBox<String> maintenceFeeMonthComboBox;
+    @FXML
+    private ComboBox<String> maintenceFeeYearComboBox;
+    @FXML
+    private Button payMaintenanceFeeButton;
+    
+    private ObservableList<maintenanceFee> feeList;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        maintenanceFeeStatusLabel.setText("Unpaid");
         //System.out.println(currentlyLoggedInUserInfo.getEmail());
         applicationStatusLabel.setText("Not Applied");
         loadPolicies.setText("Noise Control Policy: Residents must keep noise levels at a reasonable level between 10:00 PM and 8:00 AM to ensure a peaceful living environment.\n" + 
@@ -54,7 +67,17 @@ public class ResidentDashboardController implements Initializable {
                                         "Smoking is prohibited in all indoor and outdoor common areas to maintain a healthy and smoke-free environment for all residents. Designated smoking areas may be provided for those who smoke.\n"+
                                         "Residents are allowed to decorate their balconies and exteriors within specified guidelines. Decorations should not obstruct views, create safety hazards, or adversely affect the overall appearance of the building.\n" + 
                                         "Usage of amenities such as the gym, pool, and clubhouse should adhere to designated quiet hours. This ensures that residents can enjoy these facilities without disturbing others.");
-         
+        maintenceFeeMonthComboBox.getItems().addAll("January", "February", "March", "April", "May",
+                "June", "July", "August", "September", "October", "November", "December");
+        maintenceFeeYearComboBox.getItems().addAll("2023", "2024", "2025", "2026", "2027", "2028");
+        
+        refreshMaintenanceFeeDataList();
+        
+    }
+    
+    private void refreshMaintenanceFeeDataList(){
+        maintenanceFee dummy = new maintenanceFee(0, "", "", "", false);
+        feeList = (ObservableList<maintenanceFee>) DataReadWrite.readObjectToFile("MainteneceFee.bin", dummy);
     }
 
     public void helperOfDataPassing(signUpData userDetails){
@@ -93,7 +116,7 @@ public class ResidentDashboardController implements Initializable {
         else{
             applicationStatusLabel.setText("Not Applied");
         } 
-        }
+        }       
     }
 
 
@@ -118,6 +141,37 @@ public class ResidentDashboardController implements Initializable {
         
         newwscene.sceneSwitchingWithoutDataPassing(stage, "/simulatingoperationsofdohs_management_system_software/login.fxml");
         GenerateAlerts.successfulAlert("Have a good day!" + "\n" + "Please visit Again");
+    }
+
+    @FXML
+    private void payMaintenanceFeeButtonOnClick(ActionEvent event) {
+        maintenanceFee fee = new maintenanceFee(currentlyLoggedInUserInfo.getId(), maintenceFeeMonthComboBox.getValue(),
+                            maintenceFeeYearComboBox.getValue(), currentlyLoggedInUserInfo.getEmail(), true );
+        DataReadWrite.writeObjectToFile("MainteneceFee.bin", fee);
+        payMaintenanceFeeButton.setDisable(true);
+        maintenanceFeeStatusLabel.setText("Paid");
+    }
+
+    @FXML
+    private void loadPaymentStatusButtonOnClick(ActionEvent event) {
+        refreshMaintenanceFeeDataList();
+        boolean checker = true;
+        for ( maintenanceFee tmp:  feeList ){
+            if ( (tmp.getResidentEmail().equals(currentlyLoggedInUserInfo.getEmail()) && tmp.getMonth().equals(maintenceFeeMonthComboBox.getValue())) 
+                    && tmp.getYear().equals(maintenceFeeYearComboBox.getValue())){
+                if ( tmp.isPaymentStatus() ){
+                    maintenanceFeeStatusLabel.setText("Paid");
+                    payMaintenanceFeeButton.setDisable(true);
+                    checker = false;
+                    break;
+                }
+            }
+        }
+        if (checker) {
+            maintenanceFeeStatusLabel.setText("Unpaid");
+            payMaintenanceFeeButton.setDisable(false);           
+        }
+        
     }
     
 }

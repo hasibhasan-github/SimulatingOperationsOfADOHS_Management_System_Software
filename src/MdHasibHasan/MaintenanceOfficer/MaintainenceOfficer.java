@@ -6,8 +6,10 @@ package MdHasibHasan.MaintenanceOfficer;
 
 import MdHasibHasan.DataReadWrite;
 import MdHasibHasan.Employee;
+import MdHasibHasan.GenerateAlerts;
 import java.io.Serializable;
 import java.time.LocalDate;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
@@ -36,4 +38,13 @@ public class MaintainenceOfficer extends Employee implements Serializable {
         return stickerRequestData;  
     }
     
+    public static ObservableList<maintenanceFee> collectAndViewMaintenanceFee(ObservableList<maintenanceFee> feeList, String month, String year){
+        ObservableList<maintenanceFee> updatedFeeList = FXCollections.observableArrayList();
+            for ( maintenanceFee data : feeList ){
+                if ( data.getMonth().equals(month)  && data.getYear().equals(year) ){
+                    updatedFeeList.add(data);
+                }
+            }            
+        return updatedFeeList;
+    }
 }

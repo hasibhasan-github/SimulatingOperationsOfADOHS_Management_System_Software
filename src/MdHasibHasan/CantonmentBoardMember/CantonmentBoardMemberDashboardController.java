@@ -51,6 +51,12 @@ public class CantonmentBoardMemberDashboardController implements Initializable {
     private void seeFullMapButtonOnClick(ActionEvent event) {
     }
 
+    @FXML
+    private void developementPlanAndProjectsButtonOnClick(ActionEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(getClass().getResource("DevelopmentPalnsAndProjects.fxml"));
+        borderPaneId.setCenter(parent);
+    }
+
 
     
 }

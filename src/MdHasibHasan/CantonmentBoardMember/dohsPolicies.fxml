@@ -28,7 +28,7 @@
                         <TableColumn fx:id="policyDescriptionTableColoumn" prefWidth="127.0" text="Policy Description" />
                     </columns>
                   </TableView>
-                  <Button layoutX="95.0" layoutY="306.0" mnemonicParsing="false" onAction="#updatePolicyTableButtonOnClick" style="-fx-border-style: solid inside; -fx-border-radius: 100; -fx-border-insets: 5; -fx-border-color: black; -fx-background-color: transparent;" text="Update Policy Table" textFill="#ae2626">
+                  <Button layoutX="77.0" layoutY="306.0" mnemonicParsing="false" onAction="#updatePolicyTableButtonOnClick" style="-fx-border-style: solid inside; -fx-border-radius: 100; -fx-border-insets: 5; -fx-border-color: black; -fx-background-color: transparent;" text="Update/Refresh Policy Table" textFill="#ae2626">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
@@ -97,7 +97,7 @@
                         <Font name="Arial Narrow Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Button layoutX="174.0" layoutY="310.0" mnemonicParsing="false" onAction="#updatePolicyDescriptionButtonOnClick" prefHeight="47.0" prefWidth="252.0" style="-fx-border-style: solid inside; -fx-border-radius: 100; -fx-border-insets: 5; -fx-border-color: black; -fx-background-color: transparent;" text="Update policy Description page" textFill="#ae2626">
+                  <Button layoutX="143.0" layoutY="310.0" mnemonicParsing="false" onAction="#updatePolicyDescriptionButtonOnClick" prefHeight="47.0" prefWidth="305.0" style="-fx-border-style: solid inside; -fx-border-radius: 100; -fx-border-insets: 5; -fx-border-color: black; -fx-background-color: transparent;" text="Update/Refresh policy Description page" textFill="#ae2626">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>

@@ -4,6 +4,7 @@
  */
 package MdHasibHasan;
 
+import MdHasibHasan.CantonmentBoardMember.developementProject;
 import MdHasibHasan.CantonmentBoardMember.dohsPolicies;
 import MdHasibHasan.DummyUser.Resident;
 import MdMasumBilla.BudgetingAndForecasting;
@@ -81,6 +82,7 @@ public class DataReadWrite {
         ObservableList<BudgetingAndForecasting> pieChartData  = FXCollections.observableArrayList();
         ObservableList<carStickerRequest> carStickerRequestData  = FXCollections.observableArrayList();
         ObservableList<dohsPolicies> policy  = FXCollections.observableArrayList();
+        ObservableList<developementProject> project  = FXCollections.observableArrayList();
         
         
         try{
@@ -154,6 +156,20 @@ public class DataReadWrite {
                 }
                //  System.out.println("Hasib");               
             }
+            else if ( instance instanceof developementProject ){
+                    f = new File(fileName);
+                    fw = new FileInputStream(f);
+                    ois = new ObjectInputStream(fw);
+                try{
+                    while (true) {
+                        project.add((developementProject)ois.readObject());
+                    }
+                }
+                catch(Exception e){
+                    System.out.println("Hasib dohsPolicies read exe Signup Data");
+                }
+               //  System.out.println("Hasib");               
+            }
         }
         catch(Exception e){
             System.out.println("Hasib False");
@@ -178,6 +194,7 @@ public class DataReadWrite {
         else if ( instance instanceof BudgetingAndForecasting ) return pieChartData;
         else if ( instance instanceof carStickerRequest ) return carStickerRequestData;
         else if ( instance instanceof dohsPolicies ) return policy;
+        else if ( instance instanceof developementProject ) return project;
         
         
         return loginData;

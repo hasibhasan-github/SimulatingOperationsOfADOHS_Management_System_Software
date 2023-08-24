@@ -1,16 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
-   <children>
-      <Label layoutX="157.0" layoutY="171.0" text="Dalal the Agent" textFill="#8d1414" wrapText="true">
-         <font>
-            <Font name="Arial Narrow Bold" size="51.0" />
-         </font>
-      </Label>
-   </children>
-</AnchorPane>
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: E3FDFD;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MdMasumBilla.RealEstateAgentDashboardController">
+  <tabs>
+    <Tab text="Property Listing">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="61.0" fitWidth="70.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@mirpurdohslogo.png" />
+                     </image>
+                  </ImageView>
+                  <VBox layoutX="105.0" layoutY="54.0" prefHeight="184.0" prefWidth="141.0">
+                     <children>
+                        <Label text="Title :" />
+                        <ComboBox fx:id="TitleComboBox" prefWidth="150.0" />
+                        <Label layoutX="10.0" layoutY="10.0" text="Description :" />
+                        <ComboBox fx:id="DescriptionComboBoox" prefWidth="150.0" />
+                        <Label layoutX="10.0" layoutY="27.0" text="Price :" />
+                        <TextField fx:id="PriceTextField" />
+                        <Label layoutX="10.0" layoutY="44.0" text="Location :" />
+                        <ComboBox fx:id="LocationComboBox" layoutX="10.0" layoutY="69.0" prefWidth="150.0" />
+                     </children>
+                  </VBox>
+                  <Button layoutX="130.0" layoutY="259.0" mnemonicParsing="false" onAction="#AddPropertyOnClick" prefHeight="25.0" prefWidth="91.0" text="Add Property" />
+                  <Button layoutX="496.0" layoutY="320.0" mnemonicParsing="false" onAction="#createBinFileOncCick" text="Create bin File" />
+                  <TableView fx:id="tableId" layoutX="277.0" layoutY="54.0" prefHeight="238.0" prefWidth="302.0">
+                     <columns>
+                        <TableColumn fx:id="PropertyTitle" prefWidth="75.0" text="Title" />
+                        <TableColumn fx:id="PropertyDescription" prefWidth="75.0" text="Description" />
+                        <TableColumn fx:id="PropertyPrice" prefWidth="75.0" text="Price" />
+                        <TableColumn fx:id="PropertyLocation" prefWidth="75.0" text="Location" />
+                     </columns>
+                  </TableView>
+                  <Button layoutX="277.0" layoutY="320.0" mnemonicParsing="false" onAction="#RemoveSelectedIemOnClick" text="Remove Item" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab text="Construction Planning">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+      </content>
+    </Tab>
+      <Tab text="Project Management">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+      <Tab text="Structural Engineering">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+      <Tab text="Finishing Works">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+      <Tab text="Property Transaction">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+  </tabs>
+</TabPane>

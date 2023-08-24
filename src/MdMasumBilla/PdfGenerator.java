@@ -49,7 +49,14 @@ public class PdfGenerator {
 
                 Paragraph textParagraph = new Paragraph(text);
                 doc.add(textParagraph);
-
+ 
+                /*
+//adding table to the pdf
+                for (PropertyListing property : propertyList) {
+                Paragraph propertyParagraph = new Paragraph(property.toString());
+                doc.add(propertyParagraph);
+                }
+*/
 //adding an image
                 Alert a = new Alert(Alert.AlertType.CONFIRMATION);
                 a.setContentText("Do you want to add an Image?");

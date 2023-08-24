@@ -19,7 +19,7 @@ public class SimulatingOperationsOfDOHS_Management_System_Software extends Appli
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/MdMasumBilla/realEstateAgentDashboard.fxml"));
         
         Scene scene = new Scene(root);
         

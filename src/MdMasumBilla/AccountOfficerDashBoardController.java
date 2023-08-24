@@ -130,7 +130,8 @@ public class AccountOfficerDashBoardController implements Initializable {
     
     @FXML
     void GeneratePdfOnClick(ActionEvent event) {
-
+        String text = riskTextArea.getText();
+        PdfGenerator.generatePdf(text);
     }
 
     @FXML

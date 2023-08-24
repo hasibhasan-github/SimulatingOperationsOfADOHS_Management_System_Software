@@ -5,6 +5,7 @@
 package MdHasibHasan.CantonmentBoardMember;
 
 import MdHasibHasan.DataReadWrite;
+import MdHasibHasan.DummyUser.Resident;
 import MdHasibHasan.GenerateAlerts;
 import MdHasibHasan.User;
 import com.itextpdf.io.image.ImageDataFactory;
@@ -65,6 +66,19 @@ public class CantonmentBoardMember extends User implements Serializable {
         }
         // Returning the updated List
         return updatedPolicyListOfDohs;
+    }
+    
+    public static ObservableList<loadResidentData> viewAllResidentDataAndMaleFemaleRatio(Resident people){
+        // Reading all Resident data from Resident.bin 
+        ObservableList<Resident> residentData = (ObservableList<Resident>) DataReadWrite.readObjectToFile("Resident.bin", people);
+        // Instantiating dataForTableView ObservableList for storing the data to show Cantonment Board Member.
+        ObservableList<loadResidentData> dataForTableView = FXCollections.observableArrayList();
+        // Storing all the resident Data into loadResidentData class instance.
+        for ( Resident tmpResidentData : residentData ){
+            dataForTableView.add(new loadResidentData(tmpResidentData.getName(), tmpResidentData.getPlotNo(),
+                                tmpResidentData.getGender(), tmpResidentData.getHoldingOrFlatNo(), tmpResidentData.getId()));
+        }
+        return dataForTableView;
     }
     
     public static void planOrAddNewDevelopementProject(developementProject newDevProject){

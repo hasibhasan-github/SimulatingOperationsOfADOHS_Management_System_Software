@@ -61,5 +61,19 @@ public class loadResidentData implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("loadResidentData{");
+        sb.append("name=").append(name);
+        sb.append(", plotNo=").append(plotNo);
+        sb.append(", gender=").append(gender);
+        sb.append(", holdingNo=").append(holdingNo);
+        sb.append(", id=").append(id);
+        sb.append('}');
+        return sb.toString();
+    }
+
     
 }

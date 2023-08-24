@@ -25,7 +25,7 @@
                         <MenuItem mnemonicParsing="false" text="Feedback &amp; Suggestion" />
                         <MenuItem mnemonicParsing="false" onAction="#developementPlanAndProjectsButtonOnClick" text="Developement plan and projects" />
                         <MenuItem mnemonicParsing="false" text="Voting" />
-                        <MenuItem mnemonicParsing="false" text="DOHS Details" />
+                        <MenuItem mnemonicParsing="false" onAction="#dohsDetailsMenuItemOnClick" text="DOHS Details" />
                         <MenuItem mnemonicParsing="false" onAction="#goToLogOutSceneOnClick" text="My Information &amp; Log Out" />
                   </items>
                 </Menu>

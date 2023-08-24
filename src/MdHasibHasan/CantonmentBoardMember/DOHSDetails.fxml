@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MdHasibHasan.CantonmentBoardMember.DOHSDetailsController">
+  <tabs>
+    <Tab text="View All Resident Data">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: CORNSILK;">
+               <children>
+                  <TableView fx:id="allResidentDataTableView" layoutX="18.0" layoutY="64.0" prefHeight="260.0" prefWidth="564.0">
+                    <columns>
+                      <TableColumn fx:id="nameTableColoumn" prefWidth="194.0" text="Name" />
+                      <TableColumn fx:id="idTableColoumn" prefWidth="117.0" text="ID" />
+                        <TableColumn fx:id="genderTableColoumn" text="Gender" />
+                        <TableColumn fx:id="plotNoTableColoumn" prefWidth="81.0" text="Plot No." />
+                        <TableColumn fx:id="holdingNoTableColoumn" prefWidth="91.0" text="Holding No." />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="28.0" layoutY="40.0" prefHeight="17.0" prefWidth="231.0" text="All Resident Data of DOHS:">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab text="View Men and Women Ratio">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: CORNSILK;">
+               <children>
+                  <PieChart fx:id="maleAndFemaleRatioOieChart" layoutX="57.0" layoutY="67.0" prefHeight="231.0" prefWidth="489.0" />
+                  <Label layoutX="100.0" layoutY="33.0" text="The total DOHS Male &amp; Female Ratio:">
+                     <font>
+                        <Font name="Arial Black" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="StatusLabel" layoutX="212.0" layoutY="311.0">
+                     <font>
+                        <Font name="Arial Black" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="PercentLabel" layoutX="309.0" layoutY="311.0">
+                     <font>
+                        <Font name="Arial Black" size="20.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>

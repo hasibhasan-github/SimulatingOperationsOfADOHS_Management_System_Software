@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 
 
@@ -54,6 +55,12 @@ public class CantonmentBoardMemberDashboardController implements Initializable {
     @FXML
     private void developementPlanAndProjectsButtonOnClick(ActionEvent event) throws IOException {
         Parent parent = FXMLLoader.load(getClass().getResource("DevelopmentPalnsAndProjects.fxml"));
+        borderPaneId.setCenter(parent);
+    }
+
+    @FXML
+    private void dohsDetailsMenuItemOnClick(ActionEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(getClass().getResource("DOHSDetails.fxml"));
         borderPaneId.setCenter(parent);
     }
 

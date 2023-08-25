@@ -59,8 +59,6 @@ public class MaintenanceOfficerDashboardController implements Initializable {
     @FXML
     private TextArea policyTextArea;
     @FXML
-    private TextArea notificationTextArea;
-    @FXML
     private TextArea experienceTextArea;
     
     private ObservableList<dohsPolicies> policyListOfDohs;
@@ -95,12 +93,15 @@ public class MaintenanceOfficerDashboardController implements Initializable {
     private TextArea showBudgetItemAmountTextArea;
     
     private Map <String, Float> mapOfBudgetList;
+    
     @FXML
     private BarChart<String, Number> barChartOfYearlyBudget;
     @FXML
     private NumberAxis yearlyBudgetYAxis;
     @FXML
     private CategoryAxis yearlyBudgetXAxis;
+    @FXML
+    private ListView<String> userGoalListView;
 
     /**
      * Initializes the controller class.
@@ -161,16 +162,24 @@ public class MaintenanceOfficerDashboardController implements Initializable {
                 "June", "July", "August", "September", "October", "November", "December");
         selectYearComboBox.getItems().addAll("2023", "2024", "2025", "2026", "2027", "2028");
         // Initializing the Value of selectMonthComboBox and selectYearComboBox
+        
+        // Reading Data From YearlyBudgetOfMaintenanceDept.bin file.
         loadMaintenanceFeeDataList();
+        // Reading Data From YearlyBudgetOfMaintenanceDept.bin file.
         
         budgetYearComboBox.getItems().addAll( "2019","2020", "2021", "2022");
         budgetYearComboBox.getItems().addAll(selectYearComboBox.getItems());
         
-        budgetListView.getItems().addAll("DOHS Mosque", "DOHS  Park", "DOHS Hospital", "DOHS Street", "DOHS Street Lights",
-                "DOHS School", "DOHS Gate Security", "DOHS Office");
+        budgetListView.getItems().addAll("1.DOHS Mosque", "2.DOHS  Park", "3.DOHS Hospital", "4.DOHS Street", "5.DOHS Street Lights",
+                "6.DOHS School", "7.DOHS Gate Security", "8.DOHS Office");
         
         // Initializing and Loading The Bar Chart
         loadBarChart();
+        // Initializing and Loading The Bar Chart
+        
+        // Initializing the User Goal List View
+        initializingTheuserGoalListView();
+        // Initializing the User Goal List View
     }  
     
     private void loadMaintenanceFeeDataList(){
@@ -179,6 +188,7 @@ public class MaintenanceOfficerDashboardController implements Initializable {
     }
     
     private void loadBarChart(){
+        // Reading Data from YearlyBudgetOfMaintenanceDept.bin file.
         yearlyBudget newBudget = new yearlyBudget("", 10, new HashMap<String, Float>());
         ObservableList<yearlyBudget> budgetYearly = (ObservableList<yearlyBudget>) DataReadWrite.readObjectToFile("YearlyBudgetOfMaintenanceDept.bin", newBudget);
         
@@ -192,6 +202,12 @@ public class MaintenanceOfficerDashboardController implements Initializable {
         series.setName("All time Maintenance Budget");
         barChartOfYearlyBudget.getData().add(series);
     }
+    
+    private void initializingTheuserGoalListView(){
+        // Initializing the User Goal List View
+        userGoalListView.getItems().addAll("1.DOHS Software System", "2.Notice Section", "3.Public Property Section",
+                "4.Support Section", "5.Monthly Report Section");
+    }
    
 
     @FXML
@@ -199,7 +215,7 @@ public class MaintenanceOfficerDashboardController implements Initializable {
         sceneChanging newwscene = new sceneChanging();
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         
-        newwscene.sceneSwitchingWithoutDataPassing(stage, "/simulatingoperationsofdohs_management_system_software/login.fxml");
+        newwscene.logOutSceneSwitching(stage);
         GenerateAlerts.successfulAlert("Have a good day!" + "\n" + "Please visit Again");
     }
 
@@ -249,14 +265,30 @@ public class MaintenanceOfficerDashboardController implements Initializable {
                 MaintainenceOfficer.createYearlyMaintenanceBudget(mapOfBudgetList, budgetYearComboBox.getValue());
                 showBudgetItemAmountTextArea.clear();
                 mapOfBudgetList.clear();
-            // Refreshing The Bar Chart
-            loadBarChart();
+                //Refreshing The Bar Chart
+                loadBarChart();
             }
         }
         catch( Exception e ){
             GenerateAlerts.unsuccessfulAlert("Please Select the Year and other Data.");
         }
         
+    }
+
+    @FXML
+    private void loadPageButtonOnClick(ActionEvent event) {
+        // dohsSoftwareSystem ,"dohsSoftwareSystem.fxml");
+        sceneChanging newwscene = new sceneChanging();
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        try{
+
+            if ( userGoalListView.getSelectionModel().getSelectedItem().equals("1.DOHS Software System") ){
+                newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdHasibHasan/MaintenanceOfficer/dohsSoftwareSystem.fxml");
+            }
+        }
+        catch (Exception e){
+            GenerateAlerts.unsuccessfulAlert("Please select the page from list.");
+        }
     }
     
 }

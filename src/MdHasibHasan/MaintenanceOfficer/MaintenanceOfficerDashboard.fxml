@@ -227,27 +227,32 @@
                   </TabPane>
                </content>
             </TitledPane>
-          <TitledPane animated="false" text="Policies, Notifications and Logout">
+          <TitledPane animated="false" text="Policies, Others  and Logout">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: CORNSILK;">
                      <children>
-                        <Button layoutX="311.0" layoutY="303.0" mnemonicParsing="false" onAction="#logOutButtonOnClick" prefWidth="80.0" style="-fx-background-color: transparent; -fx-border-style: solid inside; -fx-border-radius: 100; -fx-border-color: black; -fx-border-insets: 5;" text="Log Out" textFill="#972626" wrapText="true">
+                        <Button layoutX="311.0" layoutY="283.0" mnemonicParsing="false" onAction="#logOutButtonOnClick" prefWidth="80.0" style="-fx-background-color: transparent; -fx-border-style: solid inside; -fx-border-radius: 100; -fx-border-color: black; -fx-border-insets: 5;" text="Log Out" textFill="#972626" wrapText="true">
                            <font>
                               <Font name="Arial Black" size="12.0" />
                            </font>
                         </Button>
-                        <TextArea fx:id="policyTextArea" editable="false" layoutX="44.0" layoutY="35.0" prefHeight="216.0" prefWidth="292.0" />
-                        <TextArea fx:id="notificationTextArea" editable="false" layoutX="401.0" layoutY="39.0" prefHeight="212.0" prefWidth="265.0" />
-                        <Label layoutX="165.0" layoutY="263.0" text="Policies">
+                        <TextArea fx:id="policyTextArea" editable="false" layoutX="383.0" layoutY="32.0" prefHeight="216.0" prefWidth="292.0" />
+                        <Label layoutX="504.0" layoutY="263.0" text="Policies">
                            <font>
                               <Font name="Arial Narrow Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="494.0" layoutY="263.0" text="Notifications">
+                        <ListView fx:id="userGoalListView" layoutX="23.0" layoutY="38.0" prefHeight="205.0" prefWidth="249.0" />
+                        <Label layoutX="23.0" layoutY="14.0" text="Select the work to load:">
                            <font>
                               <Font name="Arial Narrow Bold" size="16.0" />
                            </font>
                         </Label>
+                        <Button layoutX="99.0" layoutY="255.0" mnemonicParsing="false" onAction="#loadPageButtonOnClick" prefHeight="37.0" prefWidth="97.0" style="-fx-background-color: transparent; -fx-border-style: solid inside; -fx-border-radius: 100; -fx-border-color: black; -fx-border-insets: 5;" text="Load Page" textFill="#972626" wrapText="true">
+                           <font>
+                              <Font name="Arial Black" size="12.0" />
+                           </font>
+                        </Button>
                      </children></AnchorPane>
             </content>
                <font>

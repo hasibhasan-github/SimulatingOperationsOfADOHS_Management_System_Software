@@ -175,7 +175,7 @@
             <Insets left="400.0" top="350.0" />
          </StackPane.margin>
          <children>
-            <Button mnemonicParsing="false" onAction="#goBackOnClickButton" prefHeight="27.0" prefWidth="87.0" style="-fx-border-style: solid inside; -fx-border-color: black; -fx-border-radius: 100; -fx-background-color: transparent; -fx-border-insets: 5;" text="Go Back" textFill="#7c0a0a">
+            <Button fx:id="goBackButton" mnemonicParsing="false" onAction="#goBackOnClickButton" prefHeight="27.0" prefWidth="87.0" style="-fx-border-style: solid inside; -fx-border-color: black; -fx-border-radius: 100; -fx-background-color: transparent; -fx-border-insets: 5;" text="Go Back" textFill="#7c0a0a">
                <font>
                   <Font name="Arial Black" size="12.0" />
                </font>

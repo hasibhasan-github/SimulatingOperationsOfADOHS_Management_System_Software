@@ -4,9 +4,12 @@
  */
 package MdHasibHasan;
 
+import MdHasibHasan.CantonmentBoardMember.CantonmentBoardMember;
 import MdHasibHasan.CantonmentBoardMember.dohsPolicies;
 import MdHasibHasan.DummyUser.Resident;
 import MdHasibHasan.MaintenanceOfficer.MaintainenceOfficer;
+import MdMasumBilla.accountsAndFinanceOfficer;
+import MdMasumBilla.realEstateAgent;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -85,6 +88,8 @@ public class SignUpSceneController implements Initializable {
     private ToggleGroup tg;
     
     private ObservableList<dohsPolicies> policyListOfDohs;
+    @FXML
+    private Button goBackButton;
     
 
     /**
@@ -98,8 +103,8 @@ public class SignUpSceneController implements Initializable {
         femaleRadioBtn.setToggleGroup(tg);
         
         userTypeComboBox.getItems().addAll("Cantonment Board Member","Resident", "Employee");
-        userList.getItems().addAll("Maintenance Officer", "Human Resource Management Officer",
-                                    " Accounts & Finance Officer", "Utility Service Officer",
+        userList.getItems().addAll("Maintenance Officer", "Cantonment Board Member",
+                                    " Accounts & Finance Officer", "Utility Service Provider",
                                     "Security Officer", "Real Estate Agent");
         userList.setDisable(true);
         
@@ -109,10 +114,10 @@ public class SignUpSceneController implements Initializable {
         userList.setDisable(true);
         
         userDepartmentComboBox.getItems().addAll("Maintenance", "Human Resource Management", "Accounts & Finance",
-                                            "Security", "Utility");
+                                            "Security", "Utility", "Real Estate");
         
         userDesignationComboBox.getItems().addAll("Department Head", "Associate Department Head", 
-                            "Senior Executive", "Executive", "Junior Executive");
+                            "Senior Executive", "Executive", "Junior Executive", "Agent");
              
         submitButton.setDisable(true);
         termsAndPoliciesCheckBox.setDisable(true);
@@ -121,10 +126,6 @@ public class SignUpSceneController implements Initializable {
         userDepartmentComboBox.setDisable(true);
         userDesignationComboBox.setDisable(true);    
         
-        /*termsAndPoliciesTextArea.setText("Noise Control Policy: Residents must keep noise levels at a reasonable level between 10:00 PM and 8:00 AM to ensure a peaceful living environment.\n" + 
-                                        "Parking Regulation: Residents must use their designated parking spaces only, and visitor parking is strictly reserved for guests." +"\n"+ "Unauthorized parking in visitor spots may result in penalties.\n" +
-                                        "Waste Management Policy: All residents must follow the society's waste disposal guidelines, including separating recyclables and putting \n out trash only during designated collection times.\n" + 
-                                        "Alteration Approval Process: Any structural changes or renovations to units require prior approval from the society management to \n ensure compliance with safety and aesthetic standards.");*/
         dohsPolicies dummyInstance = new dohsPolicies("", LocalDate.of(2023, 02, 02),
                                                 LocalDate.of(2023, 02, 02), new ArrayList<String>());
         policyListOfDohs = (ObservableList<dohsPolicies>) DataReadWrite.readObjectToFile("DOHSPOLICIES.bin", dummyInstance);
@@ -214,8 +215,63 @@ public class SignUpSceneController implements Initializable {
                                                 "Then Try Again.");
             }
         }
+        else if ( termsAndPoliciesCheckBox.isSelected() && userList.getSelectionModel().isSelected(0) ){
+            try{
+                registerForMaintenanceOfficer();
+                }
+            catch(Exception e){
+            GenerateAlerts.unsuccessfulAlert("Please check your given Information." + 
+                                                "Then Try Again.");
+            }
+        }
+        else if ( termsAndPoliciesCheckBox.isSelected() && userList.getSelectionModel().isSelected(1) ){
+            try{
+                registerCantonmentBoardMember();
+                }
+            catch(Exception e){
+            GenerateAlerts.unsuccessfulAlert("Please check your given Information." + 
+                                                "Then Try Again.");
+            }
+        }
+        else if ( termsAndPoliciesCheckBox.isSelected() && userList.getSelectionModel().isSelected(2) ){
+            try{
+                registerAccountsAndFinanceOfficer();
+                }
+            catch(Exception e){
+            GenerateAlerts.unsuccessfulAlert("Please check your given Information." + 
+                                                "Then Try Again.");
+            }
+        }
+        else if ( termsAndPoliciesCheckBox.isSelected() && userList.getSelectionModel().isSelected(3) ){
+            try{
+                // registerAccountsAndFinanceOfficer(); // Another
+                }
+            catch(Exception e){
+            GenerateAlerts.unsuccessfulAlert("Please check your given Information." + 
+                                                "Then Try Again.");
+            }
+        }
+        else if ( termsAndPoliciesCheckBox.isSelected() && userList.getSelectionModel().isSelected(4) ){
+            try{
+                // registerAccountsAndFinanceOfficer(); // Another
+                }
+            catch(Exception e){
+            GenerateAlerts.unsuccessfulAlert("Please check your given Information." + 
+                                                "Then Try Again.");
+            }
+        }
+        else if ( termsAndPoliciesCheckBox.isSelected() && userList.getSelectionModel().isSelected(5) ){
+            try{
+                registerRealEstateAgent();
+                }
+            catch(Exception e){
+            GenerateAlerts.unsuccessfulAlert("Please check your given Information." + 
+                                                "Then Try Again.");
+            }
+        }
     }
 
+    
     @FXML
     private void goBackOnClickButton(ActionEvent event) throws IOException {
         sceneChanging newwscene = new sceneChanging();
@@ -269,5 +325,128 @@ public class SignUpSceneController implements Initializable {
         passwordErrorLabel.setVisible(false);
         signUpPasswordField.setStyle("-fx-border-color: transparent;");
     }
+    
+    public void helperOfDataPassing(signUpData data, String userName){
+        if ( data instanceof signUpData && userName.equals("Maintainance") ){
+            userTypeComboBox.setDisable(true);
+            userList.setDisable(false);
+            dateOfJoin.setDisable(false);
+            salaryTextField.setDisable(false);
+            userDepartmentComboBox.setDisable(false);
+            userDesignationComboBox.setDisable(false);
+            militaryRankComboBox.setDisable(false);
+            goBackButton.setDisable(true);
+            submitButton.setDisable(false);
+            termsAndPoliciesCheckBox.setDisable(false);
+        }
+    }
+    
+    
+    private void registerForMaintenanceOfficer(){
+        // Gender Selection
+        String gender;
+        if (maleRadioBtn.isSelected()) gender = "Male";
+        else gender = "Female";
+        //GenerateInteger Id
+        int id = generateInteger(emailTextField.getText());
+        MaintainenceOfficer ms = new MaintainenceOfficer(dateOfJoin.getValue(), Float.parseFloat(salaryTextField.getText()),
+                    userDepartmentComboBox.getValue(), userDesignationComboBox.getValue(), id, nameTextField.getText(),
+                        gender, emailTextField.getText(), userList.getSelectionModel().getSelectedItem(), dateOfBirth.getValue(),
+                Long.parseLong(contactNoTextField.getText()));
+        signUpData loginData = new signUpData(id, emailTextField.getText(), 
+                 signUpPasswordField.getText(), userList.getSelectionModel().getSelectedItem());
+        
+        MaintainenceOfficer.regsiterNewUser(ms, loginData, "MaintenanceDepartment.bin", id);
+        
+        holdingOrFlatNoTextField.clear();
+        plotNoTextField.clear();
+        nameTextField.clear();
+        emailTextField.clear();
+        contactNoTextField.clear();
+        //userTypeComboBox.setValue(null);
+        dateOfBirth.setValue(null);
+        signUpPasswordField.clear();
+    }
+    
+    private void registerAccountsAndFinanceOfficer(){
+        // Gender Selection
+        String gender;
+        if (maleRadioBtn.isSelected()) gender = "Male";
+        else gender = "Female";
+        //GenerateInteger Id
+        int id = generateInteger(emailTextField.getText());
+        accountsAndFinanceOfficer ms = new accountsAndFinanceOfficer(dateOfJoin.getValue(), Float.parseFloat(salaryTextField.getText()),
+                    userDepartmentComboBox.getValue(), userDesignationComboBox.getValue(), id, nameTextField.getText(),
+                        gender, emailTextField.getText(), userList.getSelectionModel().getSelectedItem(), dateOfBirth.getValue(),
+                Long.parseLong(contactNoTextField.getText()));
+        signUpData loginData = new signUpData(id, emailTextField.getText(), 
+                 signUpPasswordField.getText(), userList.getSelectionModel().getSelectedItem());
+        
+        MaintainenceOfficer.regsiterNewUser(ms, loginData, "AccountsAndFinanceOfficer.bin", id);
+        
+        holdingOrFlatNoTextField.clear();
+        plotNoTextField.clear();
+        nameTextField.clear();
+        emailTextField.clear();
+        contactNoTextField.clear();
+        //userTypeComboBox.setValue(null);
+        dateOfBirth.setValue(null);
+        signUpPasswordField.clear();
+    }
+    
+    
+    private void registerRealEstateAgent(){
+        // Gender Selection
+        String gender;
+        if (maleRadioBtn.isSelected()) gender = "Male";
+        else gender = "Female";
+        //GenerateInteger Id
+        int id = generateInteger(emailTextField.getText());
+        realEstateAgent ms = new realEstateAgent(dateOfJoin.getValue(), Float.parseFloat(salaryTextField.getText()),
+                    userDepartmentComboBox.getValue(), userDesignationComboBox.getValue(), id, nameTextField.getText(),
+                        gender, emailTextField.getText(), userList.getSelectionModel().getSelectedItem(), dateOfBirth.getValue(),
+                Long.parseLong(contactNoTextField.getText()));
+        signUpData loginData = new signUpData(id, emailTextField.getText(), 
+                 signUpPasswordField.getText(), userList.getSelectionModel().getSelectedItem());
+        
+        MaintainenceOfficer.regsiterNewUser(ms, loginData, "RealEstateAgent.bin", id);
+        
+        holdingOrFlatNoTextField.clear();
+        plotNoTextField.clear();
+        nameTextField.clear();
+        emailTextField.clear();
+        contactNoTextField.clear();
+        //userTypeComboBox.setValue(null);
+        dateOfBirth.setValue(null);
+        signUpPasswordField.clear();
+    }
+    // realEstateAgent
+    
+    private void registerCantonmentBoardMember(){
+        // Gender Selection
+        String gender;
+        if (maleRadioBtn.isSelected()) gender = "Male";
+        else gender = "Female";
+        //GenerateInteger Id
+        int id = generateInteger(emailTextField.getText());
+        CantonmentBoardMember CNB  = new CantonmentBoardMember(militaryRankComboBox.getValue(),
+                            id, nameTextField.getText(), gender, emailTextField.getText(), 
+                        userList.getSelectionModel().getSelectedItem(), dateOfBirth.getValue(), 
+                        Long.parseLong(contactNoTextField.getText()) );
+        signUpData loginData = new signUpData(id, emailTextField.getText(), 
+                 signUpPasswordField.getText(), userList.getSelectionModel().getSelectedItem());
+        
+        MaintainenceOfficer.regsiterNewUser(CNB, loginData, "CantonmentBoardMember.bin", id);
+        
+        holdingOrFlatNoTextField.clear();
+        plotNoTextField.clear();
+        nameTextField.clear();
+        emailTextField.clear();
+        contactNoTextField.clear();
+        //userTypeComboBox.setValue(null);
+        dateOfBirth.setValue(null);
+        signUpPasswordField.clear();
+    }
+    
     
 }

@@ -4,9 +4,13 @@
  */
 package MdHasibHasan.MaintenanceOfficer;
 
+import MdHasibHasan.CantonmentBoardMember.CantonmentBoardMember;
 import MdHasibHasan.DataReadWrite;
 import MdHasibHasan.Employee;
 import MdHasibHasan.GenerateAlerts;
+import MdHasibHasan.signUpData;
+import MdMasumBilla.accountsAndFinanceOfficer;
+import MdMasumBilla.realEstateAgent;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Map;
@@ -58,5 +62,38 @@ public class MaintainenceOfficer extends Employee implements Serializable {
         
         DataReadWrite.writeObjectToFile("YearlyBudgetOfMaintenanceDept.bin", newBudget);
         GenerateAlerts.successfulAlert("Yearly Budget Created Successfully.");
+    } 
+    
+    public static ObservableList<signUpData> deleteDOHSSoftwareUser(ObservableList<signUpData> loginInfo, signUpData delInstance){
+        ObservableList<signUpData> updatedSignUpData = FXCollections.observableArrayList();
+        for ( signUpData data : loginInfo ){
+            if ( data.getId() == delInstance.getId() && data.getEmail().equals(delInstance.getEmail()) ){
+                continue;
+            }
+            else{
+                updatedSignUpData.add(data);
+            }
+        }
+        for ( int i = 0; i < updatedSignUpData.size(); ++i){
+            if ( i == 0 ) DataReadWrite.overWriteObjectToFile("LoginData.bin", updatedSignUpData.get(i));
+            else DataReadWrite.writeObjectToFile("LoginData.bin", updatedSignUpData.get(i));
+        }
+        for ( signUpData data1 : updatedSignUpData ){
+            data1.setPassword("*****");
+        }
+        return updatedSignUpData;
+    }
+    
+    public static <T> void regsiterNewUser(T instance, signUpData loginData, String fileName, int ID){
+        if ( fileName.equals("MaintenanceDepartment.bin") ) DataReadWrite.overWriteObjectToFile("MaintenanceDepartment.bin", (MaintainenceOfficer)instance);
+        else if ( fileName.equals("AccountsAndFinanceOfficer.bin") ) DataReadWrite.overWriteObjectToFile("AccountsAndFinanceOfficer.bin", (accountsAndFinanceOfficer)instance);
+        else if ( fileName.equals("CantonmentBoardMember.bin") ) DataReadWrite.overWriteObjectToFile("CantonmentBoardMember.bin", (CantonmentBoardMember)instance);
+        else if ( fileName.equals("RealEstateAgent.bin") ) DataReadWrite.overWriteObjectToFile("RealEstateAgent.bin", instance);
+        
+        
+        DataReadWrite.writeObjectToFile("LoginData.bin", loginData);
+        
+        GenerateAlerts.successfulAlert("Registration Successful.\n" + 
+                                        "You DOHS user id is: " + ID);
     }
 }

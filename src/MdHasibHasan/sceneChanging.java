@@ -55,4 +55,42 @@ public class sceneChanging {
         stage.setScene(scene);
         stage.show();
     }
+    
+    public void windowSwitchingWithoutDataPassing(String sceneName) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(sceneName)); 
+    
+        Parent root = loader.load();
+        
+        Scene scene = new Scene(root);
+        
+        //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        
+        iconTitleclass sp = new iconTitleclass();
+        sp.setIconAndTitle(stage);
+        
+        stage.show();
+    }
+    
+    public <T> void windowSwitchingWithDataPassing( String sceneName, String userClassName, T instance) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(sceneName)); 
+    
+        Parent root = loader.load();
+        
+        Scene scene = new Scene(root);
+
+        if ( userClassName.equals("Maintainance") ) {
+            SignUpSceneController loadController = loader.getController();
+            loadController.helperOfDataPassing((signUpData) instance, "Maintainance");
+        }
+        
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        
+        iconTitleclass sp = new iconTitleclass();
+        sp.setIconAndTitle(stage);
+        
+        stage.show();
+    }
 }

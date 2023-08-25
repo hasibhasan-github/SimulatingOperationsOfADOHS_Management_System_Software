@@ -63,6 +63,7 @@ public class VisitorSignUpController implements Initializable {
                                                  "4.00-6.00 pm",
                                                  "6.00-8.00 pm",
                                                  "8.00-10.00 pm");
+        selectGenderComboBox.getItems().addAll("Male","Female");
         
         
     }    

@@ -254,7 +254,7 @@ public class SignUpSceneController implements Initializable {
         }
         else if ( termsAndPoliciesCheckBox.isSelected() && userList.getSelectionModel().isSelected(4) ){
             try{
-                // registerAccountsAndFinanceOfficer(); // SecurityCheif
+               registerSecurityChief();
                 }
             catch(Exception e){
             GenerateAlerts.unsuccessfulAlert("Please check your given Information." + 
@@ -330,6 +330,7 @@ public class SignUpSceneController implements Initializable {
     public void helperOfDataPassing(signUpData data, String userName){
         if ( data instanceof signUpData && userName.equals("Maintainance") ){
             userTypeComboBox.setDisable(true);
+            userTypeComboBox.setValue("Employee");
             userList.setDisable(false);
             dateOfJoin.setDisable(false);
             salaryTextField.setDisable(false);

@@ -59,7 +59,7 @@ public class LoginController implements Initializable {
         selectUserComboBox.getItems().addAll("Cantonment Board Member","Resident",
                                         "Maintenance Officer", "Human Resource Management Officer",
                                     " Accounts & Finance Officer", "Utility Service Manager",
-                                    "Security Cheif", "Real Estate Agent");
+                                    "Security Officer", "Real Estate Agent");
     }    
 
     @FXML
@@ -120,6 +120,11 @@ public class LoginController implements Initializable {
                 }
                 else if ( tmp.getUserType().equals("Resident") && ( tmp.getPassword().equals(pass) && (tmp.getEmail().equals(emailOrId) || tmp.getId() == (loginUsingId) ) )){
                     newwscene.sceneSwitchingWithDataPassing(stage, "/MdHasibHasan/DummyUser/ResidentDashboard.fxml", "Resident", tmp);
+                    flag = true;
+                }
+                else if ( tmp.getUserType().equals("Security Officer") && ( tmp.getPassword().equals(pass) && (tmp.getEmail().equals(emailOrId) || tmp.getId() == (loginUsingId) ) )){
+                    //newwscene.sceneSwitchingWithDataPassing(stage, "/AbdullahAlMamun/SecurityCheifDashboard.fxml", "Resident", tmp);
+                     newwscene.sceneSwitchingWithoutDataPassing(stage, "/AbdullahAlMamun/SecurityCheifDashboard.fxml");
                     flag = true;
                 }
             }

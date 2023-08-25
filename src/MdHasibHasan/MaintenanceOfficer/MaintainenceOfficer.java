@@ -85,10 +85,11 @@ public class MaintainenceOfficer extends Employee implements Serializable {
     }
     
     public static <T> void regsiterNewUser(T instance, signUpData loginData, String fileName, int ID){
-        if ( fileName.equals("MaintenanceDepartment.bin") ) DataReadWrite.overWriteObjectToFile("MaintenanceDepartment.bin", (MaintainenceOfficer)instance);
-        else if ( fileName.equals("AccountsAndFinanceOfficer.bin") ) DataReadWrite.overWriteObjectToFile("AccountsAndFinanceOfficer.bin", (accountsAndFinanceOfficer)instance);
-        else if ( fileName.equals("CantonmentBoardMember.bin") ) DataReadWrite.overWriteObjectToFile("CantonmentBoardMember.bin", (CantonmentBoardMember)instance);
+        if ( fileName.equals("MaintenanceDepartment.bin") ) DataReadWrite.overWriteObjectToFile("MaintenanceDepartment.bin", instance);
+        else if ( fileName.equals("AccountsAndFinanceOfficer.bin") ) DataReadWrite.overWriteObjectToFile("AccountsAndFinanceOfficer.bin", instance);
+        else if ( fileName.equals("CantonmentBoardMember.bin") ) DataReadWrite.overWriteObjectToFile("CantonmentBoardMember.bin", instance);
         else if ( fileName.equals("RealEstateAgent.bin") ) DataReadWrite.overWriteObjectToFile("RealEstateAgent.bin", instance);
+        else if ( fileName.equals("SecurityDepartment.bin") ) DataReadWrite.writeObjectToFile("SecurityDepartment.bin", instance);
         
         
         DataReadWrite.writeObjectToFile("LoginData.bin", loginData);

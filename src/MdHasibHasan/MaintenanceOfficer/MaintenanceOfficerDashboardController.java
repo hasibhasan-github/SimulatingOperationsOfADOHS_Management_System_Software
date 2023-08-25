@@ -221,12 +221,18 @@ public class MaintenanceOfficerDashboardController implements Initializable {
 
     @FXML
     private void approveButtonOnClick(ActionEvent event) {
-        carStickerRequest giveApproval =tableViewMaintainenceOfficer.getSelectionModel().getSelectedItem();
-        if ( tableViewMaintainenceOfficer.getSelectionModel().isSelected(0)) GenerateAlerts.successfulAlert("Please Select Table Item.");
+        try {
+        carStickerRequest giveApproval =tableViewMaintainenceOfficer.getSelectionModel().getSelectedItem(); 
+        // Approving Car Sticker Request by model class static method.
+        ObservableList<carStickerRequest> approvedList = MaintainenceOfficer.approveCarStickerRequest(tableDataOfCarStickerRequest, giveApproval);
         // Clearing table data list
         tableViewMaintainenceOfficer.getItems().clear();
-        // Approving Car Sticker Request by model class static method.
-        tableViewMaintainenceOfficer.getItems().addAll(MaintainenceOfficer.approveCarStickerRequest(tableDataOfCarStickerRequest, giveApproval));
+        // Adding the updated list to Table
+        tableViewMaintainenceOfficer.getItems().addAll(approvedList);
+        }
+        catch( Exception em ){
+            GenerateAlerts.successfulAlert("Please Select Table Item.");
+        }
     }
 
     @FXML

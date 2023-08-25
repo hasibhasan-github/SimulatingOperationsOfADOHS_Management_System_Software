@@ -340,6 +340,8 @@ public class SignUpSceneController implements Initializable {
             goBackButton.setDisable(true);
             submitButton.setDisable(false);
             termsAndPoliciesCheckBox.setDisable(false);
+            holdingOrFlatNoTextField.setDisable(true);
+            plotNoTextField.setDisable(true);
         }
     }
     

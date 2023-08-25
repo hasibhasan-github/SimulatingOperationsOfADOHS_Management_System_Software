@@ -4,6 +4,7 @@
  */
 package MdHasibHasan;
 
+import AbdullahAlMamun.VisitorRequest;
 import MdHasibHasan.CantonmentBoardMember.developementProject;
 import MdHasibHasan.CantonmentBoardMember.dohsPolicies;
 import MdHasibHasan.DummyUser.Resident;
@@ -87,6 +88,7 @@ public class DataReadWrite {
         ObservableList<developementProject> project  = FXCollections.observableArrayList();
         ObservableList<maintenanceFee> fee  = FXCollections.observableArrayList();
         ObservableList<yearlyBudget> budgetYearly  = FXCollections.observableArrayList();
+        ObservableList<VisitorRequest> visitReq  = FXCollections.observableArrayList();
         
         
         try{
@@ -202,6 +204,20 @@ public class DataReadWrite {
                 }
                //  System.out.println("Hasib");               
             }
+            else if ( instance instanceof VisitorRequest ){
+                    f = new File(fileName);
+                    fw = new FileInputStream(f);
+                    ois = new ObjectInputStream(fw);
+                try{
+                    while (true) {
+                        visitReq.add((VisitorRequest)ois.readObject());
+                    }
+                }
+                catch(Exception e){
+                    System.out.println("VisitorRequest read exe Signup Data");
+                }
+               //  System.out.println("Hasib");               
+            }
         }
         catch(Exception e){
             System.out.println("Hasib False");
@@ -229,6 +245,7 @@ public class DataReadWrite {
         else if ( instance instanceof developementProject ) return project;
         else if ( instance instanceof maintenanceFee ) return fee;
         else if ( instance instanceof yearlyBudget ) return budgetYearly;
+        else if ( instance instanceof VisitorRequest ) return visitReq;
         
         
         return loginData;

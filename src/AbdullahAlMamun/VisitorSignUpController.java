@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
@@ -42,6 +43,8 @@ public class VisitorSignUpController implements Initializable {
     private ComboBox<String> selectTimeSlotComboBox;
     @FXML
     private ComboBox<String> selectGenderComboBox;
+    @FXML
+    private Button gaBackButton;
 
     /**
      * Initializes the controller class.
@@ -87,14 +90,14 @@ public class VisitorSignUpController implements Initializable {
                                              "Pending");
         
         DataReadWrite.writeObjectToFile("VisitorRequest.bin", visitorReq);
-        
+        gaBackButton.setDisable(true);
          }
 
     @FXML
     private void goBackButtonOnClick(ActionEvent event) throws IOException {
         sceneChanging newwscene = new sceneChanging();
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        newwscene.sceneSwitchingWithoutDataPassing(stage,"/simulatingoperationsofdohs_management_system_software/login.fxml" );
+        newwscene.logOutSceneSwitching(stage);
     }
     
 }

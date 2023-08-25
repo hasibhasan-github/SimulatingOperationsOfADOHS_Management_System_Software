@@ -29,7 +29,7 @@
          </font>
       </Label>
       <ComboBox fx:id="selectPurposeOfVisitComboBox" layoutX="365.0" layoutY="62.0" prefHeight="27.0" prefWidth="173.0" promptText="Select Purpose Of Visit" />
-      <Button layoutX="235.0" layoutY="315.0" mnemonicParsing="false" onAction="#sendAccessRequestBtnOnClick" prefHeight="27.0" prefWidth="136.0" style="-fx-background-color: #4477CE;" text="Submit Visitor From" textFill="WHITE">
+      <Button fx:id="gaBackButton" layoutX="235.0" layoutY="315.0" mnemonicParsing="false" onAction="#sendAccessRequestBtnOnClick" prefHeight="27.0" prefWidth="136.0" style="-fx-background-color: #4477CE;" text="Submit Visitor From" textFill="WHITE">
          <font>
             <Font name="Arial Narrow" size="15.0" />
          </font></Button>

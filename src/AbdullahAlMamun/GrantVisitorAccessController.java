@@ -43,26 +43,35 @@ public class GrantVisitorAccessController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        nameCol.setCellValueFactory(new PropertyValueFactory<VisitorRequest, String>("Name"));
-        PhoneNoCol.setCellValueFactory(new PropertyValueFactory<VisitorRequest, String>("Phone No"));
-        povCol.setCellValueFactory(new PropertyValueFactory<VisitorRequest, String>("Purpose Of Visit"));
-        timeSlotCol.setCellValueFactory(new PropertyValueFactory<VisitorRequest, String>("Time Slot"));
-        statusCol.setCellValueFactory(new PropertyValueFactory<VisitorRequest, String>("Status"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<VisitorRequest, String>("name"));
+        PhoneNoCol.setCellValueFactory(new PropertyValueFactory<VisitorRequest, String>("phoneNo"));
+        povCol.setCellValueFactory(new PropertyValueFactory<VisitorRequest, String>("purposeOfVisit"));
+        timeSlotCol.setCellValueFactory(new PropertyValueFactory<VisitorRequest, String>("timeSlot"));
+        statusCol.setCellValueFactory(new PropertyValueFactory<VisitorRequest, String>("applicationStatus"));
         
         VisitorRequest visitorReq = new VisitorRequest("","","","","");
         dataOfVisitorRequest = (ObservableList<VisitorRequest>) DataReadWrite.readObjectToFile("VisitorRequest.bin", visitorReq);
+        
+        for (VisitorRequest tmp :  dataOfVisitorRequest){
+            System.out.println(tmp.getName());
+        }
         
         VisitorDataTableView.getItems().addAll(dataOfVisitorRequest);
     }    
 
     @FXML
     private void approveButtonOnClick(ActionEvent event) {
+        try {
         VisitorRequest ApproveList = VisitorDataTableView.getSelectionModel().getSelectedItem();
-        if (VisitorDataTableView.getSelectionModel().isSelected(0)) GenerateAlerts.successfulAlert("Please Select Table Item.");
+        //if (VisitorDataTableView.getSelectionModel().isSelected(0)) 
         // Clearing table data list
         VisitorDataTableView.getItems().clear();
         // Approving Car Sticker Request by model class static method.
         VisitorDataTableView.getItems().addAll(SecurityCheif.gantAccessPermission(dataOfVisitorRequest, ApproveList));
+        }
+        catch (Exception ee) {
+            GenerateAlerts.successfulAlert("Please Select Table Item.");
+        }
     }
     
 }

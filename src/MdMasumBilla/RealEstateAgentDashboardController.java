@@ -5,12 +5,14 @@
 package MdMasumBilla;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -41,6 +43,39 @@ public class RealEstateAgentDashboardController implements Initializable {
     private TableColumn<PropertyListing, Double> PropertyPrice;
     @FXML
     private TableColumn<PropertyListing, String> PropertyLocation;
+    
+     @FXML
+    private DatePicker ConstructionStartDate;
+
+    @FXML
+    private DatePicker ConstructionEndDate;
+
+    @FXML
+    private TextField ProjectTitleTextBox;
+
+    @FXML
+    private TextField ProjectScopeTextBox;
+
+    @FXML
+    private TextField ConstructionPlanningBudgetTextBox;
+    
+    @FXML
+    private TableView<ConstructionPlanning> tableId2;
+    
+    @FXML
+    private TableColumn<ConstructionPlanning, String> ProjectTitle;
+
+    @FXML
+    private TableColumn<ConstructionPlanning, String> ProjectScope;
+
+    @FXML
+    private TableColumn<ConstructionPlanning, LocalDate> ProjectStartDate;
+
+    @FXML
+    private TableColumn<ConstructionPlanning, LocalDate> ProjectEndDate;
+
+    @FXML
+    private TableColumn<ConstructionPlanning, Double> ProjectBudget;
 
     /**
      * Initializes the controller class.
@@ -62,6 +97,13 @@ public class RealEstateAgentDashboardController implements Initializable {
         PropertyDescription.setCellValueFactory(new PropertyValueFactory<PropertyListing,String>("Description"));
         PropertyPrice.setCellValueFactory(new PropertyValueFactory<PropertyListing, Double>("Price"));
         PropertyLocation.setCellValueFactory(new PropertyValueFactory<PropertyListing,String>("Location"));
+        
+        
+        ProjectTitle.setCellValueFactory(new PropertyValueFactory<ConstructionPlanning,String>("ProjecctTitle"));
+        ProjectScope.setCellValueFactory(new PropertyValueFactory<ConstructionPlanning,String>("ProjectScope"));
+        ProjectStartDate.setCellValueFactory(new PropertyValueFactory<ConstructionPlanning,LocalDate>("StartDate"));
+        ProjectEndDate.setCellValueFactory(new PropertyValueFactory<ConstructionPlanning,LocalDate>("EndDate"));
+        ProjectBudget.setCellValueFactory(new PropertyValueFactory<ConstructionPlanning, Double>("Budget"));
     }     
 
     @FXML
@@ -86,4 +128,32 @@ public class RealEstateAgentDashboardController implements Initializable {
         int SelectedId = tableId.getSelectionModel().getSelectedIndex();
         tableId.getItems().remove(SelectedId);
     }
+    
+    //Construction Planning
+    @FXML
+    void ConstructionPlanningAddProjectOnClick(ActionEvent event) {
+        ConstructionPlanning plan = new ConstructionPlanning(
+                ProjectTitleTextBox.getText(),
+                ProjectScopeTextBox.getText(),
+                ConstructionStartDate.getValue(),
+                ConstructionEndDate.getValue(),
+                Double.parseDouble(ConstructionPlanningBudgetTextBox.getText())
+        );
+        
+        ObservableList<ConstructionPlanning>plan2=tableId2.getItems();
+        plan2.add(plan);
+        tableId2.setItems(plan2);
+    }
+    
+    @FXML
+    void RemoveSelectedItemOnClick2(ActionEvent event) {
+        int SelectedId = tableId2.getSelectionModel().getSelectedIndex();
+        tableId2.getItems().remove(SelectedId);
+    }
+
+    @FXML
+    void createBinFileOncCick2(ActionEvent event) {
+
+    }
+
 }

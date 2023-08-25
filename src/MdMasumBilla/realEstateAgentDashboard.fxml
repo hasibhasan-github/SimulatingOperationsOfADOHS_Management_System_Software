@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -52,7 +53,36 @@
     </Tab>
     <Tab text="Construction Planning">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="10.0" layoutY="96.0" text="Project Title :" />
+                  <Label layoutX="208.0" layoutY="96.0" text="Project Scope:" />
+                  <Label layoutX="14.0" layoutY="145.0" text="Budget :" />
+                  <DatePicker fx:id="ConstructionStartDate" layoutX="79.0" layoutY="182.0" prefHeight="25.0" prefWidth="120.0" />
+                  <DatePicker fx:id="ConstructionEndDate" layoutX="281.0" layoutY="182.0" prefHeight="25.0" prefWidth="117.0" />
+                  <TextField fx:id="ProjectTitleTextBox" layoutX="85.0" layoutY="92.0" prefHeight="25.0" prefWidth="119.0" />
+                  <TextField fx:id="ProjectScopeTextBox" layoutX="290.0" layoutY="92.0" prefHeight="25.0" prefWidth="100.0" />
+                  <TextField fx:id="ConstructionPlanningBudgetTextBox" layoutX="67.0" layoutY="141.0" prefHeight="25.0" prefWidth="119.0" />
+                  <Label layoutX="15.0" layoutY="186.0" text="Start Date :" />
+                  <Label layoutX="218.0" layoutY="186.0" text="End Date :" />
+                  <Button layoutX="417.0" layoutY="129.0" mnemonicParsing="false" onAction="#ConstructionPlanningAddProjectOnClick" text="Add Project" />
+                  <ImageView fitHeight="61.0" fitWidth="70.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@mirpurdohslogo.png" />
+                     </image>
+                  </ImageView>
+                  <TableView fx:id="tableId2" layoutX="122.0" layoutY="222.0" prefHeight="149.0" prefWidth="373.0">
+                    <columns>
+                      <TableColumn fx:id="ProjectTitle" prefWidth="75.0" text="Title" />
+                      <TableColumn fx:id="ProjectScope" prefWidth="75.0" text="Scope" />
+                        <TableColumn fx:id="ProjectStartDate" prefWidth="75.0" text="StartDate" />
+                        <TableColumn fx:id="ProjectEndDate" prefWidth="75.0" text="EndDate" />
+                        <TableColumn fx:id="ProjectBudget" prefWidth="75.0" text="Budget" />
+                    </columns>
+                  </TableView>
+                  <Button layoutX="13.0" layoutY="332.0" mnemonicParsing="false" onAction="#createBinFileOncCick2" prefWidth="93.0" text="Add in bin File" />
+                  <Button layoutX="516.0" layoutY="332.0" mnemonicParsing="false" onAction="#RemoveSelectedItemOnClick2" text="Remove" />
+               </children></AnchorPane>
       </content>
     </Tab>
       <Tab text="Project Management">

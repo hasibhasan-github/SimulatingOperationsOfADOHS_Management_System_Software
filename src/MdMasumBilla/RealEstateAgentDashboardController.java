@@ -4,6 +4,7 @@
  */
 package MdMasumBilla;
 
+import MdHasibHasan.DataReadWrite;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -13,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -43,7 +45,8 @@ public class RealEstateAgentDashboardController implements Initializable {
     private TableColumn<PropertyListing, Double> PropertyPrice;
     @FXML
     private TableColumn<PropertyListing, String> PropertyLocation;
-    
+
+//Construction Planning    
      @FXML
     private DatePicker ConstructionStartDate;
 
@@ -76,6 +79,24 @@ public class RealEstateAgentDashboardController implements Initializable {
 
     @FXML
     private TableColumn<ConstructionPlanning, Double> ProjectBudget;
+    
+    //Project Management
+    
+    @FXML
+    private ListView<String> phaseListView;
+
+    @FXML
+    private TextField projectNameTextBox;
+
+    @FXML
+    private TextField ProjectManagerTextBox;
+
+    @FXML
+    private TextField TeamSizeTextBox;
+
+    @FXML
+    private TextField ProjectPhaseTextBox;
+
 
     /**
      * Initializes the controller class.
@@ -99,7 +120,7 @@ public class RealEstateAgentDashboardController implements Initializable {
         PropertyLocation.setCellValueFactory(new PropertyValueFactory<PropertyListing,String>("Location"));
         
         
-        ProjectTitle.setCellValueFactory(new PropertyValueFactory<ConstructionPlanning,String>("ProjecctTitle"));
+        ProjectTitle.setCellValueFactory(new PropertyValueFactory<ConstructionPlanning,String>("projectTitle"));
         ProjectScope.setCellValueFactory(new PropertyValueFactory<ConstructionPlanning,String>("ProjectScope"));
         ProjectStartDate.setCellValueFactory(new PropertyValueFactory<ConstructionPlanning,LocalDate>("StartDate"));
         ProjectEndDate.setCellValueFactory(new PropertyValueFactory<ConstructionPlanning,LocalDate>("EndDate"));
@@ -155,5 +176,29 @@ public class RealEstateAgentDashboardController implements Initializable {
     void createBinFileOncCick2(ActionEvent event) {
 
     }
+    
+    //Project MAnagement
+    
+    @FXML
+    void AddPhaseInListViewOnClick(ActionEvent event) {
+        phaseListView.getItems().add(ProjectPhaseTextBox.getText());
+    }
 
+    @FXML
+    void AddProjectManagementDataOnClick(ActionEvent event) {
+        ObservableList<String> selectedPhases = phaseListView.getSelectionModel().getSelectedItems();
+    
+        ProjectManagement pm = new ProjectManagement(projectNameTextBox.getText(),
+                ProjectManagerTextBox.getText(),             
+                Integer.parseInt(TeamSizeTextBox.getText()),
+                selectedPhases);
+        DataReadWrite.writeObjectToFile("ProjectManagementData.bin",pm);
+        System.out.println("Done");
+    }
+    
+     @FXML
+    void RemovePhaseFromListViewOnClick(ActionEvent event) {
+        int selectedItems = phaseListView.getSelectionModel().getSelectedIndex();
+        phaseListView.getItems().remove(selectedItems);
+    }
 }

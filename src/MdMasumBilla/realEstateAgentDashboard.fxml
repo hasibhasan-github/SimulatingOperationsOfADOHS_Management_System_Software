@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -87,7 +88,27 @@
     </Tab>
       <Tab text="Project Management">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="61.0" fitWidth="70.0" layoutX="25.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@mirpurdohslogo.png" />
+                     </image>
+                  </ImageView>
+                  <ListView fx:id="phaseListView" layoutX="367.0" layoutY="57.0" prefHeight="200.0" prefWidth="200.0" />
+                  <Label layoutX="17.0" layoutY="107.0" text="Project Name :" />
+                  <Label layoutX="9.0" layoutY="149.0" text="Project Manager :" />
+                  <Label layoutX="26.0" layoutY="186.0" text="Team Size :" />
+                  <Label layoutX="17.0" layoutY="231.0" text="Project Phase :" />
+                  <TextField fx:id="projectNameTextBox" layoutX="115.0" layoutY="103.0" />
+                  <TextField fx:id="ProjectManagerTextBox" layoutX="115.0" layoutY="145.0" />
+                  <TextField fx:id="TeamSizeTextBox" layoutX="115.0" layoutY="182.0" />
+                  <TextField fx:id="ProjectPhaseTextBox" layoutX="115.0" layoutY="227.0" />
+                  <Label layoutX="369.0" layoutY="266.0" text="Add/Remove phase on this list View" />
+                  <Button layoutX="369.0" layoutY="297.0" mnemonicParsing="false" onAction="#AddPhaseInListViewOnClick" prefHeight="25.0" prefWidth="60.0" text="Add" />
+                  <Button layoutX="508.0" layoutY="297.0" mnemonicParsing="false" onAction="#RemovePhaseFromListViewOnClick" text="Remove" />
+                  <Button layoutX="85.0" layoutY="297.0" mnemonicParsing="false" onAction="#AddProjectManagementDataOnClick" prefHeight="25.0" prefWidth="99.0" text="Add to the bin" />
+               </children></AnchorPane>
         </content>
       </Tab>
       <Tab text="Structural Engineering">

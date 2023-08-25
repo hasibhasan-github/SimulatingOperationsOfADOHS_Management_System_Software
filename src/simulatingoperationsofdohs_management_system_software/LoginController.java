@@ -58,8 +58,8 @@ public class LoginController implements Initializable {
         // TODO
         selectUserComboBox.getItems().addAll("Cantonment Board Member","Resident",
                                         "Maintenance Officer", "Human Resource Management Officer",
-                                    " Accounts & Finance Officer", "Utility Service Officer",
-                                    "Security Officer", "Real Estate Agent");
+                                    " Accounts & Finance Officer", "Utility Service Manager",
+                                    "Security Cheif", "Real Estate Agent");
     }    
 
     @FXML

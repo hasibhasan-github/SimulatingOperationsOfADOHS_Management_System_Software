@@ -6,11 +6,8 @@ package AbdullahAlMamun;
 
 /**
  *
- * @author Abdullah
+ * @author user
  */
-public class securityChief {
-    // Mamun
-    // aBDULLAH 
-    //hello
-    // Masum Billa
+public class VisitorPurposeCount {
+    
 }

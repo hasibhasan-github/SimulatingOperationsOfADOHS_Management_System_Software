@@ -4,7 +4,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -29,24 +28,18 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <RadioButton fx:id="visitorMaleRadioBtn" layoutX="71.0" layoutY="253.0" mnemonicParsing="false" text="Male" />
-      <RadioButton fx:id="visitorFemaleRadioBtn" layoutX="141.0" layoutY="253.0" mnemonicParsing="false" text="Female" />
-      <Label layoutX="71.0" layoutY="224.0" text="Select Gender">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
       <ComboBox fx:id="selectPurposeOfVisitComboBox" layoutX="365.0" layoutY="62.0" prefHeight="27.0" prefWidth="173.0" promptText="Select Purpose Of Visit" />
       <Button layoutX="235.0" layoutY="315.0" mnemonicParsing="false" onAction="#sendAccessRequestBtnOnClick" prefHeight="27.0" prefWidth="136.0" style="-fx-background-color: #4477CE;" text="Submit Visitor From" textFill="WHITE">
          <font>
             <Font name="Arial Narrow" size="15.0" />
          </font></Button>
-      <DatePicker layoutX="364.0" layoutY="115.0" prefHeight="27.0" prefWidth="173.0" promptText="Select Date" />
-      <ComboBox fx:id="selectPurposeOfVisitComboBox1" layoutX="364.0" layoutY="173.0" prefHeight="27.0" prefWidth="173.0" promptText="Choose Your Time Slot" />
+      <DatePicker fx:id="selectDateLocalDate" layoutX="364.0" layoutY="115.0" prefHeight="27.0" prefWidth="173.0" promptText="Select Date" />
+      <ComboBox fx:id="selectTimeSlotComboBox" layoutX="364.0" layoutY="173.0" prefHeight="27.0" prefWidth="173.0" promptText="Choose Your Time Slot" />
       <Button layoutX="277.0" layoutY="372.0" mnemonicParsing="false" onAction="#goBackButtonOnClick" text="Go Back" textFill="#2b007c">
          <font>
             <Font name="Arial Narrow" size="14.0" />
          </font>
       </Button>
+      <ComboBox fx:id="selectGenderComboBox" layoutX="71.0" layoutY="222.0" prefHeight="27.0" prefWidth="173.0" promptText="Select Gender" />
    </children>
 </AnchorPane>

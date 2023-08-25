@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="AbdullahAlMamun.GrantVisitorAccessController">
+   <children>
+      <TableView fx:id="VisitorDataTableView" layoutX="14.0" layoutY="28.0" prefHeight="270.0" prefWidth="578.0">
+        <columns>
+          <TableColumn fx:id="nameCol" prefWidth="75.0" text="Name" />
+          <TableColumn fx:id="PhoneNoCol" prefWidth="174.0" text="Phone No" />
+            <TableColumn fx:id="povCol" prefWidth="165.0" text="Purpose Of Visit" />
+            <TableColumn fx:id="timeSlotCol" prefWidth="85.0" text="Time Slot" />
+            <TableColumn fx:id="statusCol" prefWidth="78.0" text="Status" />
+        </columns>
+      </TableView>
+      <Button layoutX="248.0" layoutY="316.0" mnemonicParsing="false" onAction="#approveButtonOnClick" text="Approve" />
+   </children>
+</AnchorPane>

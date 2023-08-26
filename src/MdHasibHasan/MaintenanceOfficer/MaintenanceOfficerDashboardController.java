@@ -291,6 +291,9 @@ public class MaintenanceOfficerDashboardController implements Initializable {
             if ( userGoalListView.getSelectionModel().getSelectedItem().equals("1.DOHS Software System") ){
                 newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdHasibHasan/MaintenanceOfficer/dohsSoftwareSystem.fxml");
             }
+            else if ( userGoalListView.getSelectionModel().getSelectedItem().equals("3.Public Property Section") ){
+                newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdHasibHasan/MaintenanceOfficer/PublicPropertyDashboard.fxml");
+            }
         }
         catch (Exception e){
             GenerateAlerts.unsuccessfulAlert("Please select the page from list.");

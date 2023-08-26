@@ -7,6 +7,7 @@ package MdHasibHasan.DummyUser;
 import MdHasibHasan.CantonmentBoardMember.dohsPolicies;
 import MdHasibHasan.DataReadWrite;
 import MdHasibHasan.GenerateAlerts;
+import MdHasibHasan.MaintenanceOfficer.PublicProperties;
 import MdHasibHasan.MaintenanceOfficer.carStickerRequest;
 import MdHasibHasan.MaintenanceOfficer.maintenanceFee;
 import MdHasibHasan.sceneChanging;
@@ -54,6 +55,16 @@ public class ResidentDashboardController implements Initializable {
     private Button payMaintenanceFeeButton;
     
     private ObservableList<maintenanceFee> feeList;
+    @FXML
+    private ComboBox<String> donationMonthComboBox;
+    @FXML
+    private ComboBox<String> donationYearComboBox;
+    @FXML
+    private ComboBox<String> donatingOrganizationComboBox;
+    @FXML
+    private TextField donationgAmountTextField;
+    @FXML
+    private Button donateButton;
     /**
      * Initializes the controller class.
      */
@@ -67,6 +78,10 @@ public class ResidentDashboardController implements Initializable {
         maintenceFeeMonthComboBox.getItems().addAll("January", "February", "March", "April", "May",
                 "June", "July", "August", "September", "October", "November", "December");
         maintenceFeeYearComboBox.getItems().addAll("2023", "2024", "2025", "2026", "2027", "2028");
+        
+        donationMonthComboBox.getItems().addAll(maintenceFeeMonthComboBox.getItems());
+        donationYearComboBox.getItems().addAll(maintenceFeeYearComboBox.getItems());
+        donatingOrganizationComboBox.getItems().addAll("Mosque", "Hospital", "Park", "School");
         
         refreshMaintenanceFeeDataList();
         
@@ -184,6 +199,25 @@ public class ResidentDashboardController implements Initializable {
             payMaintenanceFeeButton.setDisable(false);           
         }
         
+    }
+
+    @FXML
+    private void donateButtonOnClick(ActionEvent event) {
+        try{
+            PublicProperties donation = new PublicProperties(currentlyLoggedInUserInfo.getId(), currentlyLoggedInUserInfo.getEmail()  ,donationMonthComboBox.getValue(), 
+                    donationYearComboBox.getValue(), donatingOrganizationComboBox.getValue(), Double.parseDouble(donationgAmountTextField.getText()));
+            
+            DataReadWrite.writeObjectToFile("PublicPropertyMaintanenceFund.bin", donation);
+            
+            GenerateAlerts.successfulAlert("Thank you for your Donation.");
+            donationMonthComboBox.setValue(null);
+            donationYearComboBox.setValue(null);
+            donatingOrganizationComboBox.setValue(null);
+            donationgAmountTextField.clear();
+        }
+        catch(Exception eo){
+            
+        }
     }
     
 }

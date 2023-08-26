@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="396.0" prefWidth="670.0" style="-fx-background-color: CORNSILK;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MdHasibHasan.MaintenanceOfficer.PublicPropertyDashboardController">
+   <children>
+      <TableView fx:id="donationDataTableView" layoutX="16.0" layoutY="125.0" prefHeight="207.0" prefWidth="627.0">
+        <columns>
+          <TableColumn fx:id="emailTableColoumn" prefWidth="181.0" text="Email" />
+          <TableColumn fx:id="idTableColoumn" prefWidth="107.0" text="ID" />
+            <TableColumn fx:id="amountTableColoumn" prefWidth="99.0" text="Amount" />
+            <TableColumn fx:id="organizationTypeTableColoumn" prefWidth="126.0" text="Organization Type" />
+            <TableColumn fx:id="monthTableColoumn" prefWidth="76.0" text="Month" />
+            <TableColumn fx:id="yearTableColoumn" prefWidth="68.0" text="Year" />
+        </columns>
+      </TableView>
+      <ComboBox fx:id="selectMonthComboBox" layoutX="48.0" layoutY="44.0" prefWidth="150.0" />
+      <ComboBox fx:id="selectYearComboBox" layoutX="260.0" layoutY="44.0" prefWidth="150.0" />
+      <ComboBox fx:id="selectOrganizationComboBox" layoutX="476.0" layoutY="44.0" prefWidth="150.0" />
+      <Label layoutX="72.0" layoutY="22.0" text="Select Month">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="284.0" layoutY="22.0" text="Select Year">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="476.0" layoutY="22.0" text="Select Organization">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="178.0" layoutY="348.0" text="Total Collected Fund:">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="totalDonationAmountInSpecificYearMonth" editable="false" layoutX="367.0" layoutY="346.0" prefHeight="25.0" prefWidth="174.0" />
+      <Button layoutX="572.0" layoutY="340.0" mnemonicParsing="false" onAction="#goBackButtonOnClick" style="-fx-border-style: solid inside; -fx-border-radius: 100; -fx-border-color: black; -fx-border-insets: 5; -fx-background-color: transparent;" text="Go Back" textFill="#901b1b">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="256.0" layoutY="77.0" mnemonicParsing="false" onAction="#loadDonationDataButtonOnClick" style="-fx-border-style: solid inside; -fx-border-radius: 100; -fx-border-color: black; -fx-border-insets: 5; -fx-background-color: transparent;" text="Load Donation Data" textFill="#901b1b">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="14.0" layoutY="341.0" mnemonicParsing="false" onAction="#yearlyStatisticsButtonOnClick" style="-fx-border-style: solid inside; -fx-border-radius: 100; -fx-border-color: black; -fx-border-insets: 5; -fx-background-color: transparent;" text="Yearly Statistics" textFill="#901b1b">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

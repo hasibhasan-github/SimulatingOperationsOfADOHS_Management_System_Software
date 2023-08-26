@@ -97,4 +97,19 @@ public class MaintainenceOfficer extends Employee implements Serializable {
         GenerateAlerts.successfulAlert("Registration Successful.\n" + 
                                         "You DOHS user id is: " + ID);
     }
+    
+    public static ObservableList<PublicProperties> seeAllPublicPropertyFunds(PublicProperties donation){
+        ObservableList<PublicProperties> donationList  = (ObservableList<PublicProperties>) DataReadWrite.readObjectToFile("PublicPropertyMaintanenceFund.bin", donation);
+        ObservableList<PublicProperties> updateDonationList  = FXCollections.observableArrayList();
+        
+        for ( PublicProperties donationData : donationList ){
+            if ( donationData.getMonth().equals(donation.getMonth()) && donationData.getYear().equals(donation.getYear()) ){
+                if ( donationData.getOrganizationType().equals(donation.getOrganizationType()) ){
+                    updateDonationList.add(donationData);
+                }
+            }
+        }
+        
+        return updateDonationList;
+    }
 }

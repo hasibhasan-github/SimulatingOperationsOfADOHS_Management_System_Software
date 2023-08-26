@@ -16,6 +16,8 @@ import MdMasumBilla.accountsAndFinanceOfficer;
 import MdHasibHasan.MaintenanceOfficer.carStickerRequest;
 import MdHasibHasan.MaintenanceOfficer.maintenanceFee;
 import MdHasibHasan.MaintenanceOfficer.yearlyBudget;
+import MdMasumBilla.FinancialAnalysis;
+import MdMasumBilla.FinancialRisk;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -95,6 +97,9 @@ public class DataReadWrite {
         ObservableList<PublicProperties> donation  = FXCollections.observableArrayList();
         ObservableList<crucialTaskPermissionRequest> crucTaskReq  = FXCollections.observableArrayList();
         ObservableList<CheckPointData> cpList  = FXCollections.observableArrayList();
+        
+        ObservableList<FinancialAnalysis> fAnalysis  = FXCollections.observableArrayList();
+        ObservableList<FinancialRisk> fRisk = FXCollections.observableArrayList();
         
         try{
             if ( instance instanceof Resident ){
@@ -266,6 +271,32 @@ public class DataReadWrite {
                 }
                //  System.out.println("Hasib");               
             }
+            else if ( instance instanceof FinancialAnalysis ){
+                    f = new File(fileName);
+                    fw = new FileInputStream(f);
+                    ois = new ObjectInputStream(fw);
+                try{
+                    while (true) {
+                        fAnalysis.add((FinancialAnalysis)ois.readObject());
+                    }
+                }
+                catch(Exception e){
+                    System.out.println("FinancialAnalysis read exe Signup Data");
+                }               
+            }
+            else if ( instance instanceof FinancialRisk ){
+                    f = new File(fileName);
+                    fw = new FileInputStream(f);
+                    ois = new ObjectInputStream(fw);
+                try{
+                    while (true) {
+                        fRisk.add((FinancialRisk)ois.readObject());
+                    }
+                }
+                catch(Exception e){
+                    System.out.println("FinancialRisk read exe Signup Data");
+                }  
+            }
         }
         catch(Exception e){
             System.out.println("Hasib False");
@@ -297,6 +328,8 @@ public class DataReadWrite {
         else if ( instance instanceof PublicProperties ) return donation;
         else if ( instance instanceof crucialTaskPermissionRequest ) return crucTaskReq;
         else if ( instance instanceof CheckPointData ) return cpList;
+        else if ( instance instanceof FinancialAnalysis ) return fAnalysis;
+        else if ( instance instanceof FinancialRisk ) return fRisk;
         
         
         return loginData;

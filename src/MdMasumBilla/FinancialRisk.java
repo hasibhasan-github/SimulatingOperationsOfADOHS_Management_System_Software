@@ -4,11 +4,13 @@
  */
 package MdMasumBilla;
 
+import java.io.Serializable;
+
 /**
  *
  * @author MD Masum Billa
  */
-public class FinancialRisk {
+public class FinancialRisk implements Serializable{
     private String riskName;
     private String description;
     private double likelihood;
@@ -35,6 +37,11 @@ public class FinancialRisk {
 
     public double getImpact() {
         return impact;
+    }
+    
+    @Override
+    public String toString() {
+        return "FinancialRisk{" + "riskName=" + riskName + ", description=" + description + ", likelihood=" + likelihood + ", impact=" + impact + '}';
     }
     
 }

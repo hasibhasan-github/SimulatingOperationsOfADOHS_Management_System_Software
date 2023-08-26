@@ -4,7 +4,11 @@
  */
 package MdHasibHasan.DummyUser;
 
+import MdHasibHasan.CantonmentBoardMember.CantonmentBoardMember;
+import MdHasibHasan.CantonmentBoardMember.developementProject;
+import MdHasibHasan.CantonmentBoardMember.developementProjectVoting;
 import MdHasibHasan.CantonmentBoardMember.dohsPolicies;
+import MdHasibHasan.CantonmentBoardMember.residentVote;
 import MdHasibHasan.DataReadWrite;
 import MdHasibHasan.GenerateAlerts;
 import MdHasibHasan.MaintenanceOfficer.PublicProperties;
@@ -65,6 +69,20 @@ public class ResidentDashboardController implements Initializable {
     private TextField donationgAmountTextField;
     @FXML
     private Button donateButton;
+    @FXML
+    private TextField ongoingVotingProjectName;
+    @FXML
+    private TextField votersVote;
+    @FXML
+    private ComboBox<String> selectVoteComboBoxFxId;
+    
+    private ObservableList<developementProject> projectDevPlan;
+    
+    private ObservableList<developementProjectVoting> votingProj;
+    
+    private ObservableList<residentVote> rVoteProj;
+    @FXML
+    private Button submitVoteButton;
     /**
      * Initializes the controller class.
      */
@@ -102,6 +120,27 @@ public class ResidentDashboardController implements Initializable {
             }
         }
         // Showing the Policies in policyTextArea
+        
+        selectVoteComboBoxFxId.getItems().addAll("Positive", "Negative", "Neutral");
+        selectVoteComboBoxFxId.setValue("Neutral");
+        votersVote.setText("Neutral");
+        
+        //  Creating Dummy Instance to Read The File Data of "DevelopmentProjects.bin".
+        developementProject dummyDevelopementProject = new developementProject("", LocalDate.of(2023, 03, 10), new ArrayList<String>());
+        // Reading the data From File.
+        projectDevPlan = (ObservableList<developementProject>) DataReadWrite.readObjectToFile("DevelopmentProjects.bin", dummyDevelopementProject);
+        
+        developementProjectVoting dummyProj = new developementProjectVoting("", dummyDevelopementProject, LocalDate.of(2023, 03, 10) );
+        
+        votingProj = (ObservableList<developementProjectVoting>) DataReadWrite.readObjectToFile("developementProjectVoting.bin", dummyProj);
+        
+        System.out.println();
+        ongoingVotingProjectName.setText(votingProj.get(0).getProjectName());
+        if ( votingProj.get(0).getProjectName().equals("Empty") ){
+            submitVoteButton.setDisable(true);
+            votersVote.setText("Voting Off");
+            selectVoteComboBoxFxId.setDisable(true);
+        }
         
     }
     
@@ -146,7 +185,20 @@ public class ResidentDashboardController implements Initializable {
         else{
             applicationStatusLabel.setText("Not Applied");
         } 
-        }       
+        }
+        developementProject dummyDevelopementProject = new developementProject("", LocalDate.of(2023, 03, 10), new ArrayList<String>());
+        residentVote dummyResidentVote = new residentVote ("", "", 1, dummyDevelopementProject );
+        
+        rVoteProj  = (ObservableList<residentVote>) DataReadWrite.readObjectToFile("ResidentVoteOnDevelopementProject.bin", dummyResidentVote);
+        
+        for ( residentVote dataCheck : rVoteProj ){
+            if ( dataCheck.getVoterEmail().equals(currentlyLoggedInUserInfo.getEmail()) && dataCheck.getVotingProject().getProjectName().equals(votingProj.get(0).getVotingProject().getProjectName()) ){
+                submitVoteButton.setDisable(true);
+                votersVote.setText(dataCheck.getResidentVote());
+                selectVoteComboBoxFxId.setDisable(true);
+                break;
+            }
+        }
     }
 
 
@@ -217,6 +269,40 @@ public class ResidentDashboardController implements Initializable {
         }
         catch(Exception eo){
             
+        }
+    }
+
+    @FXML
+    private void downloadProjectPDFButtonOnClick(ActionEvent event) {
+        for (  developementProject data: projectDevPlan ){
+            if ( data.getProjectName().equals(votingProj.get(0).getProjectName()) ){
+                CantonmentBoardMember.generateDevelopementProjectPDF(votingProj.get(0).getVotingProject());
+                break;
+            }
+        }
+    }
+
+    @FXML
+    private void selectVoteComboBoxOnSelection(ActionEvent event) {
+        if ( selectVoteComboBoxFxId.getValue().equals("Positive") ){
+            votersVote.setText("Positive");
+        }
+        else if ( selectVoteComboBoxFxId.getValue().equals("Neutral") ){
+            votersVote.setText("Neutral");
+        }
+        else if ( selectVoteComboBoxFxId.getValue().equals("Negative") ){
+            votersVote.setText("Negative");
+        }
+    }
+
+    @FXML
+    private void submitVoteButtonOnClick(ActionEvent event) {
+        residentVote vtDev = new residentVote(currentlyLoggedInUserInfo.getEmail(), selectVoteComboBoxFxId.getValue(), 
+                            currentlyLoggedInUserInfo.getId(), votingProj.get(0).getVotingProject());
+        if ( GenerateAlerts.confirmationAlert() ){
+            DataReadWrite.writeObjectToFile("ResidentVoteOnDevelopementProject.bin", vtDev);
+            submitVoteButton.setDisable(true);
+            GenerateAlerts.successfulAlert("Thank you for your Vote.");
         }
     }
     

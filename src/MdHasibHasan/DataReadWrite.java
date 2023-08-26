@@ -8,7 +8,9 @@ import AbdullahAlMamun.CheckPointData;
 import AbdullahAlMamun.VisitorRequest;
 import MdHasibHasan.CantonmentBoardMember.crucialTaskPermissionRequest;
 import MdHasibHasan.CantonmentBoardMember.developementProject;
+import MdHasibHasan.CantonmentBoardMember.developementProjectVoting;
 import MdHasibHasan.CantonmentBoardMember.dohsPolicies;
+import MdHasibHasan.CantonmentBoardMember.residentVote;
 import MdHasibHasan.DummyUser.Resident;
 import MdHasibHasan.MaintenanceOfficer.PublicProperties;
 import MdMasumBilla.BudgetingAndForecasting;
@@ -95,6 +97,8 @@ public class DataReadWrite {
         ObservableList<yearlyBudget> budgetYearly  = FXCollections.observableArrayList();
         ObservableList<VisitorRequest> visitReq  = FXCollections.observableArrayList();
         ObservableList<PublicProperties> donation  = FXCollections.observableArrayList();
+        ObservableList<developementProjectVoting> votingProj  = FXCollections.observableArrayList();
+        ObservableList<residentVote> rVoteProj  = FXCollections.observableArrayList();
         ObservableList<crucialTaskPermissionRequest> crucTaskReq  = FXCollections.observableArrayList();
         ObservableList<CheckPointData> cpList  = FXCollections.observableArrayList();
         
@@ -271,31 +275,33 @@ public class DataReadWrite {
                 }
                //  System.out.println("Hasib");               
             }
-            else if ( instance instanceof FinancialAnalysis ){
+            else if ( instance instanceof developementProjectVoting ){
                     f = new File(fileName);
                     fw = new FileInputStream(f);
                     ois = new ObjectInputStream(fw);
                 try{
                     while (true) {
-                        fAnalysis.add((FinancialAnalysis)ois.readObject());
+                        votingProj.add((developementProjectVoting)ois.readObject());
                     }
                 }
                 catch(Exception e){
-                    System.out.println("FinancialAnalysis read exe Signup Data");
-                }               
+                    System.out.println("developementProjectVoting read exe Signup Data");
+                }
+               //  System.out.println("Hasib");               
             }
-            else if ( instance instanceof FinancialRisk ){
+            else if ( instance instanceof residentVote ){
                     f = new File(fileName);
                     fw = new FileInputStream(f);
                     ois = new ObjectInputStream(fw);
                 try{
                     while (true) {
-                        fRisk.add((FinancialRisk)ois.readObject());
+                        rVoteProj.add((residentVote)ois.readObject());
                     }
                 }
                 catch(Exception e){
-                    System.out.println("FinancialRisk read exe Signup Data");
-                }  
+                    System.out.println("residentVote read exe Signup Data");
+                }
+               //  System.out.println("Hasib");               
             }
         }
         catch(Exception e){
@@ -328,8 +334,8 @@ public class DataReadWrite {
         else if ( instance instanceof PublicProperties ) return donation;
         else if ( instance instanceof crucialTaskPermissionRequest ) return crucTaskReq;
         else if ( instance instanceof CheckPointData ) return cpList;
-        else if ( instance instanceof FinancialAnalysis ) return fAnalysis;
-        else if ( instance instanceof FinancialRisk ) return fRisk;
+        else if ( instance instanceof developementProjectVoting ) return votingProj;
+        else if ( instance instanceof residentVote ) return rVoteProj;
         
         
         return loginData;

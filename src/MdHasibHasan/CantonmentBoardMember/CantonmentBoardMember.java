@@ -103,6 +103,25 @@ public class CantonmentBoardMember extends User implements Serializable {
         return crucTaskReq;
     }
     
+    public static void organizeNewVote(String projName, LocalDate startDate){
+        developementProject dummyInstance = new developementProject("", LocalDate.of(2023, 03, 10), new ArrayList<String>());
+        // Reading the data From File.
+        ObservableList<developementProject> projectDevPlan = (ObservableList<developementProject>) DataReadWrite.readObjectToFile("DevelopmentProjects.bin", dummyInstance);
+        
+        developementProject votingInstance = null;
+        
+        for ( developementProject comboBoxData : projectDevPlan ){
+            if ( comboBoxData.getProjectName().equals(projName) ){
+                votingInstance = comboBoxData;
+            }
+        }
+        
+        developementProjectVoting newVoteProj = new developementProjectVoting(projName, votingInstance, startDate);
+        
+        DataReadWrite.overWriteObjectToFile("developementProjectVoting.bin", newVoteProj);
+    }
+    
+    
     public static void generateDevelopementProjectPDF(developementProject devProjectPDF){
         try {
             FileChooser fc = new FileChooser();

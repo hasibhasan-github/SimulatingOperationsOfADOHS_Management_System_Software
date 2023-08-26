@@ -84,6 +84,26 @@
                            </font>
                         </Label>
                         <Button fx:id="donateButton" layoutX="258.0" layoutY="97.0" mnemonicParsing="false" onAction="#donateButtonOnClick" text="Donate" />
+                        <TextField fx:id="ongoingVotingProjectName" editable="false" layoutX="161.0" layoutY="145.0" prefHeight="25.0" prefWidth="262.0" />
+                        <Label layoutX="21.0" layoutY="149.0" text="Ongoing Voting Event:">
+                           <font>
+                              <Font name="Arial Narrow Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="444.0" layoutY="145.0" mnemonicParsing="false" onAction="#downloadProjectPDFButtonOnClick" text="Download Project PDF" />
+                        <Label layoutX="28.0" layoutY="186.0" text="Select your vote:">
+                           <font>
+                              <Font name="Arial Narrow Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="votersVote" editable="false" layoutX="379.0" layoutY="182.0" />
+                        <ComboBox fx:id="selectVoteComboBoxFxId" layoutX="137.0" layoutY="182.0" onAction="#selectVoteComboBoxOnSelection" prefHeight="25.0" prefWidth="119.0" promptText="Select Vote" />
+                        <Label layoutX="313.0" layoutY="186.0" text="Your vote:">
+                           <font>
+                              <Font name="Arial Narrow Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="submitVoteButton" layoutX="244.0" layoutY="222.0" mnemonicParsing="false" onAction="#submitVoteButtonOnClick" text="Submit Vote" />
                      </children>
                   </AnchorPane>
                </content>

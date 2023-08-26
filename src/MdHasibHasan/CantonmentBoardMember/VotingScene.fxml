@@ -7,29 +7,25 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="MdHasibHasan.CantonmentBoardMember.VotingSceneController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MdHasibHasan.CantonmentBoardMember.VotingSceneController">
   <tabs>
     <Tab text="Add a New Voting Event">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: CORNSILK;">
                <children>
-                  <ComboBox fx:id="chooseProjectComboBox" layoutX="235.0" layoutY="112.0" prefHeight="25.0" prefWidth="115.0" promptText="Select Project" />
+                  <ComboBox fx:id="chooseProjectComboBox" layoutX="235.0" layoutY="112.0" onAction="#chooseProjectComboBoxOnSelection" prefHeight="25.0" prefWidth="115.0" promptText="Select Project" />
                   <Label layoutX="26.0" layoutY="14.0" text="N.B: At Once you can Host just One Voting Event">
                      <font>
                         <Font name="Arial Narrow Bold" size="16.0" />
                      </font>
                   </Label>
                   <Label layoutX="31.0" layoutY="85.0" text="Development Project Section:">
-                     <font>
-                        <Font name="Arial Narrow Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="31.0" layoutY="227.0" text="DOHS Policy Section:">
                      <font>
                         <Font name="Arial Narrow Bold" size="16.0" />
                      </font>
@@ -44,29 +40,20 @@
                         <Font name="Arial Narrow Bold" size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="runningVoteTextField" layoutX="153.0" layoutY="42.0" prefHeight="25.0" prefWidth="294.0" />
-                  <Label layoutX="56.0" layoutY="253.0" text="Choose DOHS Policy:">
+                  <TextField fx:id="runningVoteTextField" editable="false" layoutX="153.0" layoutY="42.0" prefHeight="25.0" prefWidth="294.0" />
+                  <Button fx:id="startVotingEventDevelopementButton" layoutX="421.0" layoutY="109.0" mnemonicParsing="false" onAction="#startVotingEventDevelopementButtonOnClick" prefHeight="57.0" prefWidth="122.0" style="-fx-background-color: LAWNGREEN; -fx-border-style: solid; -fx-border-width: 3;" text="Start Voting Event">
                      <font>
-                        <Font name="Arial Narrow Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <ComboBox fx:id="choosePolicy" layoutX="201.0" layoutY="250.0" prefHeight="25.0" prefWidth="115.0" promptText="Select Policy" />
-                  <Button fx:id="startVotingEventDevelopementButtonOnClick" layoutX="421.0" layoutY="109.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="112.0" text="Start Voting Event" />
+                        <Font name="Arial Narrow Bold" size="13.0" />
+                     </font></Button>
                   <DatePicker fx:id="selectDateDevelopement" layoutX="231.0" layoutY="154.0" prefHeight="25.0" prefWidth="124.0" />
                   <Label layoutX="141.0" layoutY="157.0" text="Select Date:">
                      <font>
                         <Font name="Arial Narrow Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="114.0" layoutY="294.0" text="Select Date:">
-                     <font>
-                        <Font name="Arial Narrow Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <DatePicker fx:id="selectDatePolicy" layoutX="196.0" layoutY="292.0" prefHeight="25.0" prefWidth="124.0" />
-                  <Button fx:id="startVotingEventDohsButtonOnClick" layoutX="421.0" layoutY="253.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="112.0" text="Start Voting Event" />
                   <Line endX="480.0" layoutX="114.0" layoutY="200.0" startX="-100.0" />
                   <Line endX="480.0" layoutX="110.0" layoutY="77.0" startX="-100.0" />
+                  <TextArea fx:id="loadDevelopementPlanTxtArea" editable="false" layoutX="13.0" layoutY="215.0" prefHeight="142.0" prefWidth="577.0" wrapText="true" />
                </children></AnchorPane>
       </content>
     </Tab>
@@ -80,7 +67,22 @@
                         <Font name="Arial Narrow Bold" size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="runningVoteTextField2" layoutX="137.0" layoutY="19.0" prefHeight="25.0" prefWidth="294.0" />
+                  <TextField fx:id="runningVoteTextField2" editable="false" layoutX="137.0" layoutY="19.0" prefHeight="25.0" prefWidth="294.0" />
+                  <Button fx:id="endVotingButton" layoutX="471.0" layoutY="16.0" mnemonicParsing="false" onAction="#endVotingButtonOnClick" style="-fx-background-color: LAWNGREEN; -fx-border-style: solid; -fx-border-width: 2;" text="End Voting">
+                     <font>
+                        <Font name="Arial Narrow Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="StatusLabel" layoutX="203.0" layoutY="323.0">
+                     <font>
+                        <Font name="Arial Narrow" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="PercentLabel" layoutX="300.0" layoutY="323.0">
+                     <font>
+                        <Font name="Arial Narrow" size="16.0" />
+                     </font>
+                  </Label>
                </children></AnchorPane>
       </content>
     </Tab>

@@ -74,6 +74,12 @@ public class CantonmentBoardMemberDashboardController implements Initializable {
     private void permissionAnalysisDataMenuItemOnClick(ActionEvent event) {
     }
 
+    @FXML
+    private void votingMenuItemOnSelect(ActionEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(getClass().getResource("VotingScene.fxml"));
+        borderPaneId.setCenter(parent);
+    }
+
 
     
 }

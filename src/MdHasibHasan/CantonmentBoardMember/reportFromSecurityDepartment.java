@@ -11,30 +11,32 @@ import java.io.Serializable;
  * @author Hasib
  */
 public class reportFromSecurityDepartment implements Serializable {
-    private String purposeOfVisitToDohsData, timeSlotOfVisitToDohs;
-    private int purposeOfVisitCount, totalTimeSlotVisitCount;
+    private String chatDataType;
+    private String timeSlotOrPurposeOfVisit;
+    private double timeSlotOrPurposeOfVisitCount;
 
-    public reportFromSecurityDepartment(String purposeOfVisitToDohsData, String timeSlotOfVisitToDohs, int purposeOfVisitCount, int totalTimeSlotVisitCount) {
-        this.purposeOfVisitToDohsData = purposeOfVisitToDohsData;
-        this.timeSlotOfVisitToDohs = timeSlotOfVisitToDohs;
-        this.purposeOfVisitCount = purposeOfVisitCount;
-        this.totalTimeSlotVisitCount = totalTimeSlotVisitCount;
+    public reportFromSecurityDepartment(String chatDataType, String timeSlotOrPurposeOfVisit, double timeSlotOrPurposeOfVisitCount) {
+        this.chatDataType = chatDataType;
+        this.timeSlotOrPurposeOfVisit = timeSlotOrPurposeOfVisit;
+        this.timeSlotOrPurposeOfVisitCount = timeSlotOrPurposeOfVisitCount;
     }
 
-    public String getPurposeOfVisitToDohsData() {
-        return purposeOfVisitToDohsData;
+    public String getChatDataType() {
+        return chatDataType;
     }
 
-    public String getTimeSlotOfVisitToDohs() {
-        return timeSlotOfVisitToDohs;
+    public String getTimeSlotOrPurposeOfVisit() {
+        return timeSlotOrPurposeOfVisit;
     }
 
-    public int getPurposeOfVisitCount() {
-        return purposeOfVisitCount;
+    public double getTimeSlotOrPurposeOfVisitCount() {
+        return timeSlotOrPurposeOfVisitCount;
     }
 
-    public int getTotalTimeSlotVisitCount() {
-        return totalTimeSlotVisitCount;
-    }
+    
+    
+    
+    
+  
     
 }

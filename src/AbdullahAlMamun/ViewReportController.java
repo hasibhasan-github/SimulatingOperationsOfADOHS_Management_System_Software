@@ -4,6 +4,8 @@
  */
 package AbdullahAlMamun;
 
+import MdHasibHasan.CantonmentBoardMember.reportFromSecurityDepartment;
+import MdHasibHasan.DataReadWrite;
 import MdHasibHasan.GenerateAlerts;
 import MdHasibHasan.sceneChanging;
 import java.io.IOException;
@@ -42,6 +44,8 @@ public class ViewReportController implements Initializable {
     private Label statusLabel;
     @FXML
     private BarChart<String, Number> barChart;
+    @FXML
+    private Button sendPieChartfxid;
 
     /**
      * Initializes the controller class.
@@ -96,5 +100,30 @@ public class ViewReportController implements Initializable {
        
         
     }
+
+    @FXML
+    private void sendReportOfPieChartDataToHigherAuthorityBtnOnClick(ActionEvent event) {
+        try{
+            ObservableList<PieChart.Data> tempList = SecurityCheif.purposeOfVisitCountPiChart();
+            for(int i = 0; i<tempList.size(); ++i){
+                reportFromSecurityDepartment report = new reportFromSecurityDepartment("PieChart", tempList.get(i).getName(), tempList.get(i).getPieValue());
+                System.out.println(tempList.get(i).getName());
+                if(i==0){
+                    DataReadWrite.overWriteObjectToFile("PurposeOfVisitReportHigherAuthorites.bin", report);
+                }
+                else{
+                    DataReadWrite.writeObjectToFile("PurposeOfVisitReportHigherAuthorites.bin", report);
+                }
+                                
+            }
+                GenerateAlerts.successfulAlert("Successfully Report Sended To The Higher Authority");
+                sendPieChartfxid.setDisable(true);
+
+        }
+        catch(Exception ee) {
+            GenerateAlerts.unsuccessfulAlert("Please Check Again");
+        }
+    }
+
     
 }

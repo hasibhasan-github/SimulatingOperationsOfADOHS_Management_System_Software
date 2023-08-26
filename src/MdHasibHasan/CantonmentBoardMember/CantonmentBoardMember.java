@@ -88,6 +88,21 @@ public class CantonmentBoardMember extends User implements Serializable {
         GenerateAlerts.successfulAlert("New Project added Successfully.");
     }
     
+    public static ObservableList<crucialTaskPermissionRequest> acceptOrRejectPendingPermission(ObservableList<crucialTaskPermissionRequest> crucTaskReq ){
+        for ( int i = 0; i < crucTaskReq.size(); ++i ){
+            if ( i == 0 ) DataReadWrite.overWriteObjectToFile("CrucialTaskPermissionRequest.bin", crucTaskReq.get(i));
+            else DataReadWrite.writeObjectToFile("CrucialTaskPermissionRequest.bin", crucTaskReq.get(i));
+        }
+        //
+        crucTaskReq.clear();
+        crucialTaskPermissionRequest dummyInstance = new crucialTaskPermissionRequest(1, "", "", LocalDate.of(2023, 02, 02),
+        LocalDate.of(2023, 02, 02), new ArrayList<String>());
+        
+        crucTaskReq = (ObservableList<crucialTaskPermissionRequest>) DataReadWrite.readObjectToFile("CrucialTaskPermissionRequest.bin", dummyInstance);
+        //
+        return crucTaskReq;
+    }
+    
     public static void generateDevelopementProjectPDF(developementProject devProjectPDF){
         try {
             FileChooser fc = new FileChooser();
@@ -146,6 +161,73 @@ public class CantonmentBoardMember extends User implements Serializable {
             GenerateAlerts.unsuccessfulAlert("Oops! Exception: " + e.toString()+ " occured.");
         }
         
+    }
+    
+    public static void viewPendingPermissionPDF(crucialTaskPermissionRequest devProjectPDF){
+            try {
+            FileChooser fc = new FileChooser();
+            fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
+            fc.setInitialFileName(devProjectPDF.getEventNamme());
+            File f = fc.showSaveDialog(null);
+            if (f != null){
+                PdfWriter pw = new PdfWriter(new FileOutputStream(f));
+                PdfDocument pdf = new PdfDocument(pw);
+                pdf.addNewPage();
+                Document doc = new Document(pdf);
+                doc.setLeftMargin(70);
+                
+                String newline = "\n";
+                Paragraph linspace = new Paragraph(newline);
+                linspace.setHeight(3);
+                
+                Text titleText = new Text(devProjectPDF.getEventNamme());
+                titleText.setFontSize(18f);
+                
+                Paragraph pageTitle = new Paragraph(titleText);
+                pageTitle.setBold();
+                
+                
+                Text titleText1 = new Text( "Event Date: " + String.valueOf(devProjectPDF.getEventDate()) 
+                                + "\n" + "Application Status: " + devProjectPDF.getPermissionStatus() );
+                
+                Paragraph pageTitle1 = new Paragraph(titleText1);
+                pageTitle.setBold();
+                
+                
+                String paraText1 = "";
+                for ( int i = 0; i < devProjectPDF.getEventDescription().size(); ++i ){
+                    paraText1 += devProjectPDF.getEventDescription().get(i) + "\n" + "\n";
+                }
+                Paragraph mainParagraph = new Paragraph(paraText1);
+                Paragraph signature = new Paragraph().add( devProjectPDF.getEventNamme() + "\n" + devProjectPDF.getDepartment() + "Department" + "\n"+
+                        "Application Date: " + devProjectPDF.getApplicationDate() + "\nMIRPUR DOHS").setTextAlignment(TextAlignment.RIGHT).setMarginTop(30);
+                
+                String logoImagePath = "mirpurdohslogo.png";
+                Image logoImage = new Image(ImageDataFactory.create(logoImagePath));
+                logoImage.setWidth(30); 
+                logoImage.setHeight(30);
+
+                Div headerContainer = new Div().setBackgroundColor(
+                        Color.LIGHT_GRAY).setPadding(5).setHeight(40);
+                headerContainer.add(pageTitle);
+                headerContainer.add(logoImage).setTextAlignment(TextAlignment.RIGHT);
+                headerContainer.add(pageTitle1);
+
+                doc.add(headerContainer);
+                
+                doc.add(linspace);
+                doc.add(mainParagraph);
+                doc.add(linspace);
+                doc.add(signature);
+                doc.close();
+            }
+            else{
+                GenerateAlerts.unsuccessfulAlert("Saving as PDF: cancelled!");
+            }
+        }
+        catch (Exception e){
+            GenerateAlerts.unsuccessfulAlert("Oops! Exception: " + e.toString()+ " occured.");
+        }
     }
         
 }

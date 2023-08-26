@@ -5,6 +5,7 @@
 package MdHasibHasan.MaintenanceOfficer;
 
 import MdHasibHasan.CantonmentBoardMember.CantonmentBoardMember;
+import MdHasibHasan.CantonmentBoardMember.crucialTaskPermissionRequest;
 import MdHasibHasan.DataReadWrite;
 import MdHasibHasan.Employee;
 import MdHasibHasan.GenerateAlerts;
@@ -111,5 +112,10 @@ public class MaintainenceOfficer extends Employee implements Serializable {
         }
         
         return updateDonationList;
+    }
+    
+    public static void requestCrucialTaskPermissionFromDohsHigherAuthorities (crucialTaskPermissionRequest newReq){
+        DataReadWrite.writeObjectToFile("CrucialTaskPermissionRequest.bin", newReq);
+        GenerateAlerts.successfulAlert("Your request has been sended.\n Please Have Patience!");
     }
 }

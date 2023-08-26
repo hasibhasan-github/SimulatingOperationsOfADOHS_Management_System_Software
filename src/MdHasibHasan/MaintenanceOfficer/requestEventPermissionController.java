@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package AbdullahAlMamun;
+package MdHasibHasan.MaintenanceOfficer;
 
 import MdHasibHasan.CantonmentBoardMember.crucialTaskPermissionRequest;
 import MdHasibHasan.DataReadWrite;
@@ -16,7 +16,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
@@ -30,9 +29,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
  *
  * @author Hasib
  */
-public class DummyHasibController implements Initializable {
+public class requestEventPermissionController implements Initializable {
 
-    @FXML
+     @FXML
     private DatePicker applicationDatePicker;
     @FXML
     private DatePicker eventDatePicker;
@@ -40,8 +39,6 @@ public class DummyHasibController implements Initializable {
     private TextField eventNameTxtField;
     @FXML
     private TextField eventDescriptionTxtField;
-    @FXML
-    private ComboBox<String> selectDepartmentOfApplicationComboBox;
     @FXML
     private TextArea eventAllDescritionTxtArea;
     @FXML
@@ -77,7 +74,7 @@ public class DummyHasibController implements Initializable {
         // TODO
         eventDescriptionList = new ArrayList<String>();
         updatedCrucTaskReq = FXCollections.observableArrayList();
-
+        
         eventNameTableColoumn.setCellValueFactory(new PropertyValueFactory<crucialTaskPermissionRequest, String>("eventNamme"));
         eventIDTableColoumn.setCellValueFactory(new PropertyValueFactory<crucialTaskPermissionRequest, Integer>("ID"));
         permissionStatusTableColoumn.setCellValueFactory(new PropertyValueFactory<crucialTaskPermissionRequest, String>("permissionStatus"));
@@ -86,7 +83,6 @@ public class DummyHasibController implements Initializable {
         applicationDateTableColoumn.setCellValueFactory(new PropertyValueFactory<crucialTaskPermissionRequest, LocalDate>("applicationDate"));
         eventDateTableColoumn.setCellValueFactory(new PropertyValueFactory<crucialTaskPermissionRequest, LocalDate>("eventDate"));
         
-        selectDepartmentOfApplicationComboBox.getItems().add("Security");
         
         crucialTaskPermissionRequest dummyInstance = new crucialTaskPermissionRequest(1, "", "", LocalDate.of(2023, 02, 02),
         LocalDate.of(2023, 02, 02), new ArrayList<String>());
@@ -94,7 +90,7 @@ public class DummyHasibController implements Initializable {
         crucTaskReq = (ObservableList<crucialTaskPermissionRequest>) DataReadWrite.readObjectToFile("CrucialTaskPermissionRequest.bin", dummyInstance);
         
         for ( crucialTaskPermissionRequest taskReqData : crucTaskReq ){
-            if ( taskReqData.getDepartment().equals("Security") ) {
+            if ( taskReqData.getDepartment().equals("Maintenance") ) {
                 updatedCrucTaskReq.add(taskReqData);
             }
         }
@@ -120,15 +116,14 @@ public class DummyHasibController implements Initializable {
     private void requestForPermissionButtonOnClick(ActionEvent event) {
         try{
             crucialTaskPermissionRequest newReq = new crucialTaskPermissionRequest(Integer.parseInt(eventIDTxtField.getText()),
-            eventNameTxtField.getText(), selectDepartmentOfApplicationComboBox.getValue(), applicationDatePicker.getValue(), 
+            eventNameTxtField.getText(), "Maintenance", applicationDatePicker.getValue(), 
             eventDatePicker.getValue(), eventDescriptionList);
             if ( GenerateAlerts.confirmationAlert() ) {
-                //SecurityCheif.requestPermissionForCrucialTask(newReq);
+                MaintainenceOfficer.requestCrucialTaskPermissionFromDohsHigherAuthorities(newReq);
             }
             eventDescriptionList.clear();
             eventNameTxtField.clear();
             eventIDTxtField.clear();
-            selectDepartmentOfApplicationComboBox.setValue(null);
             applicationDatePicker.setValue(null);
             eventDatePicker.setValue(null);
             eventAllDescritionTxtArea.clear();
@@ -150,7 +145,7 @@ public class DummyHasibController implements Initializable {
         crucTaskReq = (ObservableList<crucialTaskPermissionRequest>) DataReadWrite.readObjectToFile("CrucialTaskPermissionRequest.bin", dummyInstance);
         
         for ( crucialTaskPermissionRequest taskReqData : crucTaskReq ){
-            if ( taskReqData.getDepartment().equals("Security") ) {
+            if ( taskReqData.getDepartment().equals("Maintenance") ) {
                 updatedCrucTaskReq.add(taskReqData);
             }
         }

@@ -206,7 +206,7 @@ public class MaintenanceOfficerDashboardController implements Initializable {
     private void initializingTheuserGoalListView(){
         // Initializing the User Goal List View
         userGoalListView.getItems().addAll("1.DOHS Software System", "2.Notice Section", "3.Public Property Section",
-                "4.Support Section", "5.Monthly Report Section");
+                "4.Support Section", "5.Monthly Report Section", "6.Permission Section");
     }
    
 
@@ -293,6 +293,9 @@ public class MaintenanceOfficerDashboardController implements Initializable {
             }
             else if ( userGoalListView.getSelectionModel().getSelectedItem().equals("3.Public Property Section") ){
                 newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdHasibHasan/MaintenanceOfficer/PublicPropertyDashboard.fxml");
+            }
+            else if ( userGoalListView.getSelectionModel().getSelectedItem().equals("6.Permission Section") ){
+                newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdHasibHasan/MaintenanceOfficer/requestEventPermission.fxml");
             }
         }
         catch (Exception e){

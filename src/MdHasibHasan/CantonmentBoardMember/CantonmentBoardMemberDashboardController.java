@@ -64,6 +64,16 @@ public class CantonmentBoardMemberDashboardController implements Initializable {
         borderPaneId.setCenter(parent);
     }
 
+    @FXML
+    private void pendingPermissionMenuItemOnClick(ActionEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(getClass().getResource("permissionRequestScene.fxml"));
+        borderPaneId.setCenter(parent);
+    }
+
+    @FXML
+    private void permissionAnalysisDataMenuItemOnClick(ActionEvent event) {
+    }
+
 
     
 }

@@ -5,6 +5,7 @@
 package MdHasibHasan;
 
 import AbdullahAlMamun.VisitorRequest;
+import MdHasibHasan.CantonmentBoardMember.crucialTaskPermissionRequest;
 import MdHasibHasan.CantonmentBoardMember.developementProject;
 import MdHasibHasan.CantonmentBoardMember.dohsPolicies;
 import MdHasibHasan.DummyUser.Resident;
@@ -91,6 +92,7 @@ public class DataReadWrite {
         ObservableList<yearlyBudget> budgetYearly  = FXCollections.observableArrayList();
         ObservableList<VisitorRequest> visitReq  = FXCollections.observableArrayList();
         ObservableList<PublicProperties> donation  = FXCollections.observableArrayList();
+        ObservableList<crucialTaskPermissionRequest> crucTaskReq  = FXCollections.observableArrayList();
         
         
         try{
@@ -234,6 +236,20 @@ public class DataReadWrite {
                 }
                //  System.out.println("Hasib");               
             }
+            else if ( instance instanceof crucialTaskPermissionRequest ){
+                    f = new File(fileName);
+                    fw = new FileInputStream(f);
+                    ois = new ObjectInputStream(fw);
+                try{
+                    while (true) {
+                        crucTaskReq.add((crucialTaskPermissionRequest)ois.readObject());
+                    }
+                }
+                catch(Exception e){
+                    System.out.println("crucialTaskPermissionRequest read exe Signup Data");
+                }
+               //  System.out.println("Hasib");               
+            }
         }
         catch(Exception e){
             System.out.println("Hasib False");
@@ -263,6 +279,7 @@ public class DataReadWrite {
         else if ( instance instanceof yearlyBudget ) return budgetYearly;
         else if ( instance instanceof VisitorRequest ) return visitReq;
         else if ( instance instanceof PublicProperties ) return donation;
+        else if ( instance instanceof crucialTaskPermissionRequest ) return crucTaskReq;
         
         
         return loginData;

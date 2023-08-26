@@ -75,7 +75,7 @@ public class SecurityCheifDashboardController implements Initializable {
 
     @FXML
     private void DummyHasibSceneOnClick(ActionEvent event) throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("DummyHaisb.fxml"));
+        Parent parent = FXMLLoader.load(getClass().getResource("DummyHasib.fxml"));
         dashboardBorderPane.setCenter(parent);
     }
     

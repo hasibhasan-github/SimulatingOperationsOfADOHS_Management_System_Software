@@ -4,8 +4,10 @@
  */
 package AbdullahAlMamun;
 
+import MdHasibHasan.CantonmentBoardMember.crucialTaskPermissionRequest;
 import MdHasibHasan.DataReadWrite;
 import MdHasibHasan.Employee;
+import MdHasibHasan.GenerateAlerts;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javafx.collections.FXCollections;
@@ -140,7 +142,10 @@ public class SecurityCheif extends Employee implements Serializable{
         
     }
     
-    
+    public static void requestPermissionForCrucialTask(crucialTaskPermissionRequest newReq){
+        DataReadWrite.writeObjectToFile("CrucialTaskPermissionRequest.bin", newReq);
+        GenerateAlerts.successfulAlert("Your request has been sended.\n Please Have Patience!");
+    }
     
     
 }

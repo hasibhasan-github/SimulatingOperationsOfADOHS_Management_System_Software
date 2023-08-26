@@ -36,10 +36,11 @@
                               <Image url="@Map.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="chekpoint4" layoutX="34.0" layoutY="2.0" prefHeight="79.0" prefWidth="94.0" style="-fx-background-color: red;" text="0 Officer Assigned" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-                        <Label fx:id="chekpoint1" layoutX="249.0" layoutY="236.0" prefHeight="81.0" prefWidth="97.0" style="-fx-background-color: red;" text="0 Officer Assigned" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-                        <Label fx:id="chekpoint3" layoutX="503.0" layoutY="2.0" prefHeight="79.0" prefWidth="94.0" style="-fx-background-color: red;" text="0 Officer Assigned" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-                        <Label fx:id="chekpoint2" layoutX="268.0" layoutY="2.0" prefHeight="79.0" prefWidth="94.0" style="-fx-background-color: red;" text="0 Officer Assigned" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                        <Label fx:id="chekpoint4" layoutX="34.0" layoutY="2.0" prefHeight="79.0" prefWidth="94.0" style="-fx-background-color: red;" text="0 Officers Assigned in CheckPoint-4" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                        <Label fx:id="chekpoint1" layoutX="249.0" layoutY="235.0" prefHeight="82.0" prefWidth="95.0" style="-fx-background-color: red;" text="0 Officers Assigned in CheckPoint-1" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="249.0" AnchorPane.rightAnchor="274.0" AnchorPane.topAnchor="235.0" />
+                        <Label fx:id="chekpoint3" layoutX="494.0" layoutY="-1.0" prefHeight="76.0" prefWidth="94.0" style="-fx-background-color: red;" text="0 Officers Assigned in CheckPoint-3" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                        <Label fx:id="chekpoint2" layoutX="268.0" layoutY="2.0" prefHeight="79.0" prefWidth="96.0" style="-fx-background-color: red;" text="0 Officers Assigned in CheckPoint-2" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                        <Button layoutX="494.0" layoutY="317.0" mnemonicParsing="false" onAction="#refreshbuttonOnClick" style="-fx-background-color: green;" text="Refresh" />
                      </children>
                   </AnchorPane>
             </content>

@@ -52,26 +52,7 @@ public class CheckPointsController implements Initializable {
         selectCheckpointComboBox.getItems().addAll("Checkpoint-1","Checkpoint-2","Checkpoint-3","Checkpoint-3");
         slectNoOfOfficersCombobox.getItems().addAll("1","2","3","4","5","6","7","8","9","10");
         
-        CheckPointData cp = new CheckPointData("","",null); 
-        cpList = (ObservableList<CheckPointData>) DataReadWrite.readObjectToFile("CheckPointData.bin", cp);
         
-        for(CheckPointData x : cpList){          
-            String noOfcheckpoint = x.getCheckpointNo();
-            if("Checkpoint-1".equals(noOfcheckpoint)){
-                chekpoint1.setText(x.getoOfOfficers()+" Officers Assinged in Checkpoint-1");
-                
-            }
-            else if("Checkpoint-2".equals(noOfcheckpoint)){
-                chekpoint2.setText(x.getoOfOfficers()+" Officers Assinged in Checkpoint-2");
-            }
-            else if("Checkpoint-3".equals(noOfcheckpoint)){
-                chekpoint3.setText(x.getoOfOfficers()+" Officers Assinged in Checkpoint-3");
-            }
-            else if("Checkpoint-4".equals(noOfcheckpoint)){
-                chekpoint4.setText(x.getoOfOfficers()+" Officers Assinged in Checkpoint-3");
-            }
-            
-        }
         
         
     }    
@@ -98,6 +79,30 @@ public class CheckPointsController implements Initializable {
             GenerateAlerts.unsuccessfulAlert("An error occurred. Please try again.");
         }
 }
+
+    @FXML
+    private void refreshbuttonOnClick(ActionEvent event) {
+        CheckPointData cp = new CheckPointData("","",null); 
+        cpList = (ObservableList<CheckPointData>) DataReadWrite.readObjectToFile("CheckPointData.bin", cp);
+        
+        for(CheckPointData x : cpList){          
+            String noOfcheckpoint = x.getCheckpointNo();
+            if("Checkpoint-1".equals(noOfcheckpoint)){
+                chekpoint1.setText(x.getoOfOfficers()+" Officers Assinged in Checkpoint-1");
+                
+            }
+            else if("Checkpoint-2".equals(noOfcheckpoint)){
+                chekpoint2.setText(x.getoOfOfficers()+" Officers Assinged in Checkpoint-2");
+            }
+            else if("Checkpoint-3".equals(noOfcheckpoint)){
+                chekpoint3.setText(x.getoOfOfficers()+" Officers Assinged in Checkpoint-3");
+            }
+            else if("Checkpoint-4".equals(noOfcheckpoint)){
+                chekpoint4.setText(x.getoOfOfficers()+" Officers Assinged in Checkpoint-3");
+            }
+            
+        }
+    }
 
 
 

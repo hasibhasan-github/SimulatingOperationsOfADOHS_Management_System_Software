@@ -5,9 +5,11 @@
 package AbdullahAlMamun;
 
 import MdHasibHasan.DataReadWrite;
+import MdHasibHasan.GenerateAlerts;
 import MdHasibHasan.sceneChanging;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -73,7 +75,20 @@ public class VisitorSignUpController implements Initializable {
 
     @FXML
     private void sendAccessRequestBtnOnClick(ActionEvent event) {
-        Visitor visitor = new Visitor(visitorNamefxid.getText(),
+        String visitorName = visitorNamefxid.getText();
+        String visitorNid = visitorNidfxid.getText();
+        String visitorContactNo = visitorContactNofxid.getText();
+        String purposeOfVisit = selectPurposeOfVisitComboBox.getValue();
+        String timeSlot = selectTimeSlotComboBox.getValue();
+        String gender = selectGenderComboBox.getValue();
+        LocalDate date = selectDateLocalDate.getValue();
+        try{
+            if (visitorName.isEmpty() || visitorNid.isEmpty() || visitorContactNo.isEmpty() ||
+            purposeOfVisit == null || timeSlot == null || gender == null || date == null) {
+            GenerateAlerts.unsuccessfulAlert("Please fill in all fields.");
+            return; 
+            }
+            Visitor visitor = new Visitor(visitorNamefxid.getText(),
                                       visitorNidfxid.getText(), 
                                       visitorContactNofxid.getText(),
                                       selectPurposeOfVisitComboBox.getValue(),
@@ -90,7 +105,13 @@ public class VisitorSignUpController implements Initializable {
                                              "Pending");
         
         DataReadWrite.writeObjectToFile("VisitorRequest.bin", visitorReq);
+        GenerateAlerts.successfulAlert("Your Request has been sent");
         gaBackButton.setDisable(true);
+        }
+        catch(Exception ee){
+            GenerateAlerts.unsuccessfulAlert("An error occurred. Please try again.");
+        }
+        
          }
 
     @FXML

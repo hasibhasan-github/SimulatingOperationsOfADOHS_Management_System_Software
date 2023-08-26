@@ -4,6 +4,7 @@
  */
 package AbdullahAlMamun;
 
+import MdHasibHasan.sceneChanging;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -11,9 +12,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -41,7 +45,9 @@ public class SecurityCheifDashboardController implements Initializable {
     }
 
     @FXML
-    private void monthlyReportButtonOnClick(ActionEvent event) {
+    private void monthlyReportButtonOnClick(ActionEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(getClass().getResource("ViewReport.fxml"));
+        dashboardBorderPane.setCenter(parent);
     }
 
     @FXML
@@ -61,7 +67,16 @@ public class SecurityCheifDashboardController implements Initializable {
     }
 
     @FXML
-    private void logoutButtonOnClick(ActionEvent event) {
+    private void logoutButtonOnClick(ActionEvent event) throws IOException {
+        sceneChanging newwscene = new sceneChanging();
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        newwscene.logOutSceneSwitching(stage);
+    }
+
+    @FXML
+    private void DummyHasibSceneOnClick(ActionEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(getClass().getResource("DummyHaisb.fxml"));
+        dashboardBorderPane.setCenter(parent);
     }
     
 }

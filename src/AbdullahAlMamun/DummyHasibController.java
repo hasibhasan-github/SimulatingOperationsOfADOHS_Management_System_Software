@@ -123,7 +123,7 @@ public class DummyHasibController implements Initializable {
             eventNameTxtField.getText(), selectDepartmentOfApplicationComboBox.getValue(), applicationDatePicker.getValue(), 
             eventDatePicker.getValue(), eventDescriptionList);
             if ( GenerateAlerts.confirmationAlert() ) {
-                //SecurityCheif.requestPermissionForCrucialTask(newReq);
+                SecurityCheif.requestPermissionForCrucialTask(newReq);
             }
             eventDescriptionList.clear();
             eventNameTxtField.clear();

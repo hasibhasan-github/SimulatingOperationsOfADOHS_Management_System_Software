@@ -148,4 +148,11 @@ public class SecurityCheif extends Employee implements Serializable{
     }
     
     
+    public static void sentAnnouncementToResident(Announcement ann){
+        DataReadWrite.writeObjectToFile("Announcements.bin", ann);
+        GenerateAlerts.successfulAlert("Your Announce has been sended");
+        
+    }
+    
+    
 }

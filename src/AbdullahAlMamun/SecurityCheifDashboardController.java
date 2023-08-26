@@ -57,11 +57,15 @@ public class SecurityCheifDashboardController implements Initializable {
     }
 
     @FXML
-    private void residentPortalButtonOnClick(ActionEvent event) {
+    private void residentPortalButtonOnClick(ActionEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(getClass().getResource("ResidentPortal.fxml"));
+        dashboardBorderPane.setCenter(parent);
     }
 
     @FXML
-    private void sugestCandidateButtonOnClick(ActionEvent event) {
+    private void sugestCandidateButtonOnClick(ActionEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(getClass().getResource("BoardMemberPortal.fxml"));
+        dashboardBorderPane.setCenter(parent);
     }
 
     @FXML

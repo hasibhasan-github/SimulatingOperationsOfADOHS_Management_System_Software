@@ -51,7 +51,9 @@ public class SecurityCheifDashboardController implements Initializable {
     }
 
     @FXML
-    private void checkPointButtonOnClick(ActionEvent event) {
+    private void checkPointButtonOnClick(ActionEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(getClass().getResource("CheckPoints.fxml"));
+        dashboardBorderPane.setCenter(parent);
     }
 
     @FXML

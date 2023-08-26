@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="618.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AbdullahAlMamun.CheckPointsController">
+   <children>
+      <TabPane prefHeight="411.0" prefWidth="631.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Assign Officers">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: CAEDFF;">
+                     <children>
+                        <ComboBox fx:id="selectCheckpointComboBox" layoutX="210.0" layoutY="41.0" prefHeight="27.0" prefWidth="171.0" promptText="Select Checkpoint" style="-fx-background-image: CAEDFF;" />
+                        <ComboBox fx:id="slectNoOfOfficersCombobox" layoutX="210.0" layoutY="100.0" prefHeight="27.0" prefWidth="171.0" promptText="Select No Of Officers" />
+                        <Button fx:id="assignBtn" layoutX="238.0" layoutY="219.0" mnemonicParsing="false" onAction="#assignOfficerButtonOnClick" prefHeight="27.0" prefWidth="116.0" style="-fx-background-color: green;" text="Assign" textFill="WHITE" />
+                        <DatePicker fx:id="selectDate" layoutX="210.0" layoutY="156.0" prefHeight="27.0" prefWidth="171.0" promptText="Select Date" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="See Map">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="383.0" prefWidth="627.0">
+                     <children>
+                        <ImageView fitHeight="368.0" fitWidth="594.0" layoutX="37.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Map.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="chekpoint4" layoutX="34.0" layoutY="2.0" prefHeight="79.0" prefWidth="94.0" style="-fx-background-color: red;" text="0 Officer Assigned" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                        <Label fx:id="chekpoint1" layoutX="249.0" layoutY="236.0" prefHeight="81.0" prefWidth="97.0" style="-fx-background-color: red;" text="0 Officer Assigned" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                        <Label fx:id="chekpoint3" layoutX="503.0" layoutY="2.0" prefHeight="79.0" prefWidth="94.0" style="-fx-background-color: red;" text="0 Officer Assigned" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                        <Label fx:id="chekpoint2" layoutX="268.0" layoutY="2.0" prefHeight="79.0" prefWidth="94.0" style="-fx-background-color: red;" text="0 Officer Assigned" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</StackPane>

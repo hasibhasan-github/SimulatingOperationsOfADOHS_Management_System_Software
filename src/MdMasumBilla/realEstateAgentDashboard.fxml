@@ -188,6 +188,7 @@
                   <Button layoutX="484.0" layoutY="309.0" mnemonicParsing="false" onAction="#downloadPdfOnClick" text="Download Pdf" />
                   <ComboBox fx:id="DescriptionComboBox" layoutX="125.0" layoutY="186.0" prefWidth="150.0" promptText="Select an Option" />
                   <Label layoutX="53.0" layoutY="190.0" text="Description :" />
+                  <Button layoutX="342.0" layoutY="334.0" mnemonicParsing="false" onAction="#logOutButtonOnClick" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 30;" text="Log Out" />
                </children></AnchorPane>
         </content>
       </Tab>

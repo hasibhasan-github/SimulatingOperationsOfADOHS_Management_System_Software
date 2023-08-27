@@ -216,8 +216,7 @@ public class DataReadWrite {
                 }
                 catch(Exception e){
                     System.out.println("Masum read exe Signup Data");
-                }
-               //  System.out.println("Hasib");               
+                }               
             }
             else if ( instance instanceof carStickerRequest ){
                     f = new File(fileName);

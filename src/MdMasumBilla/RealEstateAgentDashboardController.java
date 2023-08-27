@@ -6,6 +6,8 @@ package MdMasumBilla;
 
 import MdHasibHasan.DataReadWrite;
 import MdHasibHasan.GenerateAlerts;
+import MdHasibHasan.sceneChanging;
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -14,6 +16,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
@@ -22,6 +25,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -325,6 +329,22 @@ public class RealEstateAgentDashboardController implements Initializable {
     
     @FXML
     void downloadPdfOnClick(ActionEvent event) {
+        String textToConvert = resultTextArea.getText();
 
+        if (!textToConvert.isEmpty()) {
+            PdfGenerator.generatePdf(textToConvert);
+        } else {
+            GenerateAlerts.unsuccessfulAlert("Text area is empty. Cannot generate PDF.");
+        }
+    }
+    
+    @FXML
+    private void logOutButtonOnClick(ActionEvent event) throws IOException {
+        // Creating new Scene and Loading the Stage
+        sceneChanging newwscene = new sceneChanging();
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        // Generating Confirmation Alert. If confirmation is true Log out & go to dashboard. 
+        if (GenerateAlerts.confirmationAlert()) newwscene.logOutSceneSwitching(stage);
+        
     }
 }

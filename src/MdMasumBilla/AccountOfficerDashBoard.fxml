@@ -66,26 +66,6 @@
                </children></AnchorPane>
       </content>
     </Tab>
-      <Tab text="Financial Reporting">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-               <children>
-                  <TextArea fx:id="reportTextArea" layoutX="60.0" layoutY="91.0" prefHeight="280.0" prefWidth="497.0" />
-                  <Label layoutX="231.0" layoutY="30.0" text="Financial Report">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="61.0" fitWidth="70.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../MdHasibHasan/mirpurdohslogo.png" />
-                     </image>
-                  </ImageView>
-                  <Button layoutX="458.0" layoutY="383.0" mnemonicParsing="false" onAction="#ShowReportOnClick" text="Show Financial Report" />
-                  <Button layoutX="45.0" layoutY="383.0" mnemonicParsing="false" onAction="#GeneratePdfOfFinancialReportOnClick" text="Generate Pdf" />
-               </children></AnchorPane>
-        </content>
-      </Tab>
       <Tab text="Financial Analysis">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -107,9 +87,36 @@
                </children></AnchorPane>
         </content>
       </Tab>
+      <Tab text="Financial Reporting">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TextArea fx:id="reportTextArea" layoutX="60.0" layoutY="91.0" prefHeight="280.0" prefWidth="497.0" />
+                  <Label layoutX="231.0" layoutY="30.0" text="Financial Report">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="61.0" fitWidth="70.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../MdHasibHasan/mirpurdohslogo.png" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="458.0" layoutY="383.0" mnemonicParsing="false" onAction="#ShowReportOnClick" text="Show Financial Report" />
+                  <Button layoutX="45.0" layoutY="383.0" mnemonicParsing="false" onAction="#GeneratePdfOfFinancialReportOnClick" text="Generate Pdf" />
+               </children></AnchorPane>
+        </content>
+      </Tab>
     <Tab text="Billing &amp; Invoice">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Button layoutX="497.0" layoutY="375.0" mnemonicParsing="false" onAction="#logOutButtonOnClick" style="-fx-background-color: transparent; -fx-border-radius: 30; -fx-border-color: black;" text="Log Out">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+               </children></AnchorPane>
       </content>
     </Tab>
   </tabs>

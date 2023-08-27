@@ -5,6 +5,9 @@
 package MdMasumBilla;
 
 import MdHasibHasan.DataReadWrite;
+import MdHasibHasan.GenerateAlerts;
+import MdHasibHasan.sceneChanging;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -13,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.ComboBox;
@@ -20,6 +24,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
@@ -126,7 +131,7 @@ public class AccountOfficerDashBoardController implements Initializable {
             //data.add(new PieChart.Data(label, value));
             //System.out.println(x.getItem());
             //PieChart.getData().add(x);
-        }
+        }        
         PieChart.getData().clear();
         PieChart.getData().addAll(PieChar);
         
@@ -269,4 +274,17 @@ public class AccountOfficerDashBoardController implements Initializable {
         String text = reportTextArea.getText();
         PdfGenerator.generatePdf(text);
     }
+    
+//Billing & Invoice
+
+    @FXML
+    private void logOutButtonOnClick(ActionEvent event) throws IOException {
+        // Creating new Scene and Loading the Stage
+        sceneChanging newwscene = new sceneChanging();
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        // Generating Confirmation Alert. If confirmation is true Log out & go to dashboard. 
+        if (GenerateAlerts.confirmationAlert()) newwscene.logOutSceneSwitching(stage);
+        
+    }
+    
 }

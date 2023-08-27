@@ -134,6 +134,35 @@ public class DataReadWrite {
                 }
                //  System.out.println("Hasib");               
             }
+            
+            else if ( instance instanceof FinancialAnalysis ){
+                    f = new File(fileName);
+                    fw = new FileInputStream(f);
+                    ois = new ObjectInputStream(fw);
+                try{
+                    while (true) {
+                        fAnalysis.add((FinancialAnalysis)ois.readObject());
+                    }
+                }
+                catch(Exception e){
+                    System.out.println("Financial Analysis read exe Signup Data");
+                }             
+            }
+            
+            else if ( instance instanceof FinancialRisk ){
+                    f = new File(fileName);
+                    fw = new FileInputStream(f);
+                    ois = new ObjectInputStream(fw);
+                try{
+                    while (true) {
+                        fRisk.add((FinancialRisk)ois.readObject());
+                    }
+                }
+                catch(Exception e){
+                    System.out.println("Financial Risk read exe Signup Data");
+                }              
+            }
+            
             else if ( instance instanceof signUpData ){
                     f = new File(fileName);
                     fw = new FileInputStream(f);
@@ -427,6 +456,8 @@ public class DataReadWrite {
         else if ( instance instanceof sendNotice ) return noticeList;
         else if ( instance instanceof monthlyReport ) return reportOfMaintenance;
         else if ( instance instanceof BudgetingAndForecasting ) return pieChartData;
+        else if ( instance instanceof FinancialAnalysis ) return fAnalysis;
+        else if ( instance instanceof FinancialRisk ) return fRisk;
         else if ( instance instanceof carStickerRequest ) return carStickerRequestData;
         else if ( instance instanceof dohsPolicies ) return policy;
         else if ( instance instanceof developementProject ) return project;

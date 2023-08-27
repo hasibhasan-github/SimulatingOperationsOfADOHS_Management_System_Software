@@ -170,7 +170,8 @@ public class AccountOfficerDashBoardController implements Initializable {
             System.out.println(x.getItem());
         }
     }
-      
+
+//Financial Risk Management    
     @FXML
     void analyzeRiskOnClick(ActionEvent event) {
         String riskName = RiskNameComboBox.getValue();

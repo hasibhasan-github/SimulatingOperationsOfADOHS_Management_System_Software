@@ -32,11 +32,6 @@
             </AnchorPane>
         </content>
       </Tab>
-    <Tab text="Billing &amp; Invoice">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-      </content>
-    </Tab>
     <Tab text="Financial Risk Management">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="425.0" prefWidth="600.0">
@@ -112,5 +107,10 @@
                </children></AnchorPane>
         </content>
       </Tab>
+    <Tab text="Billing &amp; Invoice">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+      </content>
+    </Tab>
   </tabs>
 </TabPane>

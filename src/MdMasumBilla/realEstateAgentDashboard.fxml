@@ -137,12 +137,58 @@
       </Tab>
       <Tab text="Finishing Works">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="61.0" fitWidth="70.0" layoutX="23.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@mirpurdohslogo.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="54.0" layoutY="112.0" text="WorkType :" />
+                  <TextField fx:id="workTypeTextField" layoutX="123.0" layoutY="108.0" prefHeight="25.0" prefWidth="129.0" />
+                  <TextField fx:id="durationTextField" layoutX="124.0" layoutY="159.0" prefHeight="25.0" prefWidth="129.0" />
+                  <Label layoutX="8.0" layoutY="163.0" text="EstimatedDuration :" />
+                  <Button layoutX="8.0" layoutY="201.0" mnemonicParsing="false" onAction="#addFinishingWorkOnClick" text="Add Work in Process" />
+                  <TableView fx:id="WorkDataTableView" layoutX="267.0" layoutY="66.0" prefHeight="270.0" prefWidth="319.0">
+                     <columns>
+                        <TableColumn fx:id="WorkTypeCol" prefWidth="101.33331298828125" text="WorkType  " />
+                        <TableColumn fx:id="DurationCol" prefWidth="124.66668701171875" text="EstDuration" />
+                        <TableColumn fx:id="statusCol" prefWidth="93.0" text="Status" />
+                     </columns>
+                  </TableView>
+                  <Button layoutX="126.0" layoutY="249.0" mnemonicParsing="false" onAction="#markWorkAsCompleted" text="Mark Work as Finish" />
+                  <Button layoutX="23.0" layoutY="324.0" mnemonicParsing="false" onAction="#WorkDataPdfOnClick" text="Generate PDF" />
+               </children></AnchorPane>
         </content>
       </Tab>
       <Tab text="Property Transaction">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="61.0" fitWidth="70.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@mirpurdohslogo.png" />
+                     </image>
+                  </ImageView>
+                  <ComboBox fx:id="propertyTypeComboBox" layoutX="125.0" layoutY="96.0" prefWidth="150.0" promptText="Select an Option" />
+                  <Label layoutX="37.0" layoutY="100.0" text="PropertyType :" />
+                  <Label layoutX="87.0" layoutY="150.0" text="Title :" />
+                  <Label layoutX="86.0" layoutY="234.0" text="Price :" />
+                  <Label layoutX="66.0" layoutY="271.0" text="Location :" />
+                  <TextField fx:id="titleTextField" layoutX="126.0" layoutY="146.0" />
+                  <TextField fx:id="priceTextField" layoutX="126.0" layoutY="230.0" />
+                  <TextField fx:id="locationTextField" layoutX="126.0" layoutY="267.0" />
+                  <Button layoutX="149.0" layoutY="309.0" mnemonicParsing="false" onAction="#addTransactionOnClick" text="Add Transaction" />
+                  <TextArea fx:id="resultTextArea" layoutX="305.0" layoutY="92.0" prefHeight="200.0" prefWidth="270.0" />
+                  <Label layoutX="216.0" layoutY="31.0" text="Property Transaction">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="484.0" layoutY="309.0" mnemonicParsing="false" onAction="#downloadPdfOnClick" text="Download Pdf" />
+                  <ComboBox fx:id="DescriptionComboBox" layoutX="125.0" layoutY="186.0" prefWidth="150.0" promptText="Select an Option" />
+                  <Label layoutX="53.0" layoutY="190.0" text="Description :" />
+               </children></AnchorPane>
         </content>
       </Tab>
   </tabs>

@@ -5,9 +5,11 @@
 package MdMasumBilla;
 
 import MdHasibHasan.DataReadWrite;
+import MdHasibHasan.GenerateAlerts;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,13 +19,14 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * FXML Controller class
  *
- * @author MD Masum Billa
+ * @author Masum
  */
 public class RealEstateAgentDashboardController implements Initializable {
 
@@ -80,7 +83,7 @@ public class RealEstateAgentDashboardController implements Initializable {
     @FXML
     private TableColumn<ConstructionPlanning, Double> ProjectBudget;
     
-    //Project Management
+//Project Management
     
     @FXML
     private ListView<String> phaseListView;
@@ -96,14 +99,53 @@ public class RealEstateAgentDashboardController implements Initializable {
 
     @FXML
     private TextField ProjectPhaseTextBox;
+    
+//Finishing Works
 
+    @FXML
+    private TextField workTypeTextField;
+    
+    @FXML
+    private TextField durationTextField;
+    
+    @FXML
+    private TableView<FinishingWorks> WorkDataTableView;
 
+    @FXML
+    private TableColumn<FinishingWorks, String> WorkTypeCol;
+
+    @FXML
+    private TableColumn<FinishingWorks, Integer> DurationCol;
+
+    @FXML
+    private TableColumn<FinishingWorks, String> statusCol;
+
+//PropertyTransaction
+    
+    @FXML
+    private ComboBox<String> propertyTypeComboBox;
+
+    @FXML
+    private TextField titleTextField;
+    
+    @FXML
+    private TextField priceTextField;
+
+    @FXML
+    private TextField locationTextField;
+
+    @FXML
+    private TextArea resultTextArea;
+    @FXML
+    private ComboBox<String> DescriptionComboBox;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+//Property Listing Initialize        
         TitleComboBox.getItems().addAll( "Modern Downtown Apartment with Stunning Views",
                 "Charming Family Home in Suburban Oasis",
                 "Luxury Waterfront Villa with Private Dock");
@@ -119,14 +161,31 @@ public class RealEstateAgentDashboardController implements Initializable {
         PropertyPrice.setCellValueFactory(new PropertyValueFactory<PropertyListing, Double>("Price"));
         PropertyLocation.setCellValueFactory(new PropertyValueFactory<PropertyListing,String>("Location"));
         
-        
+//Construction Planning Initialize        
         ProjectTitle.setCellValueFactory(new PropertyValueFactory<ConstructionPlanning,String>("projectTitle"));
         ProjectScope.setCellValueFactory(new PropertyValueFactory<ConstructionPlanning,String>("ProjectScope"));
         ProjectStartDate.setCellValueFactory(new PropertyValueFactory<ConstructionPlanning,LocalDate>("StartDate"));
         ProjectEndDate.setCellValueFactory(new PropertyValueFactory<ConstructionPlanning,LocalDate>("EndDate"));
         ProjectBudget.setCellValueFactory(new PropertyValueFactory<ConstructionPlanning, Double>("Budget"));
+    
+//Finishing Work Initialize
+        WorkTypeCol.setCellValueFactory(new PropertyValueFactory<FinishingWorks,String>("WorkType"));
+        DurationCol.setCellValueFactory(new PropertyValueFactory<FinishingWorks, Integer>("estimatedDurationInDays"));
+        //statusCol.setCellValueFactory(new PropertyValueFactory<FinishingWorks,String>("Status"));
+        statusCol.setCellValueFactory(cellData -> {String status = cellData.getValue().isCompleted() ? "Completed" : "Pending";
+            return new SimpleStringProperty(status);
+        });
+
+//Property Transaction Initialize
+        propertyTypeComboBox.getItems().addAll("Apartment","House","Land","Shop");
+        
+        DescriptionComboBox.getItems().addAll("This modern apartment features spacious rooms and breathtaking city views.",
+                "This cozy family home is nestled in a quiet suburb, featuring a spacious backyard and a beautiful garden.",
+                "A rare opportunity to own prime commercial land in the heart of the DOHS, offering endless possibilities for development.",
+                "A great place to own prime commercial shop in the heart of the DOHS.");
     }     
 
+//Property Listing Button    
     @FXML
     private void AddPropertyOnClick(ActionEvent event) {
         PropertyListing property = new PropertyListing(
@@ -150,7 +209,7 @@ public class RealEstateAgentDashboardController implements Initializable {
         tableId.getItems().remove(SelectedId);
     }
     
-    //Construction Planning
+//Construction Planning
     @FXML
     void ConstructionPlanningAddProjectOnClick(ActionEvent event) {
         ConstructionPlanning plan = new ConstructionPlanning(
@@ -177,7 +236,7 @@ public class RealEstateAgentDashboardController implements Initializable {
 
     }
     
-    //Project MAnagement
+//Project MAnagement
     
     @FXML
     void AddPhaseInListViewOnClick(ActionEvent event) {
@@ -200,5 +259,72 @@ public class RealEstateAgentDashboardController implements Initializable {
     void RemovePhaseFromListViewOnClick(ActionEvent event) {
         int selectedItems = phaseListView.getSelectionModel().getSelectedIndex();
         phaseListView.getItems().remove(selectedItems);
+    }
+    
+
+//Finishing Works
+    
+    
+    @FXML
+    public void addFinishingWorkOnClick() {
+        FinishingWorks work = new FinishingWorks(
+                workTypeTextField.getText(),
+                Integer.parseInt(durationTextField.getText()),
+                statusCol.getText()
+        );
+        ObservableList<FinishingWorks>work2=WorkDataTableView.getItems();
+        work2.add(work);
+        WorkDataTableView.setItems(work2);
+    }
+    
+    @FXML
+    public void markWorkAsCompleted() {
+        FinishingWorks selectedWork = WorkDataTableView.getSelectionModel().getSelectedItem();
+    
+        if (selectedWork != null) {
+            selectedWork.setCompleted(true);
+            WorkDataTableView.refresh(); 
+        } else {
+            String str = "No work selected";
+            GenerateAlerts.unsuccessfulAlert(str);
+        }
+    }
+    
+    @FXML
+    void WorkDataPdfOnClick(ActionEvent event) {
+       ObservableList<FinishingWorks> workData = WorkDataTableView.getItems();
+       
+       StringBuilder pdfContent = new StringBuilder();
+       pdfContent.append("Finishing Works Report:\n\n");
+       
+       for (FinishingWorks work : workData) {
+        pdfContent.append("Work Type: ").append(work.getWorkType()).append("\n");
+        pdfContent.append("Duration: ").append(work.getEstimatedDurationInDays()).append(" days\n");
+        pdfContent.append("Status: ").append(work.getApplicationStatus()).append("\n");
+        pdfContent.append("Completed: ").append(work.isCompleted() ? "Yes" : "No").append("\n\n");
+    }
+
+    PdfGenerator.generatePdf(pdfContent.toString());
+    }
+    
+
+//PropertyTransaction
+    
+    @FXML
+    void addTransactionOnClick(ActionEvent event) {
+        PropertyTransaction transaction = new PropertyTransaction(
+        propertyTypeComboBox.getValue(),
+        titleTextField.getText(),
+        DescriptionComboBox.getValue(),
+        Double.parseDouble(priceTextField.getText()),
+        locationTextField.getText());
+        
+        resultTextArea.appendText(transaction.toString());
+        DataReadWrite.overWriteObjectToFile("addTransaction.bin", transaction);
+    }
+    
+    @FXML
+    void downloadPdfOnClick(ActionEvent event) {
+
     }
 }

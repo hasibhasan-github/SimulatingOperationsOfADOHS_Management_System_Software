@@ -40,7 +40,7 @@ public class UtilityServiceManagerDashboardController implements Initializable {
 
     @FXML
     private void logOutMenuItemOnClick(ActionEvent event) throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("LogOutScene.fxml"));
+        Parent parent = FXMLLoader.load(getClass().getResource("LogOutScence.fxml"));
         UtilityServiceManagerBorderPane.setCenter(parent);
     }
 

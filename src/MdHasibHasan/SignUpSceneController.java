@@ -4,6 +4,7 @@
  */
 package MdHasibHasan;
 
+import Abdullah.UtilityServiceManager.UtilityServiceManager;
 import AbdullahAlMamun.SecurityCheif;
 import MdHasibHasan.CantonmentBoardMember.CantonmentBoardMember;
 import MdHasibHasan.CantonmentBoardMember.dohsPolicies;
@@ -440,6 +441,31 @@ public class SignUpSceneController implements Initializable {
                  signUpPasswordField.getText(), userList.getSelectionModel().getSelectedItem());
         
         MaintainenceOfficer.regsiterNewUser(ms, loginData, "SecurityDepartment.bin", id);
+        
+        holdingOrFlatNoTextField.clear();
+        plotNoTextField.clear();
+        nameTextField.clear();
+        emailTextField.clear();
+        contactNoTextField.clear();
+        //userTypeComboBox.setValue(null);
+        dateOfBirth.setValue(null);
+        signUpPasswordField.clear();
+    }
+    private void registerForUtilityServiceProvider(){
+        // Gender Selection
+        String gender;
+        if (maleRadioBtn.isSelected()) gender = "Male";
+        else gender = "Female";
+        //GenerateInteger Id
+        int id = generateInteger(emailTextField.getText());
+        UtilityServiceManager ms = new UtilityServiceManager(dateOfJoin.getValue(), Float.parseFloat(salaryTextField.getText()),
+                    userDepartmentComboBox.getValue(), userDesignationComboBox.getValue(), id, nameTextField.getText(),
+                        gender, emailTextField.getText(), userList.getSelectionModel().getSelectedItem(), dateOfBirth.getValue(),
+                Long.parseLong(contactNoTextField.getText()));
+        signUpData loginData = new signUpData(id, emailTextField.getText(), 
+                 signUpPasswordField.getText(), userList.getSelectionModel().getSelectedItem());
+        
+        MaintainenceOfficer.regsiterNewUser(ms, loginData, "UtilityServiceManager.bin", id);
         
         holdingOrFlatNoTextField.clear();
         plotNoTextField.clear();

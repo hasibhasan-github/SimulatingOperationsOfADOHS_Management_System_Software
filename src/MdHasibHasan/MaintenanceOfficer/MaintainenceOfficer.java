@@ -104,6 +104,7 @@ public class MaintainenceOfficer extends Employee implements Serializable {
         else if ( fileName.equals("CantonmentBoardMember.bin") ) DataReadWrite.overWriteObjectToFile("CantonmentBoardMember.bin", instance);
         else if ( fileName.equals("RealEstateAgent.bin") ) DataReadWrite.overWriteObjectToFile("RealEstateAgent.bin", instance);
         else if ( fileName.equals("SecurityDepartment.bin") ) DataReadWrite.writeObjectToFile("SecurityDepartment.bin", instance);
+        else if ( fileName.equals("UtilityServiceManager.bin") ) DataReadWrite.writeObjectToFile("UtilityServiceManager.bin", instance);
         
         
         DataReadWrite.writeObjectToFile("LoginData.bin", loginData);

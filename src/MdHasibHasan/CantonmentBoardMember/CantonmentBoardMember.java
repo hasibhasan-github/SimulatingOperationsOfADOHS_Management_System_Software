@@ -121,6 +121,30 @@ public class CantonmentBoardMember extends User implements Serializable {
         DataReadWrite.overWriteObjectToFile("developementProjectVoting.bin", newVoteProj);
     }
     
+    public static void sendImportantNotice(sendNotice newNotice){
+        DataReadWrite.writeObjectToFile("DOHSNotice.bin", newNotice);
+        
+        GenerateAlerts.successfulAlert("Notice has been published.");
+    }
+    
+    public static ObservableList<sendNotice> deleteNotice(sendNotice delNotice){
+        ObservableList<sendNotice> noticeList = (ObservableList<sendNotice>) DataReadWrite.readObjectToFile("DOHSNotice.bin", delNotice);
+        
+        ObservableList<sendNotice> updateNoticeList = FXCollections.observableArrayList();
+        
+        for ( sendNotice noticeData1 : noticeList  ){
+            if ( noticeData1.getNoticeName().equals(delNotice.getNoticeName()) && noticeData1.getNoticeSubject().equals(delNotice.getNoticeSubject()) ) continue;
+            else updateNoticeList.add(noticeData1);
+        }
+        
+        for ( int i = 0; i < updateNoticeList.size(); ++i ){
+            if ( i == 0 ) DataReadWrite.overWriteObjectToFile("DOHSNotice.bin", updateNoticeList.get(i));
+            else DataReadWrite.writeObjectToFile("DOHSNotice.bin", updateNoticeList.get(i));
+        }
+        GenerateAlerts.successfulAlert("Deletion has been successful.");
+        return updateNoticeList;
+    }
+    
     
     public static void generateDevelopementProjectPDF(developementProject devProjectPDF){
         try {

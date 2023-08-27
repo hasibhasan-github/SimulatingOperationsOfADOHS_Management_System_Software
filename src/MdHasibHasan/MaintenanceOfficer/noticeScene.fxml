@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="446.0" prefWidth="600.0" style="-fx-background-color: CORNSILK;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MdHasibHasan.MaintenanceOfficer.NoticeSceneController">
+   <children>
+      <TableView fx:id="noticeTableView" layoutX="20.0" layoutY="61.0" prefHeight="130.0" prefWidth="558.0">
+        <columns>
+          <TableColumn fx:id="noticeTableColoumn" prefWidth="140.0" text="Notice" />
+            <TableColumn fx:id="subjectTableColoumn" prefWidth="301.0" text="Subject" />
+          <TableColumn fx:id="dateTableColoumn" prefWidth="116.0" text="Date" />
+            <TableColumn fx:id="noticeDescriptionTableColoumn" prefWidth="75.0" text="Notice Description" />
+            <TableColumn fx:id="departmentTableColoumn" prefWidth="75.0" text="Department" />
+        </columns>
+      </TableView>
+      <Label layoutX="30.0" layoutY="32.0" text="All the important notice from HigherAuthorites are Here:">
+         <font>
+            <Font name="Arial Narrow Bold" size="16.0" />
+         </font>
+      </Label>
+      <Button layoutX="350.0" layoutY="207.0" mnemonicParsing="false" onAction="#loadFullNoticeButtonOnClick" text="Load Full Notice">
+         <font>
+            <Font name="Arial Narrow Bold" size="14.0" />
+         </font>
+      </Button>
+      <TextArea fx:id="noticeExpandedView" editable="false" layoutX="10.0" layoutY="247.0" prefHeight="152.0" prefWidth="578.0" wrapText="true" />
+      <Button layoutX="270.0" layoutY="406.0" mnemonicParsing="false" onAction="#goBackBuuttonOnClick" text="Go Back">
+         <font>
+            <Font name="Arial Narrow Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="127.0" layoutY="207.0" mnemonicParsing="false" onAction="#downloadPDFButtonOnClick" prefHeight="26.0" prefWidth="110.0" text="Download PDF">
+         <font>
+            <Font name="Arial Narrow Bold" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

@@ -203,7 +203,7 @@ public class AccountOfficerDashBoardController implements Initializable {
                                     "\nRiskScore >= 0.4 = Medium Risk" +
                                     "\nRiskScore <= 0.4 = Low Risk]" +"\n";
 
-        riskTextArea.setText(risk);
+        riskTextArea.setText(riskAnalysisReport);
 
         DataReadWrite.overWriteObjectToFile("FinancialRisk.bin", riskAnalysisReport);
     }

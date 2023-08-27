@@ -80,6 +80,12 @@ public class CantonmentBoardMemberDashboardController implements Initializable {
         borderPaneId.setCenter(parent);
     }
 
+    @FXML
+    private void sendNoticeMenuItemOnClick(ActionEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(getClass().getResource("sendNoticceScene.fxml"));
+        borderPaneId.setCenter(parent);
+    }
+
 
     
 }

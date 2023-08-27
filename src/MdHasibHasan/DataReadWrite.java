@@ -11,6 +11,7 @@ import MdHasibHasan.CantonmentBoardMember.developementProject;
 import MdHasibHasan.CantonmentBoardMember.developementProjectVoting;
 import MdHasibHasan.CantonmentBoardMember.dohsPolicies;
 import MdHasibHasan.CantonmentBoardMember.residentVote;
+import MdHasibHasan.CantonmentBoardMember.sendNotice;
 import MdHasibHasan.DummyUser.Resident;
 import MdHasibHasan.MaintenanceOfficer.PublicProperties;
 import MdMasumBilla.BudgetingAndForecasting;
@@ -88,6 +89,7 @@ public class DataReadWrite {
         //ArrayList<OfferedCourseClass> offercourse = new ArrayList<OfferedCourseClass>();
         //ArrayList<RegisteredCourse> recourse = new ArrayList<RegisteredCourse>();
         ObservableList<Resident> people = FXCollections.observableArrayList();
+        ObservableList<sendNotice> noticeList = FXCollections.observableArrayList();
         ObservableList<signUpData> loginData  = FXCollections.observableArrayList();
         ObservableList<BudgetingAndForecasting> pieChartData  = FXCollections.observableArrayList();
         ObservableList<carStickerRequest> carStickerRequestData  = FXCollections.observableArrayList();
@@ -176,6 +178,21 @@ public class DataReadWrite {
                 }
                //  System.out.println("Hasib");               
             }
+            else if ( instance instanceof sendNotice ){
+                    f = new File(fileName);
+                    fw = new FileInputStream(f);
+                    ois = new ObjectInputStream(fw);
+                try{
+                    while (true) {
+                        noticeList.add((sendNotice)ois.readObject());
+                    }
+                }
+                catch(Exception e){
+                    System.out.println("sendNotice read exe Signup Data");
+                }
+               //  System.out.println("Hasib");               
+            }
+            
             else if ( instance instanceof developementProject ){
                     f = new File(fileName);
                     fw = new FileInputStream(f);
@@ -324,6 +341,7 @@ public class DataReadWrite {
         }
 */
         if ( instance instanceof Resident ) return people;
+        else if ( instance instanceof sendNotice ) return noticeList;
         else if ( instance instanceof BudgetingAndForecasting ) return pieChartData;
         else if ( instance instanceof carStickerRequest ) return carStickerRequestData;
         else if ( instance instanceof dohsPolicies ) return policy;

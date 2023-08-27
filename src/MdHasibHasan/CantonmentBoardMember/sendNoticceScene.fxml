@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MdHasibHasan.CantonmentBoardMember.SendNoticceSceneController">
+  <tabs>
+    <Tab text="See All Notice">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: CORNSILK;">
+   <children>
+      <TableView fx:id="noticeTableView" layoutX="21.0" layoutY="49.0" prefHeight="130.0" prefWidth="558.0">
+        <columns>
+          <TableColumn fx:id="noticeTableColoumn" prefWidth="140.0" text="Notice" />
+            <TableColumn fx:id="subjectTableColoumn" prefWidth="301.0" text="Subject" />
+          <TableColumn fx:id="dateTableColoumn" prefWidth="116.0" text="Date" />
+            <TableColumn fx:id="departmentTableColoumn" prefWidth="75.0" text="Department" />
+            <TableColumn fx:id="noticeDescriptionTableColoumn" prefWidth="75.0" text="Notice Description" />
+        </columns>
+      </TableView>
+      <Label layoutX="30.0" layoutY="14.0" text="All the important notice from HigherAuthorites are Here:">
+         <font>
+            <Font name="Arial Narrow Bold" size="16.0" />
+         </font>
+      </Label>
+      <Button layoutX="37.0" layoutY="194.0" mnemonicParsing="false" onAction="#loadFullNoticeButtonOnClick" text="Load Full Notice">
+         <font>
+            <Font name="Arial Narrow Bold" size="14.0" />
+         </font>
+      </Button>
+      <TextArea fx:id="noticeExpandedView" editable="false" layoutX="10.0" layoutY="231.0" prefHeight="122.0" prefWidth="578.0" wrapText="true" />
+                  <Button layoutX="460.0" layoutY="194.0" mnemonicParsing="false" onAction="#deleteNoticeButtonOnClick" text="Delete Notice">
+                     <font>
+                        <Font name="Arial Narrow Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="173.0" layoutY="194.0" mnemonicParsing="false" onAction="#downloadNoticePDFButtonOnClick" text="Download notice PDF">
+                     <font>
+                        <Font name="Arial Narrow Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="342.0" layoutY="194.0" mnemonicParsing="false" onAction="#refreshTableButtonOnClick" text="Refesh Table">
+                     <font>
+                        <Font name="Arial Narrow Bold" size="14.0" />
+                     </font>
+                  </Button>
+   </children></AnchorPane>
+      </content> 
+    </Tab>
+    <Tab text="Send a new Notice">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: CORNSILK;">
+               <children>
+                  <Label layoutX="25.0" layoutY="40.0" text="Notice Name:">
+                     <font>
+                        <Font name="Arial Narrow Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="noticeNameTxtField" layoutX="111.0" layoutY="36.0" prefHeight="25.0" prefWidth="168.0" />
+                  <Label layoutX="300.0" layoutY="40.0" text="Notice Date:">
+                     <font>
+                        <Font name="Arial Narrow Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="noticeDatePicker" layoutX="379.0" layoutY="36.0" />
+                  <ComboBox fx:id="noticeForPeopleTypeComboBox" layoutX="98.0" layoutY="81.0" prefHeight="25.0" prefWidth="112.0" />
+                  <Label layoutX="25.0" layoutY="85.0" text="Notice For:">
+                     <font>
+                        <Font name="Arial Narrow Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="230.0" layoutY="85.0" text="Subject:">
+                     <font>
+                        <Font name="Arial Narrow Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="noticeSubjectTxtField" layoutX="288.0" layoutY="77.0" prefHeight="33.0" prefWidth="291.0" />
+                  <Label layoutX="22.0" layoutY="131.0" text="Description:">
+                     <font>
+                        <Font name="Arial Narrow Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="noticeDescriptionTxtField" layoutX="98.0" layoutY="123.0" prefHeight="33.0" prefWidth="483.0" />
+                  <Button layoutX="243.0" layoutY="173.0" mnemonicParsing="false" onAction="#addNoticeDescriptionButtonOnClick" prefHeight="26.0" prefWidth="115.0" text="Add Description">
+                     <font>
+                        <Font name="Arial Narrow Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <TextArea fx:id="noticeDescriptionViewTxtArea" editable="false" layoutX="23.0" layoutY="215.0" prefHeight="144.0" prefWidth="462.0" wrapText="true" />
+                  <Button layoutX="494.0" layoutY="252.0" mnemonicParsing="false" onAction="#sendNoticeButtonOnClick" prefHeight="70.0" prefWidth="87.0" text="Send Notice" wrapText="true">
+                     <font>
+                        <Font name="Arial Narrow Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>

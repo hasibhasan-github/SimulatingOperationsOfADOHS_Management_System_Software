@@ -62,6 +62,11 @@
                      </font>
                   </Label>
                   <TextField fx:id="eventIDTxtField" layoutX="431.0" layoutY="87.0" prefHeight="25.0" prefWidth="95.0" />
+                  <Button layoutX="494.0" layoutY="345.0" mnemonicParsing="false" onAction="#goBackButtonOnClick" style="-fx-border-style: solid inside; -fx-border-color: black; -fx-border-radius: 100; -fx-border-insets: 5; -fx-background-color: transparent;" text="Go Back" textFill="#8d1010">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Button>
            </children>
         </AnchorPane>
       </content>

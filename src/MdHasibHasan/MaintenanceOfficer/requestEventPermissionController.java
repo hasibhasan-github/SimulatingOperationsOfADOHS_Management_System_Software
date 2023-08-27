@@ -7,6 +7,8 @@ package MdHasibHasan.MaintenanceOfficer;
 import MdHasibHasan.CantonmentBoardMember.crucialTaskPermissionRequest;
 import MdHasibHasan.DataReadWrite;
 import MdHasibHasan.GenerateAlerts;
+import MdHasibHasan.sceneChanging;
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
@@ -23,6 +26,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -101,7 +105,6 @@ public class requestEventPermissionController implements Initializable {
     @FXML
     private void addEventDescriptionButtonOnClick(ActionEvent event) {
         try{
-            System.out.println(eventDescriptionTxtField.getText().isEmpty());
             if (eventDescriptionTxtField.getText().isEmpty() ) throw new RuntimeException("Event description cannot be empty.");
             else eventDescriptionList.add(eventDescriptionTxtField.getText());
             eventAllDescritionTxtArea.appendText(eventDescriptionTxtField.getText() + "\n");
@@ -150,6 +153,13 @@ public class requestEventPermissionController implements Initializable {
             }
         }
         permissionFromHigherAuthoritiesTableView.getItems().addAll(updatedCrucTaskReq);
+    }
+
+    @FXML
+    private void goBackButtonOnClick(ActionEvent event) throws IOException {
+        sceneChanging newwscene = new sceneChanging();
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdHasibHasan/MaintenanceOfficer/MaintenanceOfficerDashboard.fxml");
     }
     
 }

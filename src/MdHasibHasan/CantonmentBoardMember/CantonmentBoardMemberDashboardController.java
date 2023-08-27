@@ -5,16 +5,24 @@
 package MdHasibHasan.CantonmentBoardMember;
 
 
+import MdHasibHasan.GenerateAlerts;
+import MdHasibHasan.sceneChanging;
+import MdHasibHasan.signUpData;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 
 /**
@@ -26,6 +34,8 @@ public class CantonmentBoardMemberDashboardController implements Initializable {
 
     @FXML
     private BorderPane borderPaneId;
+    @FXML
+    private TextArea welcomeTxtArea;
 
     /**
      * Initializes the controller class.
@@ -33,6 +43,14 @@ public class CantonmentBoardMemberDashboardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO 
+        
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        
+        // Format the current date and time
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDateTime = currentDateTime.format(formatter);
+        
+        welcomeTxtArea.appendText("Current Date and Time: " + formattedDateTime);
         
     }    
 
@@ -49,7 +67,9 @@ public class CantonmentBoardMemberDashboardController implements Initializable {
     }
 
     @FXML
-    private void seeFullMapButtonOnClick(ActionEvent event) {
+    private void seeFullMapButtonOnClick(ActionEvent event) throws IOException {
+        sceneChanging newwscene = new sceneChanging();
+        newwscene.windowSwitchingWithoutDataPassing("/MdHasibHasan/CantonmentBoardMember/viewMapWindow.fxml");
     }
 
     @FXML
@@ -70,9 +90,6 @@ public class CantonmentBoardMemberDashboardController implements Initializable {
         borderPaneId.setCenter(parent);
     }
 
-    @FXML
-    private void permissionAnalysisDataMenuItemOnClick(ActionEvent event) {
-    }
 
     @FXML
     private void votingMenuItemOnSelect(ActionEvent event) throws IOException {
@@ -98,6 +115,15 @@ public class CantonmentBoardMemberDashboardController implements Initializable {
         borderPaneId.setCenter(parent);
     }
 
-
-    
+    @FXML
+    private void loginInResidentAsGuestButtonOnClick(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        sceneChanging newwscene = new sceneChanging();
+        
+        signUpData guest = new signUpData(000000, "cantonmentboardpresidentasguest", "*********", "Resident");
+        if ( GenerateAlerts.confirmationAlert() ) {
+        newwscene.sceneSwitchingWithDataPassing(stage, "/MdHasibHasan/DummyUser/ResidentDashboard.fxml", "Resident",
+               guest );  }
+    }
+  
 }

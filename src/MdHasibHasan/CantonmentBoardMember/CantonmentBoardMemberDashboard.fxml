@@ -32,21 +32,12 @@
                 <Menu mnemonicParsing="false" text="Pending Permission">
                   <items>
                         <MenuItem mnemonicParsing="false" onAction="#pendingPermissionMenuItemOnClick" text="Pending Permission" />
-                        <MenuItem mnemonicParsing="false" onAction="#permissionAnalysisDataMenuItemOnClick" text="Permission Data Analysis" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Select Department Head">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Maintenance" />
-                        <MenuItem mnemonicParsing="false" text="Security" />
-                        <MenuItem mnemonicParsing="false" text="Accounts &amp; Finance" />
                   </items>
                 </Menu>
                   <Menu mnemonicParsing="false" text="Work Report">
                     <items>
                       <MenuItem mnemonicParsing="false" onAction="#maintenaceDeptMenuItemOnClick" text="Maintenance Department" />
                         <MenuItem mnemonicParsing="false" onAction="#securityDepartmentMenuItemOnClick" text="Security Department" />
-                        <MenuItem mnemonicParsing="false" text="Accounts &amp; Finance Department" />
                     </items>
                   </Menu>
               </menus>
@@ -65,12 +56,11 @@
                         <Font name="Arial Black" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="167.0" layoutY="76.0" text="Notifications:">
+                  <Label layoutX="182.0" layoutY="106.0" text="Experience how a Resident feels in the Software System">
                      <font>
-                        <Font name="Arial Narrow" size="17.0" />
+                        <Font name="Arial Narrow Bold" size="17.0" />
                      </font>
                   </Label>
-                  <TextArea editable="false" layoutX="160.0" layoutY="102.0" prefHeight="74.0" prefWidth="474.0" />
                   <Label layoutX="23.0" layoutY="192.0" text="DOHS MAP:">
                      <font>
                         <Font name="Arial Narrow" size="17.0" />
@@ -86,6 +76,12 @@
                         <Font name="Arial Black" size="12.0" />
                      </font>
                   </Button>
+                  <Button layoutX="267.0" layoutY="137.0" mnemonicParsing="false" onAction="#loginInResidentAsGuestButtonOnClick" style="-fx-border-style: solid inside; -fx-border-radius: 100; -fx-border-insets: 5; -fx-border-color: black; -fx-background-color: transparent;" text="Login in Resident as Guest" textFill="#a81818">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Button>
+                  <TextArea fx:id="welcomeTxtArea" editable="false" layoutX="163.0" layoutY="60.0" prefHeight="39.0" prefWidth="464.0" wrapText="true" />
                </children></AnchorPane>
          </center>
       </BorderPane>

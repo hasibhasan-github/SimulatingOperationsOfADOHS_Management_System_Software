@@ -77,9 +77,6 @@ public class LoginController implements Initializable {
         newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdHasibHasan/aboutDOHS.fxml");
     }
 
-    @FXML
-    private void contactButtonOnClick(ActionEvent event) {
-    }
 
     @FXML
     private void signInButtonOnClick(ActionEvent event) {
@@ -182,6 +179,14 @@ public class LoginController implements Initializable {
     @FXML
     private void selectUserComboBoxOnClick(ActionEvent event) {
         if (selectUserComboBox.getValue() != null ) selectUserComboBox.setStyle("-fx-background-color: white;");
+    }
+
+    @FXML
+    private void supportButtonOnClick(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        sceneChanging newwscene = new sceneChanging();
+        newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdHasibHasan/MaintenanceOfficer/helpDesk.fxml");
+        
     }
     
 }

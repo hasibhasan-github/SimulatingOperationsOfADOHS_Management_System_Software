@@ -22,13 +22,58 @@
             <Font name="Arial Narrow Bold" size="15.0" />
          </font>
       </Button>
-      <StackedBarChart fx:id="stackBarChart" layoutX="21.0" layoutY="68.0" prefHeight="390.0" prefWidth="780.0">
+      <StackedBarChart fx:id="stackBarChart" layoutX="21.0" layoutY="68.0" prefHeight="407.0" prefWidth="780.0">
         <xAxis>
-          <CategoryAxis label="Expenditure" prefHeight="52.0" prefWidth="693.0" side="BOTTOM" fx:id="xAxis" />
+          <CategoryAxis label="Expenditure" prefHeight="44.0" prefWidth="693.0" side="BOTTOM" fx:id="xAxis" />
         </xAxis>
         <yAxis>
-          <NumberAxis fx:id="yAxis" label="Amount BDT" prefHeight="302.0" prefWidth="57.0" side="LEFT" />
+          <NumberAxis fx:id="yAxis" label="Amount BDT" prefHeight="306.0" prefWidth="57.0" side="LEFT" />
         </yAxis>
       </StackedBarChart>
+      <Label layoutX="107.0" layoutY="482.0" text="Yearly Report of Expenditure in DOHS Mosque, School, Park, Street, Street Light, Office, Hospital, Office">
+         <font>
+            <Font name="Arial Narrow Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="series1Label" layoutX="116.0" layoutY="363.0">
+         <font>
+            <Font name="Arial Narrow Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="series2Label" layoutX="201.0" layoutY="363.0">
+         <font>
+            <Font name="Arial Narrow Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="series3Label" layoutX="286.0" layoutY="363.0">
+         <font>
+            <Font name="Arial Narrow Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="series4Label" layoutX="382.0" layoutY="363.0">
+         <font>
+            <Font name="Arial Narrow Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="series5Label" layoutX="448.0" layoutY="363.0">
+         <font>
+            <Font name="Arial Narrow Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="series6Label" layoutX="549.0" layoutY="363.0">
+         <font>
+            <Font name="Arial Narrow Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="series7Label" layoutX="636.0" layoutY="363.0">
+         <font>
+            <Font name="Arial Narrow Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="series8Label" layoutX="726.0" layoutY="363.0">
+         <font>
+            <Font name="Arial Narrow Bold" size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

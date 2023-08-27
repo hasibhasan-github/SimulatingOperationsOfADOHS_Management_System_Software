@@ -16,6 +16,7 @@ import MdHasibHasan.CantonmentBoardMember.residentVote;
 import MdHasibHasan.CantonmentBoardMember.sendNotice;
 import MdHasibHasan.DummyUser.Resident;
 import MdHasibHasan.MaintenanceOfficer.PublicProperties;
+import MdHasibHasan.MaintenanceOfficer.SupportForum;
 import MdMasumBilla.BudgetingAndForecasting;
 import MdMasumBilla.accountsAndFinanceOfficer;
 import MdHasibHasan.MaintenanceOfficer.carStickerRequest;
@@ -92,6 +93,7 @@ public class DataReadWrite {
         //ArrayList<OfferedCourseClass> offercourse = new ArrayList<OfferedCourseClass>();
         //ArrayList<RegisteredCourse> recourse = new ArrayList<RegisteredCourse>();
         ObservableList<Resident> people = FXCollections.observableArrayList();
+        ObservableList<SupportForum> listDataForum = FXCollections.observableArrayList();
         ObservableList<sendNotice> noticeList = FXCollections.observableArrayList();
         ObservableList<signUpData> loginData  = FXCollections.observableArrayList();
         ObservableList<BudgetingAndForecasting> pieChartData  = FXCollections.observableArrayList();
@@ -151,6 +153,20 @@ public class DataReadWrite {
                 try{
                     while (true) {
                         reportOfMaintenance.add((monthlyReport)ois.readObject());
+                    }
+                }
+                catch(Exception e){
+                    System.out.println("Monthly reportOfMaintenance read exe Signup Data");
+                }
+               //  System.out.println("Hasib");               
+            }
+            else if ( instance instanceof SupportForum ){
+                    f = new File(fileName);
+                    fw = new FileInputStream(f);
+                    ois = new ObjectInputStream(fw);
+                try{
+                    while (true) {
+                        listDataForum.add((SupportForum)ois.readObject());
                     }
                 }
                 catch(Exception e){
@@ -391,6 +407,7 @@ public class DataReadWrite {
         }
 */
         if ( instance instanceof Resident ) return people;
+        else if ( instance instanceof SupportForum ) return listDataForum;
         else if ( instance instanceof sendNotice ) return noticeList;
         else if ( instance instanceof monthlyReport ) return reportOfMaintenance;
         else if ( instance instanceof BudgetingAndForecasting ) return pieChartData;

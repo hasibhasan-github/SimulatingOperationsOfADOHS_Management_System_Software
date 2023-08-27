@@ -206,7 +206,7 @@ public class MaintenanceOfficerDashboardController implements Initializable {
     private void initializingTheuserGoalListView(){
         // Initializing the User Goal List View
         userGoalListView.getItems().addAll("1.DOHS Software System", "2.Notice Section", "3.Public Property Section",
-                "4.Support Section", "5.Monthly Report Section", "6.Permission Section");
+                "4.Support/Help Desk Forum", "5.Monthly Report Section", "6.Permission Section");
     }
    
 
@@ -214,9 +214,9 @@ public class MaintenanceOfficerDashboardController implements Initializable {
     private void logOutButtonOnClick(ActionEvent event) throws IOException {
         sceneChanging newwscene = new sceneChanging();
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        
+        if ( GenerateAlerts.confirmationAlert() ) {
         newwscene.logOutSceneSwitching(stage);
-        GenerateAlerts.successfulAlert("Have a good day!" + "\n" + "Please visit Again");
+        GenerateAlerts.successfulAlert("Have a good day!" + "\n" + "Please visit Again"); }
     }
 
     @FXML
@@ -302,6 +302,9 @@ public class MaintenanceOfficerDashboardController implements Initializable {
             }
             else if ( userGoalListView.getSelectionModel().getSelectedItem().equals("5.Monthly Report Section") ){
                 newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdHasibHasan/MaintenanceOfficer/maintenaceDepartmentWorkReport.fxml");
+            }
+            else if ( userGoalListView.getSelectionModel().getSelectedItem().equals("4.Support/Help Desk Forum") ){
+                newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdHasibHasan/MaintenanceOfficer/helpDeskForumsFeedBack.fxml");
             }
         }
         catch (Exception e){

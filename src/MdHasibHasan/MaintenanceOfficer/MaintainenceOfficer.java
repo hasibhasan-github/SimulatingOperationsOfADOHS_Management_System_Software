@@ -113,6 +113,18 @@ public class MaintainenceOfficer extends Employee implements Serializable {
                                         "You DOHS user id is: " + ID);
     }
     
+    public static void getSubmitForumData(SupportForum newFForum){
+        DataReadWrite.writeObjectToFile("SupportOrHelpDeskForumData.bin", newFForum);
+        GenerateAlerts.successfulAlert("Support Forum Submitted Succesfully."); 
+    }
+    
+    public static ObservableList<SupportForum> viewSubmitForumResponses(){
+        SupportForum newForum = new SupportForum("", "", "", "", "");
+        ObservableList<SupportForum> forumList = (ObservableList<SupportForum>) DataReadWrite.readObjectToFile("SupportOrHelpDeskForumData.bin", newForum);
+        
+        return forumList;
+    }
+    
     public static ObservableList<PublicProperties> seeAllPublicPropertyFunds(PublicProperties donation){
         ObservableList<PublicProperties> donationList  = (ObservableList<PublicProperties>) DataReadWrite.readObjectToFile("PublicPropertyMaintanenceFund.bin", donation);
         ObservableList<PublicProperties> updateDonationList  = FXCollections.observableArrayList();

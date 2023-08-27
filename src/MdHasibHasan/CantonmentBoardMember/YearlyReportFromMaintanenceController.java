@@ -22,6 +22,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
@@ -40,6 +41,22 @@ public class YearlyReportFromMaintanenceController implements Initializable {
     private NumberAxis yAxis;
     @FXML
     private CategoryAxis xAxis;
+    @FXML
+    private Label series1Label;
+    @FXML
+    private Label series2Label;
+    @FXML
+    private Label series3Label;
+    @FXML
+    private Label series4Label;
+    @FXML
+    private Label series5Label;
+    @FXML
+    private Label series6Label;
+    @FXML
+    private Label series7Label;
+    @FXML
+    private Label series8Label;
 
     /**
      * Initializes the controller class.
@@ -67,6 +84,7 @@ public class YearlyReportFromMaintanenceController implements Initializable {
          if ( yearComboBox.getValue() == null ) throw new RuntimeException("Select the year");
          else {
         stackBarChart.getData().clear();
+        setLabelDisable();
         
         XYChart.Series<String,Number> series1 = new XYChart.Series<String,Number>();
         XYChart.Series<String,Number> series2 = new XYChart.Series<String,Number>();
@@ -93,16 +111,21 @@ public class YearlyReportFromMaintanenceController implements Initializable {
         series10.setName("October");
         series11.setName("November");
         series12.setName("December");
-           
+                   
         for ( monthlyReport data : reportOfMaintenance ){
             if ( yearComboBox.getValue().equals(data.getYear()) ){
+                setLabel();
                 if ( data.getMonth().equals("January") ){
                     for ( Map.Entry<String, Double> entry : data.getExpendedOrgAndAmount().entrySet()) {
-                    series1.getData().add(new XYChart.Data<>(entry.getKey().substring(5), entry.getValue())); }
+                    series1.getData().add(new XYChart.Data<>(entry.getKey().substring(5), entry.getValue())); 
+                    // series1Label.setText(entry.getKey().substring(5));
+                    }
                 }
                 else if ( data.getMonth().equals("February") ){
                     for ( Map.Entry<String, Double> entry : data.getExpendedOrgAndAmount().entrySet()) {
-                    series2.getData().add(new XYChart.Data<>(entry.getKey().substring(5), entry.getValue())); }
+                    series2.getData().add(new XYChart.Data<>(entry.getKey().substring(5), entry.getValue())); 
+                    // series2Label.setText(entry.getKey().substring(5));
+                    }
                 }
                 else if ( data.getMonth().equals("March") ){
                     for ( Map.Entry<String, Double> entry : data.getExpendedOrgAndAmount().entrySet()) {
@@ -156,5 +179,27 @@ public class YearlyReportFromMaintanenceController implements Initializable {
        catch ( RuntimeException e ){
            GenerateAlerts.unsuccessfulAlert(e.toString());
        }
+    }
+    
+    private void setLabel (){
+        series1Label.setText("Mosque");
+        series2Label.setText("Park");
+        series3Label.setText("Hospital");
+        series4Label.setText("Street");
+        series5Label.setText("Street Light");
+        series6Label.setText("School");
+        series7Label.setText("Security");
+        series8Label.setText("Office");
+    }
+    
+    private void setLabelDisable() {
+        series1Label.setText("");
+        series2Label.setText("");
+        series3Label.setText("");
+        series4Label.setText("");
+        series5Label.setText("");
+        series6Label.setText("");
+        series7Label.setText("");
+        series8Label.setText("");
     }
 }

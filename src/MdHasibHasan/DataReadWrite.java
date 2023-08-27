@@ -4,6 +4,7 @@
  */
 package MdHasibHasan;
 
+import Abdullah.UtilityServiceManager.ServiceProvider;
 import AbdullahAlMamun.CheckPointData;
 import AbdullahAlMamun.FeedBack;
 import AbdullahAlMamun.VisitorRequest;
@@ -92,6 +93,7 @@ public class DataReadWrite {
         //ArrayList<CourseClass> coursefaculty = new ArrayList<CourseClass>();
         //ArrayList<OfferedCourseClass> offercourse = new ArrayList<OfferedCourseClass>();
         //ArrayList<RegisteredCourse> recourse = new ArrayList<RegisteredCourse>();
+        ObservableList<ServiceProvider> spList  = FXCollections.observableArrayList();
         ObservableList<Resident> people = FXCollections.observableArrayList();
         ObservableList<SupportForum> listDataForum = FXCollections.observableArrayList();
         ObservableList<sendNotice> noticeList = FXCollections.observableArrayList();
@@ -386,6 +388,20 @@ public class DataReadWrite {
                 }
                //  System.out.println("Hasib");               
             }
+            else if ( instance instanceof ServiceProvider ){
+                    f = new File(fileName);
+                    fw = new FileInputStream(f);
+                    ois = new ObjectInputStream(fw);
+                try{
+                    while (true) {
+                        spList.add((ServiceProvider)ois.readObject());
+                    }
+                }
+                catch(Exception e){
+                    System.out.println("Service Provider read exe Signup Data");
+                }
+               //  System.out.println("Hasib");               
+            }
         }
         catch(Exception e){
             System.out.println("Hasib False");
@@ -424,6 +440,7 @@ public class DataReadWrite {
         else if ( instance instanceof developementProjectVoting ) return votingProj;
         else if ( instance instanceof residentVote ) return rVoteProj;
         else if ( instance instanceof FeedBack ) return fbList;
+        else if ( instance instanceof ServiceProvider ) return spList;
         
         
         return loginData;

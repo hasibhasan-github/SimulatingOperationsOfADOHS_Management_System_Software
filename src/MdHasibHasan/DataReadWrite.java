@@ -5,6 +5,7 @@
 package MdHasibHasan;
 
 import AbdullahAlMamun.CheckPointData;
+import AbdullahAlMamun.FeedBack;
 import AbdullahAlMamun.VisitorRequest;
 import MdHasibHasan.CantonmentBoardMember.crucialTaskPermissionRequest;
 import MdHasibHasan.CantonmentBoardMember.developementProject;
@@ -109,7 +110,7 @@ public class DataReadWrite {
         
         ObservableList<FinancialAnalysis> fAnalysis  = FXCollections.observableArrayList();
         ObservableList<FinancialRisk> fRisk = FXCollections.observableArrayList();
-        
+        ObservableList<FeedBack> fbList = FXCollections.observableArrayList();
         
         
         ObservableList<monthlyReport> reportOfMaintenance = FXCollections.observableArrayList();
@@ -355,6 +356,20 @@ public class DataReadWrite {
                 }
                //  System.out.println("Hasib");               
             }
+            else if ( instance instanceof FeedBack ){
+                    f = new File(fileName);
+                    fw = new FileInputStream(f);
+                    ois = new ObjectInputStream(fw);
+                try{
+                    while (true) {
+                        fbList.add((FeedBack)ois.readObject());
+                    }
+                }
+                catch(Exception e){
+                    System.out.println("FeedBack read exe Signup Data");
+                }
+               //  System.out.println("Hasib");               
+            }
         }
         catch(Exception e){
             System.out.println("Hasib False");
@@ -391,6 +406,7 @@ public class DataReadWrite {
         else if ( instance instanceof CheckPointData ) return cpList;
         else if ( instance instanceof developementProjectVoting ) return votingProj;
         else if ( instance instanceof residentVote ) return rVoteProj;
+        else if ( instance instanceof FeedBack ) return fbList;
         
         
         return loginData;

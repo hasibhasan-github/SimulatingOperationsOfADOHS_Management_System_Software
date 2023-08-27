@@ -73,7 +73,7 @@ public class CheckPointsController implements Initializable {
             
             DataReadWrite.writeObjectToFile("CheckPointData.bin", checkpointdata);
             GenerateAlerts.successfulAlert("New Officers Assigned");
-            assignBtn.setDisable(true);
+            
         }
         catch(Exception ee){
             GenerateAlerts.unsuccessfulAlert("An error occurred. Please try again.");
@@ -98,7 +98,7 @@ public class CheckPointsController implements Initializable {
                 chekpoint3.setText(x.getoOfOfficers()+" Officers Assinged in Checkpoint-3");
             }
             else if("Checkpoint-4".equals(noOfcheckpoint)){
-                chekpoint4.setText(x.getoOfOfficers()+" Officers Assinged in Checkpoint-3");
+                chekpoint4.setText(x.getoOfOfficers()+" Officers Assinged in Checkpoint-4");
             }
             
         }

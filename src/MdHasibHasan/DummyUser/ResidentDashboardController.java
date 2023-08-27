@@ -4,6 +4,7 @@
  */
 package MdHasibHasan.DummyUser;
 
+import AbdullahAlMamun.FeedBack;
 import MdHasibHasan.CantonmentBoardMember.CantonmentBoardMember;
 import MdHasibHasan.CantonmentBoardMember.developementProject;
 import MdHasibHasan.CantonmentBoardMember.developementProjectVoting;
@@ -29,6 +30,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -86,6 +88,26 @@ public class ResidentDashboardController implements Initializable {
     private Button submitVoteButton;
     @FXML
     private TextArea notificationViewTextArea;
+    @FXML
+    private ComboBox<String> selectDepComboboxfxid;
+    @FXML
+    private Button loadBtn;
+    @FXML
+    private TextArea announcementTextAreafxid;
+    @FXML
+    private TextField residentHouseNoFxid;
+    @FXML
+    private ComboBox<String> feedbackTypeFxid;
+    @FXML
+    private TextField residentIDfxid;
+    @FXML
+    private DatePicker todaysDateFxid;
+    @FXML
+    private TextArea feedbackTextAreaFxid;
+    @FXML
+    private Button sendBtnFxid;
+    @FXML
+    private ComboBox<String> selectDeptFeedbackfxid;
     /**
      * Initializes the controller class.
      */
@@ -146,6 +168,7 @@ public class ResidentDashboardController implements Initializable {
         }
         
         loadNotifcationsData();
+        comboBoxInitializeForFeedBack();
         
     }
     
@@ -327,6 +350,35 @@ public class ResidentDashboardController implements Initializable {
     private void viewAllNotificationsInDetailsButtonOnClick(ActionEvent event) throws IOException {
         sceneChanging newwscene = new sceneChanging();
         newwscene.windowSwitchingWithoutDataPassing( "/MdHasibHasan/DummyUser/notificationsSceneResident.fxml");
+    }
+
+    @FXML
+    private void loadBtnOnClick(ActionEvent event) {
+        
+        
+    }
+
+    @FXML
+    private void sendFeedBackBtnONClick(ActionEvent event) {
+        try{
+            if(selectDeptFeedbackfxid.getValue() == null || residentIDfxid.getText()==null || residentHouseNoFxid.getText()==null || feedbackTypeFxid.getValue()==null || feedbackTextAreaFxid.getText()==null || todaysDateFxid.getValue()==null){
+                GenerateAlerts.unsuccessfulAlert("Please fill in all fields.");
+                return;                           
+            }
+            FeedBack fb = new FeedBack(selectDeptFeedbackfxid.getValue(), residentIDfxid.getText(), residentHouseNoFxid.getText(), feedbackTypeFxid.getValue(), feedbackTextAreaFxid.getText(), todaysDateFxid.getValue());
+            DataReadWrite.writeObjectToFile("FeedBack.bin", fb);
+            sendBtnFxid.setDisable(true);
+            GenerateAlerts.successfulAlert("Your Feedback has been sended");
+        }
+        catch(Exception ee){
+            GenerateAlerts.unsuccessfulAlert("An error occurred. Please try again.");
+        }
+        
+    }
+    
+    private void comboBoxInitializeForFeedBack(){
+        selectDeptFeedbackfxid.getItems().addAll("Security Cheif", "Utility Service Manager");
+        feedbackTypeFxid.getItems().addAll("Security Concerns","Emergency Response","Access Issues","Suggestions for Improvement","Incidents Reporting","New connection", "Connectivity Isue");
     }
     
 }

@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
@@ -120,6 +123,40 @@
                   </AnchorPane>
             </content>
           </Tab>
+            <Tab text="Announcement &amp; Feedback">
+               <content>
+                  <Accordion>
+                    <panes>
+                      <TitledPane animated="false" text="Announcement">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: CORNSILK;">
+                                 <children>
+                                    <ComboBox fx:id="selectDepComboboxfxid" layoutX="23.0" layoutY="14.0" prefWidth="150.0" promptText="Select Department" />
+                                    <Button fx:id="loadBtn" layoutX="288.0" layoutY="14.0" mnemonicParsing="false" onAction="#loadBtnOnClick" prefHeight="27.0" prefWidth="55.0" text="Load" />
+                                    <TextArea fx:id="announcementTextAreafxid" layoutX="23.0" layoutY="56.0" prefHeight="200.0" prefWidth="566.0" />
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </TitledPane>
+                      <TitledPane animated="false" text="Feedback">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField fx:id="residentHouseNoFxid" layoutX="445.0" layoutY="12.0" prefHeight="27.0" prefWidth="112.0" promptText="House No" />
+                                    <ComboBox fx:id="feedbackTypeFxid" layoutX="67.0" layoutY="65.0" prefHeight="27.0" prefWidth="161.0" promptText="Feedback Type" />
+                                    <TextField fx:id="residentIDfxid" layoutX="67.0" layoutY="12.0" prefHeight="27.0" prefWidth="102.0" promptText="Resident ID" />
+                                    <DatePicker fx:id="todaysDateFxid" layoutX="398.0" layoutY="65.0" prefHeight="27.0" prefWidth="161.0" promptText="Select Date" />
+                                    <TextArea fx:id="feedbackTextAreaFxid" layoutX="68.0" layoutY="113.0" prefHeight="146.0" prefWidth="495.0" promptText="Write your feedback here" />
+                                    <Button fx:id="sendBtnFxid" layoutX="286.0" layoutY="271.0" mnemonicParsing="false" onAction="#sendFeedBackBtnONClick" prefHeight="27.0" prefWidth="58.0" text="Send" />
+                                    <ComboBox fx:id="selectDeptFeedbackfxid" layoutX="228.0" layoutY="12.0" prefHeight="27.0" prefWidth="161.0" promptText="Select Depertment" />
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </TitledPane>
+                    </panes>
+                  </Accordion>
+               </content>
+            </Tab>
         </tabs>
       </TabPane>
    </children>

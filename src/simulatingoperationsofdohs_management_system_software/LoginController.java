@@ -130,6 +130,11 @@ public class LoginController implements Initializable {
                      newwscene.sceneSwitchingWithoutDataPassing(stage, "/AbdullahAlMamun/SecurityCheifDashboard.fxml");
                     flag = true;
                 }
+                else if ( tmp.getUserType().equals("Utility Service Manager") && ( tmp.getPassword().equals(pass) && (tmp.getEmail().equals(emailOrId) || tmp.getId() == (loginUsingId) ) )){
+                    //newwscene.sceneSwitchingWithDataPassing(stage, "/AbdullahAlMamun/SecurityCheifDashboard.fxml", "Resident", tmp);
+                     newwscene.sceneSwitchingWithoutDataPassing(stage, "/Abdullah/UtilityServiceManager/utilityServiceManagerDashboard.fxml");
+                    flag = true;
+                }
             }
           }
             catch (IOException e){

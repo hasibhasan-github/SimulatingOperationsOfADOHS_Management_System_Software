@@ -300,6 +300,9 @@ public class MaintenanceOfficerDashboardController implements Initializable {
             else if ( userGoalListView.getSelectionModel().getSelectedItem().equals("2.Notice Section") ){
                 newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdHasibHasan/MaintenanceOfficer/noticeScene.fxml");
             }
+            else if ( userGoalListView.getSelectionModel().getSelectedItem().equals("5.Monthly Report Section") ){
+                newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdHasibHasan/MaintenanceOfficer/maintenaceDepartmentWorkReport.fxml");
+            }
         }
         catch (Exception e){
             GenerateAlerts.unsuccessfulAlert("Please select the page from list.");

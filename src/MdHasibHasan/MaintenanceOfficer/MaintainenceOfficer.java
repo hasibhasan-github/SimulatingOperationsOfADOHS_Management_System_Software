@@ -65,6 +65,19 @@ public class MaintainenceOfficer extends Employee implements Serializable {
         GenerateAlerts.successfulAlert("Yearly Budget Created Successfully.");
     } 
     
+    public static void createMonthlyExpenditureReport(Map<String, Double> expendedOrgAndAmountList, String year, String month){
+        Double totalBudgetAmount = 0.0;
+        for (Map.Entry<String, Double> mapData : expendedOrgAndAmountList.entrySet()){
+            totalBudgetAmount += mapData.getValue();
+        }
+        // yearlyBudget newBudget = new yearlyBudget(budgetYear, totalBudgetAmount, budgetProjectAndAmountList);
+        
+        monthlyReport report = new monthlyReport (month, year, totalBudgetAmount, expendedOrgAndAmountList);
+        
+        DataReadWrite.writeObjectToFile("MonthlyReportOfMaintenanceDept.bin", report);
+        GenerateAlerts.successfulAlert("Monthly Report Submitted Successfully.");
+    } 
+    
     public static ObservableList<signUpData> deleteDOHSSoftwareUser(ObservableList<signUpData> loginInfo, signUpData delInstance){
         ObservableList<signUpData> updatedSignUpData = FXCollections.observableArrayList();
         for ( signUpData data : loginInfo ){

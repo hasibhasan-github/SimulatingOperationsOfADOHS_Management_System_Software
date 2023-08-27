@@ -19,6 +19,7 @@ import MdMasumBilla.BudgetingAndForecasting;
 import MdMasumBilla.accountsAndFinanceOfficer;
 import MdHasibHasan.MaintenanceOfficer.carStickerRequest;
 import MdHasibHasan.MaintenanceOfficer.maintenanceFee;
+import MdHasibHasan.MaintenanceOfficer.monthlyReport;
 import MdHasibHasan.MaintenanceOfficer.yearlyBudget;
 import MdMasumBilla.FinancialAnalysis;
 import MdMasumBilla.FinancialRisk;
@@ -109,6 +110,10 @@ public class DataReadWrite {
         ObservableList<FinancialAnalysis> fAnalysis  = FXCollections.observableArrayList();
         ObservableList<FinancialRisk> fRisk = FXCollections.observableArrayList();
         
+        
+        
+        ObservableList<monthlyReport> reportOfMaintenance = FXCollections.observableArrayList();
+        
         try{
             if ( instance instanceof Resident ){
                     f = new File(fileName);
@@ -135,6 +140,20 @@ public class DataReadWrite {
                 }
                 catch(Exception e){
                     System.out.println("Hasib read exe Signup Data");
+                }
+               //  System.out.println("Hasib");               
+            }
+            else if ( instance instanceof monthlyReport ){
+                    f = new File(fileName);
+                    fw = new FileInputStream(f);
+                    ois = new ObjectInputStream(fw);
+                try{
+                    while (true) {
+                        reportOfMaintenance.add((monthlyReport)ois.readObject());
+                    }
+                }
+                catch(Exception e){
+                    System.out.println("Monthly reportOfMaintenance read exe Signup Data");
                 }
                //  System.out.println("Hasib");               
             }
@@ -358,6 +377,7 @@ public class DataReadWrite {
 */
         if ( instance instanceof Resident ) return people;
         else if ( instance instanceof sendNotice ) return noticeList;
+        else if ( instance instanceof monthlyReport ) return reportOfMaintenance;
         else if ( instance instanceof BudgetingAndForecasting ) return pieChartData;
         else if ( instance instanceof carStickerRequest ) return carStickerRequestData;
         else if ( instance instanceof dohsPolicies ) return policy;

@@ -92,6 +92,12 @@ public class CantonmentBoardMemberDashboardController implements Initializable {
         borderPaneId.setCenter(parent);
     }
 
+    @FXML
+    private void maintenaceDeptMenuItemOnClick(ActionEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(getClass().getResource("reportViewFromMaintenance.fxml"));
+        borderPaneId.setCenter(parent);
+    }
+
 
     
 }

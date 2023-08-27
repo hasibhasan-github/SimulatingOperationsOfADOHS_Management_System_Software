@@ -20,11 +20,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#sugestCandidateButtonOnClick" text="Suggest Candidates" />
                   <MenuItem mnemonicParsing="false" onAction="#gatePassButtonOnClick" text="Gate Pass" />
                   <MenuItem mnemonicParsing="false" onAction="#DummyHasibSceneOnClick" text="Permissions" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Log Out">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#logoutButtonOnClick" text="Log Out" />
+                  <MenuItem mnemonicParsing="false" onAction="#logOutMenuItemOnClick" text="Log Out" />
             </items>
           </Menu>
         </menus>

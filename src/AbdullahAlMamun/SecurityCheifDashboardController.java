@@ -72,7 +72,6 @@ public class SecurityCheifDashboardController implements Initializable {
     private void gatePassButtonOnClick(ActionEvent event) {
     }
 
-    @FXML
     private void logoutButtonOnClick(ActionEvent event) throws IOException {
         sceneChanging newwscene = new sceneChanging();
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -82,6 +81,12 @@ public class SecurityCheifDashboardController implements Initializable {
     @FXML
     private void DummyHasibSceneOnClick(ActionEvent event) throws IOException {
         Parent parent = FXMLLoader.load(getClass().getResource("DummyHasib.fxml"));
+        dashboardBorderPane.setCenter(parent);
+    }
+
+    @FXML
+    private void logOutMenuItemOnClick(ActionEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(getClass().getResource("SecurityCheifLogOut.fxml"));
         dashboardBorderPane.setCenter(parent);
     }
     

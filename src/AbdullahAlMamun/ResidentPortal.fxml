@@ -40,16 +40,19 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: CAEDFF;">
                      <children>
                         <TextArea fx:id="feedbackShowTextArea" layoutX="270.0" layoutY="51.0" prefHeight="245.0" prefWidth="314.0" />
-                        <ComboBox fx:id="selectFeedbackTypeComboBoxfxid" layoutX="14.0" layoutY="12.0" prefHeight="27.0" prefWidth="172.0" promptText="Select  Feedback Type" />
-                        <Button fx:id="loadFeedBackBtnFxid" layoutX="215.0" layoutY="12.0" mnemonicParsing="false" onAction="#loadFeedbackButtonOnClick" prefHeight="27.0" prefWidth="65.0" style="-fx-background-color: green;" text="Load" textFill="WHITE" />
-                        <TableView fx:id="feedbackTableView" layoutX="14.0" layoutY="51.0" prefHeight="226.0" prefWidth="235.0">
+                        <ComboBox fx:id="selectFeedbackTypeComboBoxfxid" layoutX="14.0" layoutY="10.0" prefHeight="27.0" prefWidth="172.0" promptText="Select  Feedback Type" />
+                        <Button fx:id="loadTTableBtnFxid" layoutX="215.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadToTableButtonOnClick" prefHeight="27.0" prefWidth="65.0" style="-fx-background-color: green;" text="Load" textFill="WHITE" />
+                        <TableView fx:id="feedbackTableView" layoutX="14.0" layoutY="61.0" prefHeight="226.0" prefWidth="235.0">
                           <columns>
-                            <TableColumn fx:id="dateTableCol" prefWidth="75.0" text="Date" />
+                            <TableColumn fx:id="deptTableCol" prefWidth="75.0" text="Department" />
                             <TableColumn fx:id="residentIdTableCol" prefWidth="75.0" text="Resident ID" />
-                              <TableColumn fx:id="feedBackTableCol" prefWidth="75.0" text="Feedback Text" />
+                              <TableColumn fx:id="houseNoTableViewfxid" prefWidth="75.0" text="House No" />
+                              <TableColumn fx:id="announcementTypeTableViewfxid" prefWidth="75.0" text="nnouncement Type" />
+                              <TableColumn fx:id="announcementTextTableViewfxid" prefWidth="75.0" text="Aannouncement Text" />
+                              <TableColumn fx:id="dateTableViewfxid" prefWidth="75.0" text="Date" />
                           </columns>
                         </TableView>
-                        <Button fx:id="loadToTextAreaBtn" layoutX="40.0" layoutY="289.0" mnemonicParsing="false" onAction="#loadToTextAreaButtonOnClick" prefHeight="27.0" prefWidth="155.0" style="-fx-background-color: green;" text="See details in Text Area" textFill="WHITE" />
+                        <Button fx:id="loadToTextAreaBtn" layoutX="40.0" layoutY="295.0" mnemonicParsing="false" onAction="#loadToTextAreaButtonOnClick" prefHeight="27.0" prefWidth="155.0" style="-fx-background-color: green;" text="See details in Text Area" textFill="WHITE" />
                      </children></AnchorPane>
             </content>
           </TitledPane>

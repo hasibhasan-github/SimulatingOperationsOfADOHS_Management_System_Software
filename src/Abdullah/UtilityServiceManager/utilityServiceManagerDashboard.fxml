@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Abdullah.UtilityServiceManager.UtilityServiceManagerDashboardController">
-   <children>
-      <Label layoutX="120.0" layoutY="132.0" prefHeight="49.0" prefWidth="271.0" text="Manger the Manager" />
-   </children>
-</AnchorPane>
+<BorderPane fx:id="UtilityServiceManagerBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Abdullah.UtilityServiceManager.UtilityServiceManagerDashboardController">
+   <center>
+      <Label style="-fx-background-color: CAEDFF;" text="Utility Service Manager Dashboard" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </center>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Choode Operation">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#serviceProvidersPortalMenuItemOnClick" text="Service Providers Portal" />
+                  <MenuItem mnemonicParsing="false" onAction="#logOutMenuItemOnClick" text="Log Out" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>

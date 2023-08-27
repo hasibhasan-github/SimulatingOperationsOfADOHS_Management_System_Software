@@ -4,25 +4,25 @@
  */
 package Abdullah.UtilityServiceManager;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 
 /**
  * FXML Controller class
  *
- * @author Hasib
+ * @author user
  */
-public class UtilityServiceManagerDashboardController implements Initializable {
+public class ProviderDetailsController implements Initializable {
 
     @FXML
-    private BorderPane UtilityServiceManagerBorderPane;
+    private ListView<?> providerNameList;
+    @FXML
+    private TextArea providerDetailsTextArea;
 
     /**
      * Initializes the controller class.
@@ -33,13 +33,7 @@ public class UtilityServiceManagerDashboardController implements Initializable {
     }    
 
     @FXML
-    private void serviceProvidersPortalMenuItemOnClick(ActionEvent event) throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("ServiceProvidersPortal.fxml"));
-        UtilityServiceManagerBorderPane.setCenter(parent);
-    }
-
-    @FXML
-    private void logOutMenuItemOnClick(ActionEvent event) {
+    private void loadDetailsButtonOnClick(ActionEvent event) {
     }
     
 }

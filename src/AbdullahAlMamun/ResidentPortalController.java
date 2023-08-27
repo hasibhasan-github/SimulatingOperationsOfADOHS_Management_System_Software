@@ -19,6 +19,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * FXML Controller class
@@ -39,20 +40,27 @@ public class ResidentPortalController implements Initializable {
     private TextArea feedbackShowTextArea;
     @FXML
     private ComboBox<String> selectFeedbackTypeComboBoxfxid;
-    @FXML
     private Button loadFeedBackBtnFxid;
     
     private ObservableList<FeedBack> fbList;
     @FXML
-    private TableView<?> feedbackTableView;
+    private TableView<FeedBack> feedbackTableView;
     @FXML
-    private TableColumn<?, ?> dateTableCol;
-    @FXML
-    private TableColumn<?, ?> residentIdTableCol;
-    @FXML
-    private TableColumn<?, ?> feedBackTableCol;
+    private TableColumn<FeedBack, String> residentIdTableCol;
     @FXML
     private Button loadToTextAreaBtn;
+    @FXML
+    private TableColumn<FeedBack, String> deptTableCol;
+    @FXML
+    private TableColumn<FeedBack, String> houseNoTableViewfxid;
+    @FXML
+    private TableColumn<FeedBack, String> announcementTypeTableViewfxid;
+    @FXML
+    private TableColumn<FeedBack, String> announcementTextTableViewfxid;
+    @FXML
+    private TableColumn<FeedBack, LocalDate> dateTableViewfxid;
+    @FXML
+    private Button loadTTableBtnFxid;
 
     /**
      * Initializes the controller class.
@@ -67,6 +75,16 @@ public class ResidentPortalController implements Initializable {
         
         
         selectFeedbackTypeComboBoxfxid.getItems().addAll("Security Concerns","Emergency Response","Access Issues","Suggestions for Improvement","Incidents Reporting","New connection", "Connectivity Isue");
+        
+        // For Table
+        deptTableCol.setCellValueFactory(new PropertyValueFactory<FeedBack, String>("Dept"));
+        residentIdTableCol.setCellValueFactory(new PropertyValueFactory<FeedBack, String>("residentId"));
+        houseNoTableViewfxid.setCellValueFactory(new PropertyValueFactory<FeedBack, String>("houseNo"));
+        announcementTypeTableViewfxid.setCellValueFactory(new PropertyValueFactory<FeedBack, String>("annType"));
+        announcementTextTableViewfxid.setCellValueFactory(new PropertyValueFactory<FeedBack, String>("announceText"));
+        dateTableViewfxid.setCellValueFactory(new PropertyValueFactory<FeedBack, LocalDate>("date"));
+        
+        
         
         
     }    
@@ -96,27 +114,41 @@ public class ResidentPortalController implements Initializable {
 }
 
     @FXML
-    private void loadFeedbackButtonOnClick(ActionEvent event) {
+    private void loadToTextAreaButtonOnClick(ActionEvent event) {
+        try{
+            if ( feedbackTableView.getSelectionModel().getSelectedItem() == null ) throw new RuntimeException("Exception");
+             for(FeedBack y : fbList){
+                 if(y == feedbackTableView.getSelectionModel().getSelectedItem()){
+                     feedbackShowTextArea.appendText(y.toString());
+                 }
+             }
+        }
+        catch( RuntimeException e ) {
+            GenerateAlerts.unsuccessfulAlert("Please Select the File from Table to Load.");
+        }
+    }
+
+    @FXML
+    private void loadToTableButtonOnClick(ActionEvent event) {
         FeedBack fb = new FeedBack("","","","","",LocalDate.of(2023,07,07));
         fbList = (ObservableList<FeedBack>) DataReadWrite.readObjectToFile("FeedBack.bin", fb);
+        
         for(FeedBack x : fbList){
             if(x.getDept().equals("Security Cheif")){
                 if(x.getAnnType().equals(selectFeedbackTypeComboBoxfxid.getValue())){
-                    feedbackShowTextArea.appendText(x.toString());
-                    loadFeedBackBtnFxid.setDisable(true);
+                    feedbackTableView.getItems().add(x);
                 }
+                else{
+                GenerateAlerts.unsuccessfulAlert("No Feedback for this Type");
+            }
             }
             else{
-                GenerateAlerts.unsuccessfulAlert("No feedback to load");
+                GenerateAlerts.unsuccessfulAlert("No Feedback for the user Security cheif");
             }
         }
         
         
         
-    }
-
-    @FXML
-    private void loadToTextAreaButtonOnClick(ActionEvent event) {
     }
 
 

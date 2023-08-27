@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Abdullah.UtilityServiceManager.ServiceProvidersPortalController">
+   <children>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Add New Provider">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: CAEDFF;">
+                     <children>
+                        <TextField fx:id="providerNameFxid" layoutX="83.0" layoutY="27.0" promptText="Provider Name" />
+                        <TextField fx:id="licenceNofxid" layoutX="83.0" layoutY="81.0" promptText="License No" />
+                        <ComboBox fx:id="serviceTypeComboBoxfxid" layoutX="359.0" layoutY="27.0" prefWidth="150.0" promptText="Service Type" />
+                        <DatePicker fx:id="issueDateFxid" layoutX="359.0" layoutY="81.0" prefHeight="27.0" prefWidth="152.0" promptText="Date" />
+                        <TextField fx:id="activeWorkersFxid" layoutX="83.0" layoutY="134.0" promptText="Active Workers" />
+                        <TextField fx:id="contractDurationFxid" layoutX="358.0" layoutY="129.0" prefHeight="27.0" prefWidth="153.0" promptText="Enter Contract Duration" />
+                        <Button fx:id="addNewProviderBtn" layoutX="271.0" layoutY="246.0" mnemonicParsing="false" onAction="#addNewProviderBtnOnClick" prefHeight="27.0" prefWidth="59.0" style="-fx-background-color: green;" text="Add" textFill="WHITE" />
+                        <Button layoutX="237.0" layoutY="303.0" mnemonicParsing="false" onAction="#seeProviderListButtonOnClick" prefHeight="27.0" prefWidth="127.0" style="-fx-background-color: green;" text="See Providers List" textFill="WHITE" />
+                        <TextField fx:id="contactNo" layoutX="83.0" layoutY="184.0" promptText="Contact No" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="See Provider List">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</StackPane>

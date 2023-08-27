@@ -4,7 +4,9 @@
  */
 package Abdullah.UtilityServiceManager;
 
+import MdHasibHasan.DataReadWrite;
 import MdHasibHasan.Employee;
+import MdHasibHasan.GenerateAlerts;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -21,6 +23,12 @@ public class UtilityServiceManager extends Employee implements Serializable{
     @Override
     protected void applyForLeave() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    
+    public static void addNewServiceProvider(ServiceProvider sp){
+        DataReadWrite.writeObjectToFile("ServiceProviders.bin", sp);
+        GenerateAlerts.successfulAlert("New Provider Added");
     }
     
     

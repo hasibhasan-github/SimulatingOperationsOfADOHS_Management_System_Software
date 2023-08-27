@@ -77,7 +77,7 @@ public class FeedBack implements Serializable{
 
     @Override
     public String toString() {
-        return  "Date"+ date +"\n"+ "To: " + Dept + "\n" + residentId + "," + houseNo + "\n"+ ", annType=" + annType +"\n" + announceText;
+        return  "Date "+ date +"\n"+ "To: " + Dept + "\n" + residentId + ", " + houseNo + "\n"+ ", Announce Type: " + annType +"\n" + announceText;
     }
     
     

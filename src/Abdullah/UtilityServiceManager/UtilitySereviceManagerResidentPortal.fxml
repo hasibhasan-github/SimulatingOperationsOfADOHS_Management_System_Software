@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Abdullah.UtilityServiceManager.UtilitySereviceManagerResidentPortalController">
+   <children>
+      <Accordion>
+        <panes>
+          <TitledPane animated="false" text="Feedback">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ComboBox fx:id="selectfeedBackTypeComboBox" layoutX="23.0" layoutY="14.0" prefHeight="27.0" prefWidth="177.0" promptText="Select Feedback Type" />
+                        <Button layoutX="237.0" layoutY="14.0" mnemonicParsing="false" onAction="#loadToTableBtnOnClick" text="Load" />
+                        <TableView fx:id="feedbackTableVIew" layoutX="19.0" layoutY="64.0" prefHeight="253.0" prefWidth="234.0">
+                          <columns>
+                            <TableColumn fx:id="deptTableCol" prefWidth="75.0" text="Department" />
+                            <TableColumn fx:id="residentIdTableCol" prefWidth="75.0" text="Resident ID" />
+                              <TableColumn fx:id="houseNoTableViewfxid" prefWidth="75.0" text="House No" />
+                              <TableColumn fx:id="announcementTypeTableViewfxid" prefWidth="75.0" text="nnouncement Type" />
+                              <TableColumn fx:id="announcementTextTableViewfxid" prefWidth="75.0" text="Aannouncement Text" />
+                              <TableColumn fx:id="dateTableViewfxid" prefWidth="75.0" text="Date" />
+                          </columns>
+                        </TableView>
+                        <TextArea layoutX="269.0" layoutY="64.0" prefHeight="252.0" prefWidth="315.0" />
+                        <Button layoutX="53.0" layoutY="331.0" mnemonicParsing="false" onAction="#seeDetailsInTextAreaBtnOnClick" text="See Details in Text Area" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </TitledPane>
+        </panes>
+      </Accordion>
+   </children>
+</StackPane>

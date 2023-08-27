@@ -378,7 +378,14 @@ public class ResidentDashboardController implements Initializable {
     
     private void comboBoxInitializeForFeedBack(){
         selectDeptFeedbackfxid.getItems().addAll("Security Cheif", "Utility Service Manager");
-        feedbackTypeFxid.getItems().addAll("Security Concerns","Emergency Response","Access Issues","Suggestions for Improvement","Incidents Reporting","New connection", "Connectivity Isue");
+        if(selectDeptFeedbackfxid.getValue().equals("Security Cheif")){
+            feedbackTypeFxid.getItems().addAll("Security Concerns","Emergency Response","Access Issues","Suggestions for Improvement","Incidents Reporting");
+        }
+        else{
+            feedbackTypeFxid.getItems().addAll("Suggestions for Improvement","New connection", "Connectivity Isue");
+            
+        }
+        
     }
     
 }

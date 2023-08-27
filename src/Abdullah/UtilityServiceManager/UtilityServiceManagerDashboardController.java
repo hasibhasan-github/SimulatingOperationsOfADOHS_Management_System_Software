@@ -41,5 +41,11 @@ public class UtilityServiceManagerDashboardController implements Initializable {
     @FXML
     private void logOutMenuItemOnClick(ActionEvent event) {
     }
+
+    @FXML
+    private void residentPortalMenuItemOnClick(ActionEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(getClass().getResource("UtilitySereviceManagerResidentPortal.fxml"));
+        UtilityServiceManagerBorderPane.setCenter(parent);
+    }
     
 }

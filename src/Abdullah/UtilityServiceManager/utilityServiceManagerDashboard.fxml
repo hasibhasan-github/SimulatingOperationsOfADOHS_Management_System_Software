@@ -22,6 +22,7 @@
             <items>
               <MenuItem mnemonicParsing="false" onAction="#serviceProvidersPortalMenuItemOnClick" text="Service Providers Portal" />
                   <MenuItem mnemonicParsing="false" onAction="#residentPortalMenuItemOnClick" text="Resident Portal" />
+                  <MenuItem mnemonicParsing="false" onAction="#generateReportMenuItemOnclick" text="Generate Report" />
                   <MenuItem mnemonicParsing="false" onAction="#logOutMenuItemOnClick" text="Log Out" />
             </items>
           </Menu>

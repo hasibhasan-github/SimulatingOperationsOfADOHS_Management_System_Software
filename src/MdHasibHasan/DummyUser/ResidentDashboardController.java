@@ -378,6 +378,12 @@ public class ResidentDashboardController implements Initializable {
     
     private void comboBoxInitializeForFeedBack(){
         selectDeptFeedbackfxid.getItems().addAll("Security Cheif", "Utility Service Manager");
+        
+        
+    }
+
+    @FXML
+    private void selectDeptFeedbackOnAction(ActionEvent event) {
         if(selectDeptFeedbackfxid.getValue().equals("Security Cheif")){
             feedbackTypeFxid.getItems().addAll("Security Concerns","Emergency Response","Access Issues","Suggestions for Improvement","Incidents Reporting");
         }
@@ -385,7 +391,6 @@ public class ResidentDashboardController implements Initializable {
             feedbackTypeFxid.getItems().addAll("Suggestions for Improvement","New connection", "Connectivity Isue");
             
         }
-        
     }
     
 }

@@ -4,6 +4,7 @@
  */
 package Abdullah.UtilityServiceManager;
 
+import AbdullahAlMamun.Announcement;
 import AbdullahAlMamun.FeedBack;
 import MdHasibHasan.DataReadWrite;
 import MdHasibHasan.GenerateAlerts;
@@ -14,9 +15,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
@@ -44,6 +48,16 @@ public class UtilitySereviceManagerResidentPortalController implements Initializ
     private TableColumn<FeedBack, LocalDate> dateTableViewfxid;
     
     private ObservableList<FeedBack> fbList;
+    @FXML
+    private TextArea feedBackTextArea;
+    @FXML
+    private ComboBox<String> selectAnnTypeComboBox;
+    @FXML
+    private DatePicker datefxid;
+    @FXML
+    private TextArea annTextAreafxid;
+    @FXML
+    private Button senntBtnfxid;
 
     /**
      * Initializes the controller class.
@@ -60,6 +74,8 @@ public class UtilitySereviceManagerResidentPortalController implements Initializ
         announcementTextTableViewfxid.setCellValueFactory(new PropertyValueFactory<FeedBack, String>("announceText"));
         dateTableViewfxid.setCellValueFactory(new PropertyValueFactory<FeedBack, LocalDate>("date"));
         
+        
+        selectAnnTypeComboBox.getItems().addAll("Service Maintenance Alert", "New Service Introduction", "Important Notice", "Emergency Alert");
         
         
         
@@ -88,6 +104,40 @@ public class UtilitySereviceManagerResidentPortalController implements Initializ
 
     @FXML
     private void seeDetailsInTextAreaBtnOnClick(ActionEvent event) {
+        try{
+            if ( feedbackTableVIew.getSelectionModel().getSelectedItem() == null ) throw new RuntimeException("Exception");
+             for(FeedBack y : fbList){
+                 if(y == feedbackTableVIew.getSelectionModel().getSelectedItem()){
+                     feedBackTextArea.appendText(y.toString());
+                 }
+             }
+        }
+        catch( RuntimeException e ) {
+            GenerateAlerts.unsuccessfulAlert("Please Select the File from Table to Load.");
+        }
+    }
+
+    @FXML
+    private void sentAnnButtonOnClick(ActionEvent event) {
+        try{
+            String annType = selectAnnTypeComboBox.getValue();
+            String annText = annTextAreafxid.getText();
+            LocalDate date = datefxid.getValue();
+            
+            if(annType == null || annText == null || date == null){
+                GenerateAlerts.unsuccessfulAlert("Please fill in all fields.");
+                return; 
+        }
+            Announcement ann = new Announcement(annType, annText, date);
+
+            UtilityServiceManager.sentAnnouncementToResident(ann);
+            senntBtnfxid.setDisable(true);
+        
+        
+    }
+        catch(Exception ee){
+             GenerateAlerts.unsuccessfulAlert("An error occurred. Please try again.");
+        }
     }
     
 }

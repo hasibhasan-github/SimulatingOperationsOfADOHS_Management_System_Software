@@ -148,7 +148,7 @@
                                     <DatePicker fx:id="todaysDateFxid" layoutX="398.0" layoutY="65.0" prefHeight="27.0" prefWidth="161.0" promptText="Select Date" />
                                     <TextArea fx:id="feedbackTextAreaFxid" layoutX="68.0" layoutY="113.0" prefHeight="146.0" prefWidth="495.0" promptText="Write your feedback here" />
                                     <Button fx:id="sendBtnFxid" layoutX="286.0" layoutY="271.0" mnemonicParsing="false" onAction="#sendFeedBackBtnONClick" prefHeight="27.0" prefWidth="58.0" text="Send" />
-                                    <ComboBox fx:id="selectDeptFeedbackfxid" layoutX="228.0" layoutY="12.0" prefHeight="27.0" prefWidth="161.0" promptText="Select Depertment" />
+                                    <ComboBox fx:id="selectDeptFeedbackfxid" layoutX="228.0" layoutY="12.0" onAction="#selectDeptFeedbackOnAction" prefHeight="27.0" prefWidth="161.0" promptText="Select Depertment" />
                                  </children>
                               </AnchorPane>
                         </content>

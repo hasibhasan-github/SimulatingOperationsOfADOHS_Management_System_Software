@@ -146,6 +146,15 @@ public class CantonmentBoardMember extends User implements Serializable {
     }
     
     
+    public static ObservableList<?> viewReportFromDepartments(String departmentName){
+        ObservableList<reportFromSecurityDepartment> securityReport  = FXCollections.observableArrayList();
+        reportFromSecurityDepartment dummy = new reportFromSecurityDepartment("", "", 1.0);
+        securityReport  = (ObservableList<reportFromSecurityDepartment>) DataReadWrite.readObjectToFile("PurposeOfVisitReportHigherAuthorites.bin", dummy);
+        
+        return securityReport;
+    }
+    
+    
     public static void generateDevelopementProjectPDF(developementProject devProjectPDF){
         try {
             FileChooser fc = new FileChooser();

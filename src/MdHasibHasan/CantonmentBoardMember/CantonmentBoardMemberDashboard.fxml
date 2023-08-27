@@ -45,7 +45,7 @@
                   <Menu mnemonicParsing="false" text="Work Report">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Maintenance Department" />
-                        <MenuItem mnemonicParsing="false" text="Security Department" />
+                        <MenuItem mnemonicParsing="false" onAction="#securityDepartmentMenuItemOnClick" text="Security Department" />
                         <MenuItem mnemonicParsing="false" text="Accounts &amp; Finance Department" />
                     </items>
                   </Menu>

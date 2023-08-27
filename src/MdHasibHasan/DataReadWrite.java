@@ -10,6 +10,7 @@ import MdHasibHasan.CantonmentBoardMember.crucialTaskPermissionRequest;
 import MdHasibHasan.CantonmentBoardMember.developementProject;
 import MdHasibHasan.CantonmentBoardMember.developementProjectVoting;
 import MdHasibHasan.CantonmentBoardMember.dohsPolicies;
+import MdHasibHasan.CantonmentBoardMember.reportFromSecurityDepartment;
 import MdHasibHasan.CantonmentBoardMember.residentVote;
 import MdHasibHasan.CantonmentBoardMember.sendNotice;
 import MdHasibHasan.DummyUser.Resident;
@@ -99,6 +100,7 @@ public class DataReadWrite {
         ObservableList<yearlyBudget> budgetYearly  = FXCollections.observableArrayList();
         ObservableList<VisitorRequest> visitReq  = FXCollections.observableArrayList();
         ObservableList<PublicProperties> donation  = FXCollections.observableArrayList();
+        ObservableList<reportFromSecurityDepartment> securityReport  = FXCollections.observableArrayList();
         ObservableList<developementProjectVoting> votingProj  = FXCollections.observableArrayList();
         ObservableList<residentVote> rVoteProj  = FXCollections.observableArrayList();
         ObservableList<crucialTaskPermissionRequest> crucTaskReq  = FXCollections.observableArrayList();
@@ -161,6 +163,20 @@ public class DataReadWrite {
                 }
                 catch(Exception e){
                     System.out.println("Hasib carStickerRequest read exe Signup Data");
+                }
+               //  System.out.println("Hasib");               
+            }
+            else if ( instance instanceof reportFromSecurityDepartment ){
+                    f = new File(fileName);
+                    fw = new FileInputStream(f);
+                    ois = new ObjectInputStream(fw);
+                try{
+                    while (true) {
+                        securityReport.add((reportFromSecurityDepartment)ois.readObject());
+                    }
+                }
+                catch(Exception e){
+                    System.out.println("Hasib reportFromSecurityDepartment read exe Signup Data");
                 }
                //  System.out.println("Hasib");               
             }
@@ -350,6 +366,7 @@ public class DataReadWrite {
         else if ( instance instanceof yearlyBudget ) return budgetYearly;
         else if ( instance instanceof VisitorRequest ) return visitReq;
         else if ( instance instanceof PublicProperties ) return donation;
+        else if ( instance instanceof reportFromSecurityDepartment ) return securityReport;
         else if ( instance instanceof crucialTaskPermissionRequest ) return crucTaskReq;
         else if ( instance instanceof CheckPointData ) return cpList;
         else if ( instance instanceof developementProjectVoting ) return votingProj;

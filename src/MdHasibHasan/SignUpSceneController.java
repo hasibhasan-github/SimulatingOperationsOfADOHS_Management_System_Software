@@ -106,7 +106,7 @@ public class SignUpSceneController implements Initializable {
         
         userTypeComboBox.getItems().addAll("Cantonment Board Member","Resident", "Employee");
         userList.getItems().addAll("Maintenance Officer", "Cantonment Board Member",
-                                    " Accounts & Finance Officer", "Utility Service Provider",
+                                    " Accounts & Finance Officer", "Utility Service Manager",
                                     "Security Officer", "Real Estate Agent");
         userList.setDisable(true);
         
@@ -246,7 +246,7 @@ public class SignUpSceneController implements Initializable {
         }
         else if ( termsAndPoliciesCheckBox.isSelected() && userList.getSelectionModel().isSelected(3) ){
             try{
-                // registerAccountsAndFinanceOfficer(); // Another
+                registerForUtilityServiceProvider();// Utiility 
                 }
             catch(Exception e){
             GenerateAlerts.unsuccessfulAlert("Please check your given Information." + 

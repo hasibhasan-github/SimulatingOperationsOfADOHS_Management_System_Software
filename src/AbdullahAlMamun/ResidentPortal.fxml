@@ -5,6 +5,8 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -37,9 +39,17 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: CAEDFF;">
                      <children>
-                        <TextArea fx:id="feedbackShowTextArea" layoutX="31.0" layoutY="86.0" prefHeight="227.0" prefWidth="550.0" />
-                        <ComboBox fx:id="selectFeedbackTypeComboBoxfxid" layoutX="31.0" layoutY="25.0" prefHeight="27.0" prefWidth="172.0" promptText="Select  Feedback Type" />
-                        <Button fx:id="loadFeedBackBtnFxid" layoutX="279.0" layoutY="25.0" mnemonicParsing="false" onAction="#loadFeedbackButtonOnClick" prefHeight="27.0" prefWidth="65.0" style="-fx-background-color: green;" text="Load" textFill="WHITE" />
+                        <TextArea fx:id="feedbackShowTextArea" layoutX="270.0" layoutY="51.0" prefHeight="245.0" prefWidth="314.0" />
+                        <ComboBox fx:id="selectFeedbackTypeComboBoxfxid" layoutX="14.0" layoutY="12.0" prefHeight="27.0" prefWidth="172.0" promptText="Select  Feedback Type" />
+                        <Button fx:id="loadFeedBackBtnFxid" layoutX="215.0" layoutY="12.0" mnemonicParsing="false" onAction="#loadFeedbackButtonOnClick" prefHeight="27.0" prefWidth="65.0" style="-fx-background-color: green;" text="Load" textFill="WHITE" />
+                        <TableView fx:id="feedbackTableView" layoutX="14.0" layoutY="51.0" prefHeight="226.0" prefWidth="235.0">
+                          <columns>
+                            <TableColumn fx:id="dateTableCol" prefWidth="75.0" text="Date" />
+                            <TableColumn fx:id="residentIdTableCol" prefWidth="75.0" text="Resident ID" />
+                              <TableColumn fx:id="feedBackTableCol" prefWidth="75.0" text="Feedback Text" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="loadToTextAreaBtn" layoutX="40.0" layoutY="289.0" mnemonicParsing="false" onAction="#loadToTextAreaButtonOnClick" prefHeight="27.0" prefWidth="155.0" style="-fx-background-color: green;" text="See details in Text Area" textFill="WHITE" />
                      </children></AnchorPane>
             </content>
           </TitledPane>

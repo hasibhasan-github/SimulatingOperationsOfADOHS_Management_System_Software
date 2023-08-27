@@ -16,6 +16,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 
 /**
@@ -41,6 +43,16 @@ public class ResidentPortalController implements Initializable {
     private Button loadFeedBackBtnFxid;
     
     private ObservableList<FeedBack> fbList;
+    @FXML
+    private TableView<?> feedbackTableView;
+    @FXML
+    private TableColumn<?, ?> dateTableCol;
+    @FXML
+    private TableColumn<?, ?> residentIdTableCol;
+    @FXML
+    private TableColumn<?, ?> feedBackTableCol;
+    @FXML
+    private Button loadToTextAreaBtn;
 
     /**
      * Initializes the controller class.
@@ -101,6 +113,10 @@ public class ResidentPortalController implements Initializable {
         
         
         
+    }
+
+    @FXML
+    private void loadToTextAreaButtonOnClick(ActionEvent event) {
     }
 
 

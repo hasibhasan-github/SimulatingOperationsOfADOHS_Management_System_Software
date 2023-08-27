@@ -2,13 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package MdHasibHasan.MaintenanceOfficer;
+package MdHasibHasan;
 
 import MdHasibHasan.CantonmentBoardMember.sendNotice;
-import MdHasibHasan.DataReadWrite;
-import MdHasibHasan.GenerateAlerts;
-import MdHasibHasan.downloadNoticePDF;
-import MdHasibHasan.sceneChanging;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -31,9 +27,9 @@ import javafx.stage.Stage;
  *
  * @author Hasib
  */
-public class NoticeSceneController implements Initializable {
+public class AboutDOHSController implements Initializable {
 
-    @FXML
+        @FXML
     private TableView<sendNotice> noticeTableView;
     @FXML
     private TableColumn<sendNotice, String> noticeTableColoumn;
@@ -70,7 +66,7 @@ public class NoticeSceneController implements Initializable {
         ObservableList<sendNotice> unUpdateList = (ObservableList<sendNotice>) DataReadWrite.readObjectToFile("DOHSNotice.bin", notice);
        
         for (sendNotice data : unUpdateList  ){
-            if ( data.getNoticeForPeopleType().equals("Maintenace Department") ) {
+            if ( data.getNoticeForPeopleType().equals("Visitor") ) {
                 noticeList.add(data);
             }
         }
@@ -99,10 +95,11 @@ public class NoticeSceneController implements Initializable {
         }
     }
 
+    @FXML
     private void goBackBuuttonOnClick(ActionEvent event) throws IOException {
         sceneChanging newwscene = new sceneChanging();
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdHasibHasan/MaintenanceOfficer/MaintenanceOfficerDashboard.fxml");
+        newwscene.logOutSceneSwitching(stage);
     }
 
     @FXML
@@ -114,14 +111,6 @@ public class NoticeSceneController implements Initializable {
         catch(RuntimeException ee ){
             GenerateAlerts.unsuccessfulAlert("Please Select the File from Table to Load.");
         }
-    }
-
-    @FXML
-    private void goBackButtonOnClick(ActionEvent event) throws IOException {
-        sceneChanging newwscene = new sceneChanging();
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdHasibHasan/MaintenanceOfficer/MaintenanceOfficerDashboard.fxml");
-    
     }
     
 }

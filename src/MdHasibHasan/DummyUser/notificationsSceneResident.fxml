@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="447.0" prefWidth="600.0" style="-fx-background-color: LIGHTSTEELBLUE;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MdHasibHasan.MaintenanceOfficer.NoticeSceneController">
+<AnchorPane id="AnchorPane" prefHeight="446.0" prefWidth="600.0" style="-fx-background-color: CORNSILK;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MdHasibHasan.DummyUser.NotificationsSceneResidentController">
    <children>
       <TableView fx:id="noticeTableView" layoutX="20.0" layoutY="61.0" prefHeight="130.0" prefWidth="558.0">
         <columns>
@@ -31,11 +31,6 @@
       </Button>
       <TextArea fx:id="noticeExpandedView" editable="false" layoutX="10.0" layoutY="247.0" prefHeight="152.0" prefWidth="578.0" wrapText="true" />
       <Button layoutX="127.0" layoutY="207.0" mnemonicParsing="false" onAction="#downloadPDFButtonOnClick" prefHeight="26.0" prefWidth="110.0" text="Download PDF">
-         <font>
-            <Font name="Arial Narrow Bold" size="14.0" />
-         </font>
-      </Button>
-      <Button layoutX="245.0" layoutY="407.0" mnemonicParsing="false" onAction="#goBackButtonOnClick" prefHeight="26.0" prefWidth="110.0" text="Go Back">
          <font>
             <Font name="Arial Narrow Bold" size="14.0" />
          </font>

@@ -71,7 +71,10 @@ public class LoginController implements Initializable {
     }
 
     @FXML
-    private void aboutButtonOnClick(ActionEvent event) {
+    private void aboutButtonOnClick(ActionEvent event) throws IOException {
+        sceneChanging newwscene = new sceneChanging();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdHasibHasan/aboutDOHS.fxml");
     }
 
     @FXML

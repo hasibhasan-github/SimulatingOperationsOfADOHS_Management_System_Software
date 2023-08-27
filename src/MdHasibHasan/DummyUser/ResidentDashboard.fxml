@@ -104,6 +104,8 @@
                            </font>
                         </Label>
                         <Button fx:id="submitVoteButton" layoutX="244.0" layoutY="222.0" mnemonicParsing="false" onAction="#submitVoteButtonOnClick" text="Submit Vote" />
+                        <TextArea fx:id="notificationViewTextArea" editable="false" layoutX="30.0" layoutY="264.0" prefHeight="59.0" prefWidth="563.0" wrapText="true" />
+                        <Button layoutX="203.0" layoutY="332.0" mnemonicParsing="false" onAction="#viewAllNotificationsInDetailsButtonOnClick" text="View all Notifications in details" />
                      </children>
                   </AnchorPane>
                </content>

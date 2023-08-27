@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package MdHasibHasan.MaintenanceOfficer;
+package MdHasibHasan.DummyUser;
 
 import MdHasibHasan.CantonmentBoardMember.sendNotice;
 import MdHasibHasan.DataReadWrite;
@@ -31,7 +31,7 @@ import javafx.stage.Stage;
  *
  * @author Hasib
  */
-public class NoticeSceneController implements Initializable {
+public class NotificationsSceneResidentController implements Initializable {
 
     @FXML
     private TableView<sendNotice> noticeTableView;
@@ -70,7 +70,7 @@ public class NoticeSceneController implements Initializable {
         ObservableList<sendNotice> unUpdateList = (ObservableList<sendNotice>) DataReadWrite.readObjectToFile("DOHSNotice.bin", notice);
        
         for (sendNotice data : unUpdateList  ){
-            if ( data.getNoticeForPeopleType().equals("Maintenace Department") ) {
+            if ( data.getNoticeForPeopleType().equals("Resident") ) {
                 noticeList.add(data);
             }
         }
@@ -99,12 +99,6 @@ public class NoticeSceneController implements Initializable {
         }
     }
 
-    private void goBackBuuttonOnClick(ActionEvent event) throws IOException {
-        sceneChanging newwscene = new sceneChanging();
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdHasibHasan/MaintenanceOfficer/MaintenanceOfficerDashboard.fxml");
-    }
-
     @FXML
     private void downloadPDFButtonOnClick(ActionEvent event) {
         try{
@@ -116,12 +110,5 @@ public class NoticeSceneController implements Initializable {
         }
     }
 
-    @FXML
-    private void goBackButtonOnClick(ActionEvent event) throws IOException {
-        sceneChanging newwscene = new sceneChanging();
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        newwscene.sceneSwitchingWithoutDataPassing(stage, "/MdHasibHasan/MaintenanceOfficer/MaintenanceOfficerDashboard.fxml");
-    
-    }
     
 }

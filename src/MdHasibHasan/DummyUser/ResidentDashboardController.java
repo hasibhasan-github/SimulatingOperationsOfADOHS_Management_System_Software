@@ -9,6 +9,7 @@ import MdHasibHasan.CantonmentBoardMember.developementProject;
 import MdHasibHasan.CantonmentBoardMember.developementProjectVoting;
 import MdHasibHasan.CantonmentBoardMember.dohsPolicies;
 import MdHasibHasan.CantonmentBoardMember.residentVote;
+import MdHasibHasan.CantonmentBoardMember.sendNotice;
 import MdHasibHasan.DataReadWrite;
 import MdHasibHasan.GenerateAlerts;
 import MdHasibHasan.MaintenanceOfficer.PublicProperties;
@@ -83,6 +84,8 @@ public class ResidentDashboardController implements Initializable {
     private ObservableList<residentVote> rVoteProj;
     @FXML
     private Button submitVoteButton;
+    @FXML
+    private TextArea notificationViewTextArea;
     /**
      * Initializes the controller class.
      */
@@ -142,6 +145,20 @@ public class ResidentDashboardController implements Initializable {
             selectVoteComboBoxFxId.setDisable(true);
         }
         
+        loadNotifcationsData();
+        
+    }
+    
+    private void loadNotifcationsData(){
+        sendNotice notice = new sendNotice("", "", "", LocalDate.of(2023, 02, 02), new ArrayList<String>());
+        
+        ObservableList<sendNotice> unUpdateList = (ObservableList<sendNotice>) DataReadWrite.readObjectToFile("DOHSNotice.bin", notice);
+       
+        for (sendNotice data : unUpdateList  ){
+            if ( data.getNoticeForPeopleType().equals("Resident") ) {
+                notificationViewTextArea.appendText(data.getNoticeName() + "\n Subject: " + data.getNoticeSubject());
+            }
+        }
     }
     
     private void refreshMaintenanceFeeDataList(){
@@ -304,6 +321,12 @@ public class ResidentDashboardController implements Initializable {
             submitVoteButton.setDisable(true);
             GenerateAlerts.successfulAlert("Thank you for your Vote.");
         }
+    }
+
+    @FXML
+    private void viewAllNotificationsInDetailsButtonOnClick(ActionEvent event) throws IOException {
+        sceneChanging newwscene = new sceneChanging();
+        newwscene.windowSwitchingWithoutDataPassing( "/MdHasibHasan/DummyUser/notificationsSceneResident.fxml");
     }
     
 }

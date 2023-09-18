@@ -10,6 +10,7 @@ import java.io.Serializable;
  *
  * @author Hasib
  */
+
 public class reportFromSecurityDepartment implements Serializable {
     private String chatDataType;
     private String timeSlotOrPurposeOfVisit;

@@ -10,6 +10,7 @@ import java.io.Serializable;
  *
  * @author Hasib
  */
+
 public class SupportForum implements Serializable {
     private String name, userType, contactNo, subject, description;
 

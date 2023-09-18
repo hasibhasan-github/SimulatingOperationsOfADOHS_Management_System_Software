@@ -11,6 +11,7 @@ import java.time.LocalDate;
  *
  * @author Hasib
  */
+
 public abstract class Employee extends User implements Serializable {
     protected LocalDate dateOoJoin;
     protected float salary;

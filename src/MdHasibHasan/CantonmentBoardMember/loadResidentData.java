@@ -10,6 +10,7 @@ import java.io.Serializable;
  *
  * @author Hasib
  */
+
 public class loadResidentData implements Serializable {
     private String name, plotNo, gender, holdingNo;
     private int id;

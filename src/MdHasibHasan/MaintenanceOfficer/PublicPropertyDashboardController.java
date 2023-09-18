@@ -26,6 +26,7 @@ import javafx.stage.Stage;
  *
  * @author Hasib
  */
+
 public class PublicPropertyDashboardController implements Initializable {
 
     @FXML

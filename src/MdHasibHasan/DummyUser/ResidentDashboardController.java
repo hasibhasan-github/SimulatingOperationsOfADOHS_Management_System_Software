@@ -40,6 +40,7 @@ import javafx.stage.Stage;
  *
  * @author Hasib
  */
+
 public class ResidentDashboardController implements Initializable {
     
     @FXML

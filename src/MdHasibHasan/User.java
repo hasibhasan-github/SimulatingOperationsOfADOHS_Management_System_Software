@@ -11,6 +11,7 @@ import java.time.LocalDate;
  *
  * @author Hasib
  */
+
 public abstract class User implements Serializable {
     protected int id;
     protected String name, gender, email, userType;

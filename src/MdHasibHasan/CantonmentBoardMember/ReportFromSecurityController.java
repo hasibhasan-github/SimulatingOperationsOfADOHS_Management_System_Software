@@ -22,6 +22,7 @@ import javafx.scene.input.MouseEvent;
  *
  * @author Hasib
  */
+
 public class ReportFromSecurityController implements Initializable {
 
     @FXML

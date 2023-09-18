@@ -39,6 +39,7 @@ import javafx.collections.ObservableList;
  *
  * @author Hasib
  */
+
 public class DataReadWrite {
     
     public static <T> Boolean writeObjectToFile(String fileName, T instance){

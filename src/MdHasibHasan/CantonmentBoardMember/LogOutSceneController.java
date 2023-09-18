@@ -20,6 +20,7 @@ import javafx.stage.Stage;
  *
  * @author Hasib
  */
+
 public class LogOutSceneController implements Initializable {
 
     /**

@@ -12,6 +12,7 @@ import java.util.Map;
  *
  * @author Hasib
  */
+
 public class yearlyBudget implements Serializable {
     private String budgetYear;
     private float totalBudgetAmount;

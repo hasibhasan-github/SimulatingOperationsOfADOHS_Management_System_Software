@@ -10,6 +10,7 @@ import java.io.Serializable;
  *
  * @author Hasib
  */
+
 public class residentVote implements Serializable {
     private String voterEmail, residentVote;
     private int voterId;

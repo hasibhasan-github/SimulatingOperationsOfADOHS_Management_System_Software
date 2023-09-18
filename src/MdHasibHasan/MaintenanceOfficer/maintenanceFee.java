@@ -10,6 +10,7 @@ import java.io.Serializable;
  *
  * @author Hasib
  */
+
 public class maintenanceFee implements Serializable {
     private int residentId;
     private String month, year, residentEmail;

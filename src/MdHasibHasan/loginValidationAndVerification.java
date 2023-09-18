@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
  *
  * @author Hasib
  */
+
 public final class loginValidationAndVerification {
     public static boolean isValidEmail(String email){
         String emailPattern = "^[A-Za-z0-9+_.-]+@(.+)$";

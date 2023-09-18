@@ -11,6 +11,7 @@ import java.time.LocalDate;
  *
  * @author Hasib
  */
+
 public class developementProjectVoting implements Serializable {
     private String projectName;
     private developementProject votingProject;

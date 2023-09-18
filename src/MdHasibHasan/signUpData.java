@@ -10,6 +10,7 @@ import java.io.Serializable;
  *
  * @author Hasib
  */
+
 public class signUpData implements Serializable {
     private int id;
     private String email, password, userType;

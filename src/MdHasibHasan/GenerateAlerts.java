@@ -11,6 +11,7 @@ import javafx.scene.control.ButtonType;
  *
  * @author Hasib
  */
+
 public class GenerateAlerts {
     public static void successfulAlert(String str){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

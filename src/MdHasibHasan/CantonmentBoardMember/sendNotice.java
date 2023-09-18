@@ -12,6 +12,7 @@ import java.util.ArrayList;
  *
  * @author Hasib
  */
+
 public class sendNotice implements Serializable {
     private String noticeName, noticeSubject, noticeForPeopleType;
     private LocalDate noticeDate;

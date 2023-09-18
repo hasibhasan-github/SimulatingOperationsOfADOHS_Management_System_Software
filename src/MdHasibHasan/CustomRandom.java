@@ -8,6 +8,7 @@ package MdHasibHasan;
  *
  * @author Hasib
  */
+
 import java.util.Random;
 
 public class CustomRandom extends Random {

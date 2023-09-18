@@ -12,6 +12,7 @@ import java.util.ArrayList;
  *
  * @author Hasib
  */
+
 public class crucialTaskPermissionRequest implements Serializable {
     private int ID;
     private String eventNamme, department, permissionStatus;

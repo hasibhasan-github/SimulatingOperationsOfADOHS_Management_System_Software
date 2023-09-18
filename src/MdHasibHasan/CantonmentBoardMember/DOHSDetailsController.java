@@ -26,6 +26,7 @@ import javafx.scene.input.MouseEvent;
  *
  * @author Hasib
  */
+
 public class DOHSDetailsController implements Initializable {
 
     @FXML

@@ -42,6 +42,7 @@ import javafx.stage.Stage;
  *
  * @author Hasib
  */
+
 public class SignUpSceneController implements Initializable {
 
     @FXML

@@ -27,6 +27,7 @@ import javafx.scene.control.ComboBox;
  *
  * @author Hasib
  */
+
 public class PublicPropertyFundYearlyStatisticsController implements Initializable {
 
     @FXML

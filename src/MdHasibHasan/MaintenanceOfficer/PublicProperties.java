@@ -10,6 +10,7 @@ import java.io.Serializable;
  *
  * @author Hasib
  */
+
 public class PublicProperties implements Serializable {
     private int id;
     private String email,  month, year, organizationType;

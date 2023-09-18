@@ -31,6 +31,7 @@ import javafx.scene.input.MouseEvent;
  *
  * @author Hasib
  */
+
 public class VotingSceneController implements Initializable {
 
     @FXML

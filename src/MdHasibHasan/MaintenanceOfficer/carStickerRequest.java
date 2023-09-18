@@ -11,6 +11,7 @@ import javafx.beans.property.SimpleStringProperty;
  *
  * @author Hasib
  */
+
 public class carStickerRequest implements Serializable {
     private int id;
     private String applicationStatus;

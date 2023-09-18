@@ -33,6 +33,7 @@ import javafx.stage.FileChooser.ExtensionFilter;
  *
  * @author Hasib
  */
+
 public class CantonmentBoardMember extends User implements Serializable {
     private String militaryRank;
 

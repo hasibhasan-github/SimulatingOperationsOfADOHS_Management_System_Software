@@ -15,6 +15,7 @@ import javafx.stage.Stage;
  *
  * @author Hasib
  */
+
 public class sceneChanging {
     
     public void sceneSwitchingWithoutDataPassing(Stage stage, String sceneName) throws IOException{

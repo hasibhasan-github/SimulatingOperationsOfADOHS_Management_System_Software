@@ -74,6 +74,7 @@
                            </font>
                         </Label>
                         <Label fx:id="emailErrorLabel" layoutX="358.0" layoutY="76.0" textFill="#dd4040" />
+                        <Label layoutX="68.0" layoutY="18.0" />
                      </children>
                   </AnchorPane>
             </content>

@@ -12,6 +12,7 @@ import java.time.LocalDate;
  *
  * @author Hasib
  */
+
 public class Resident extends User implements Serializable {
     private String plotNo, holdingOrFlatNo;
 

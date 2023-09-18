@@ -31,6 +31,7 @@ import javafx.stage.Stage;
  *
  * @author Hasib
  */
+
 public class NoticeSceneController implements Initializable {
 
     @FXML
